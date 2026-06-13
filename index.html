@@ -123,7 +123,8 @@
   .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
 
   /* ── SECTION BASE ── */
-  section { padding: 5rem 3rem 5rem 5rem; max-width: 1100px; margin: 0 auto; }
+  /* Reduced padding-top and padding-bottom here to remove chunk space gaps */
+  section { padding: 3rem 3rem 3rem 5rem; max-width: 1100px; margin: 0 auto; }
   .section-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem; font-weight: 500;
@@ -147,11 +148,13 @@
   }
 
   /* ── HERO ── */
+  /* Changed min-height from 100vh to fit content, fixing the huge blank space bug */
   #hero {
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: center;
-    padding-top: 6rem;
+    padding-top: 10rem;
+    padding-bottom: 4rem;
     padding-left: 5rem;
     position: relative;
     overflow: hidden;
@@ -188,7 +191,6 @@
     margin-bottom: 1.25rem;
     color: var(--white);
   }
-  h1.hero-name span { color: var(--cyan); }
   .hero-tagline {
     font-size: 1.05rem; color: var(--muted);
     max-width: 540px; margin-bottom: 2.5rem;
@@ -196,7 +198,7 @@
   }
   .hero-links {
     display: flex; flex-wrap: wrap; gap: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
   .hero-link {
     display: flex; align-items: center; gap: 0.5rem;
@@ -217,9 +219,9 @@
   .hero-link svg { width: 14px; height: 14px; }
 
   /* ── ABOUT ── */
-  #about { padding-top: 3rem; }
+  #about { padding-top: 4rem; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-  .about-text p { color: #94A3B8; font-size: 1.02rem; line-height: 1.8; margin-bottom: 1.5rem; }
+  .about-text p { color: #94A3B8; font-size: 1.02rem; line-height: 1.75; margin-bottom: 1.5rem; }
   .about-edu {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -250,7 +252,7 @@
   .skill-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--cyan), var(--indigo)); }
 
   /* ── INTERESTS ── */
-  #interests { padding-top: 1rem; }
+  #interests { padding-top: 3rem; }
   .interests-text { color: #94A3B8; line-height: 1.8; max-width: 700px; margin-bottom: 2rem; }
   .tag-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
   .tag {
@@ -264,10 +266,10 @@
   .tag.cyan { color: var(--cyan); background: var(--cyan-dim); }
   .tag.cyan:hover { border-color: var(--cyan); }
 
-  /* ── PROJECTS & TAB FILTER ── */
-  #projects { padding-top: 1rem; }
+  /* ── PORTFOLIO GRAPHIC WORKSPACE SECTIONS ── */
+  #projects, #internships { padding-top: 3rem; }
   .project-tab-nav {
-    display: flex; gap: 1.5rem; margin-bottom: 2.5rem;
+    display: flex; gap: 1.5rem; margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;
   }
   .tab-trigger {
@@ -282,110 +284,35 @@
     content: ''; position: absolute; bottom: -13px; left: 0; right: 0;
     height: 2px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan);
   }
-  .projects-pane { display: none; }
-  .projects-pane.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
   
-  .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px; padding: 1.5rem;
-    transition: all 0.25s;
-    position: relative; overflow: hidden;
-    cursor: default;
+  .graphic-layout-row {
+    display: flex; align-items: center; gap: 2rem;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 2rem; margin-top: 1rem;
   }
-  .project-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--cyan), var(--indigo));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.3s;
-  }
-  .project-card:hover { border-color: var(--border-glow); transform: translateY(-4px); background: var(--bg-hover); }
-  .project-card:hover::before { transform: scaleX(1); }
-  .project-num {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem; color: var(--muted); margin-bottom: 0.75rem;
-  }
-  .project-card h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.5rem;
-  }
-  .project-card p { font-size: 0.83rem; color: #64748B; line-height: 1.65; }
-  .patent-badge {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    font-size: 0.68rem; font-family: 'JetBrains Mono', monospace;
-    color: var(--indigo); background: var(--indigo-dim);
-    border: 1px solid rgba(129,140,248,0.3);
-    padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.6rem;
-  }
-  .view-btn {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    margin-top: 1rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.78rem; font-weight: 600;
-    color: var(--cyan); background: none;
-    border: none; cursor: pointer; padding: 0;
-    text-decoration: none;
-    transition: gap 0.2s;
-  }
-  .view-btn:hover { gap: 0.6rem; }
-  .view-btn svg { width: 14px; height: 14px; }
-  
-  .project-links-row { display: flex; gap: 1rem; margin-top: 1rem; }
-  .proj-git-btn {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
-    color: var(--muted); background: var(--bg-surface);
-    border: 1px solid var(--border); padding: 0.3rem 0.65rem; border-radius: 4px;
-    text-decoration: none; transition: all 0.2s;
-  }
-  .proj-git-btn:hover { color: var(--cyan); border-color: var(--border-glow); background: var(--cyan-dim); }
-  .proj-git-btn svg { width: 12px; height: 12px; }
-
-  /* ── INTERNSHIPS ── */
-  #internships { padding-top: 1rem; }
-  .intern-cards { display: flex; flex-direction: column; gap: 1.25rem; }
-  .intern-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px; padding: 1.75rem;
-    display: grid; grid-template-columns: auto 1fr; gap: 1.5rem;
-    align-items: start; transition: all 0.25s;
-  }
-  .intern-card:hover { border-color: var(--border-glow); transform: translateX(4px); }
-  .intern-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: var(--cyan-dim); border: 1px solid var(--border-glow);
+  .graphic-layout-preview {
+    width: 60px; height: 60px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--cyan-dim), var(--indigo-dim));
+    border: 1px dashed var(--border-glow);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.25rem; flex-shrink: 0;
+    font-size: 1.5rem; flex-shrink: 0;
   }
-  .intern-icon.indigo-icon {
-    background: var(--indigo-dim); border-color: rgba(129,140,248,0.3);
-  }
-  .intern-info h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem;
-  }
-  .intern-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem; color: var(--cyan); margin-bottom: 0.6rem;
-  }
-  .intern-info p { font-size: 0.84rem; color: #64748B; line-height: 1.65; }
+  .graphic-layout-desc { flex: 1; }
+  .graphic-layout-desc p { color: #94A3B8; font-size: 1.02rem; line-height: 1.7; margin-bottom: 1rem; }
   
-  .exp-actions { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1rem; }
-  .cert-btn {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.78rem; font-weight: 600;
-    color: #FBBF24; background: rgba(251,191,36,0.06);
-    border: 1px solid rgba(251,191,36,0.25); 
-    cursor: pointer; padding: 0.35rem 0.85rem; border-radius: 6px;
-    text-decoration: none; transition: all 0.2s;
+  .click-here-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--white); background: none; border: none; cursor: pointer;
+    text-decoration: none; transition: all 0.2s; padding: 0;
   }
-  .cert-btn:hover { background: rgba(251,191,36,0.15); border-color: #FBBF24; transform: translateY(-1px); }
-  .cert-btn svg { width: 14px; height: 14px; }
+  .click-here-btn span { color: var(--cyan); }
+  .click-here-btn:hover { transform: translateX(4px); color: var(--cyan); }
+  .click-here-btn svg { width: 14px; height: 14px; color: var(--cyan); }
 
   /* ── HACKATHONS ── */
-  #hackathons { padding-top: 1rem; }
+  #hackathons { padding-top: 3rem; }
   .hack-list { display: flex; flex-direction: column; gap: 1rem; }
   .hack-item {
     background: var(--bg-card);
@@ -406,12 +333,12 @@
   .badge-part { background: var(--indigo-dim); color: var(--indigo); border: 1px solid rgba(129,140,248,0.3); }
   .hack-info h3 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem;
+    font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.20rem;
   }
   .hack-info p { font-size: 0.82rem; color: var(--muted); }
 
   /* ── SKILLS ── */
-  #skills { padding-top: 1rem; }
+  #skills { padding-top: 3rem; }
   .skills-full { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .skill-group {
     background: var(--bg-card); border: 1px solid var(--border);
@@ -438,7 +365,7 @@
   .skill-tag:hover { color: var(--cyan); border-color: var(--border-glow); }
 
   /* ── CONTACT ── */
-  #contact { padding-top: 1rem; }
+  #contact { padding-top: 3rem; }
   .contact-container { max-width: 800px; margin: 0 auto; text-align: center; }
   .contact-text { color: #94A3B8; font-size: 1.1rem; line-height: 1.8; margin-bottom: 2.5rem; }
   .contact-grid-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -463,7 +390,7 @@
   }
   footer span { color: var(--cyan); }
 
-  /* ── SUB-PAGES ── */
+  /* ── SUB-PAGES GRID HOUSINGS ── */
   .subpage {
     display: none; position: fixed;
     inset: 0; z-index: 200;
@@ -488,19 +415,18 @@
     transition: all 0.2s; text-decoration: none;
   }
   .back-btn:hover { color: var(--cyan); border-color: var(--border-glow); transform: translateX(-4px); }
-  .subpage h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 700;
-    color: var(--white); margin-bottom: 0.5rem;
-  }
-  .subpage-subtitle { color: var(--muted); font-size: 0.95rem; margin-bottom: 3rem; }
-  .proj-detail {
+  
+  .pane-content-view { display: none; }
+  .pane-content-view.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .pane-content-view.single-layout.active { display: grid; grid-template-columns: 1fr; }
+
+  .proj-detail, .intern-detail {
     background: var(--bg-card); border: 1px solid var(--border);
     border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;
     position: relative; overflow: hidden;
     transition: border-color 0.2s;
   }
-  .proj-detail:hover { border-color: var(--border-glow); }
+  .proj-detail:hover, .intern-detail:hover { border-color: var(--border-glow); }
   .proj-detail-num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 3rem; font-weight: 700;
@@ -508,7 +434,7 @@
     position: absolute; top: 1rem; right: 1.5rem;
     line-height: 1; pointer-events: none;
   }
-  .proj-detail h2 {
+  .proj-detail h2, .intern-detail h2 {
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.25rem;
   }
@@ -520,21 +446,28 @@
     color: var(--indigo); background: var(--indigo-dim);
   }
   .tech-pill.cyan { color: var(--cyan); background: var(--cyan-dim); border-color: var(--border-glow); }
-  .proj-detail p { color: #94A3B8; font-size: 0.9rem; line-height: 1.75; margin-bottom: 0.75rem; }
-  .proj-detail ul { color: #94A3B8; font-size: 0.88rem; line-height: 1.75; padding-left: 1.25rem; margin-bottom: 0.75rem; }
-  .proj-detail ul li { margin-bottom: 0.4rem; }
+  .proj-detail p, .intern-detail p { color: #94A3B8; font-size: 0.9rem; line-height: 1.75; margin-bottom: 0.75rem; }
+  .proj-detail ul, .intern-detail ul { color: #94A3B8; font-size: 0.88rem; line-height: 1.75; padding-left: 1.25rem; margin-bottom: 0.75rem; }
+  .proj-detail ul li, .intern-detail ul li { margin-bottom: 0.4rem; }
   .proj-highlight {
     background: var(--cyan-dim); border: 1px solid var(--border-glow);
     border-radius: 8px; padding: 0.75rem 1rem; margin-top: 0.75rem;
     font-size: 0.84rem; color: var(--cyan);
     display: flex; align-items: center; gap: 0.5rem;
   }
-
-  .intern-detail {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;
+  
+  /* ── GITHUB BTN FIX ── */
+  .project-links-row { display: flex; margin-top: 1.5rem; }
+  .proj-git-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600;
+    color: var(--cyan); background: var(--cyan-dim);
+    border: 1px solid var(--border-glow); padding: 0.5rem 1rem; border-radius: 6px;
+    text-decoration: none; transition: all 0.2s;
   }
-  .intern-detail:hover { border-color: var(--border-glow); }
+  .proj-git-btn:hover { background: rgba(0,212,255,0.2); transform: translateY(-1px); }
+  .proj-git-btn svg { width: 18px !important; height: 18px !important; flex-shrink: 0; }
+  
   .intern-detail-header { display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.5rem; }
   .intern-detail-icon {
     width: 56px; height: 56px; border-radius: 14px;
@@ -543,27 +476,20 @@
     font-size: 1.5rem; flex-shrink: 0;
   }
   .intern-detail-icon.ind { background: var(--indigo-dim); border-color: rgba(129,140,248,0.35); }
-  .intern-detail h2 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.15rem;
-  }
   .intern-detail-org { font-size: 0.85rem; color: var(--cyan); margin-bottom: 0.15rem; }
-  .intern-detail-date {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem; color: var(--muted);
+  .intern-detail-date { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+  
+  .exp-actions { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1rem; }
+  .cert-btn {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.78rem; font-weight: 600;
+    color: #FBBF24; background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.25); 
+    cursor: pointer; padding: 0.35rem 0.85rem; border-radius: 6px;
+    text-decoration: none; transition: all 0.2s;
   }
-  .intern-detail p { color: #94A3B8; font-size: 0.9rem; line-height: 1.75; margin-bottom: 0.75rem; }
-  .intern-detail ul { color: #94A3B8; font-size: 0.88rem; line-height: 1.75; padding-left: 1.25rem; margin-bottom: 0.75rem; }
-  .intern-detail ul li { margin-bottom: 0.4rem; }
-  .learning-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-  .learning-tags .learning-tag {
-    font-size: 0.72rem; font-family: 'JetBrains Mono', monospace;
-    padding: 0.3rem 0.7rem; border-radius: 5px;
-    color: #94A3B8; border: 1px solid var(--border); background: var(--bg-hover);
-    display: inline-block; margin-bottom: 0.25rem;
-  }
+  .cert-btn:hover { background: rgba(251,191,36,0.15); border-color: #FBBF24; transform: translateY(-1px); }
+  .cert-btn svg { width: 14px; height: 14px; }
 
-  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .circuit-trace { display: none; }
     nav { padding: 1rem 1.25rem; }
@@ -572,11 +498,8 @@
     .hamburger { display: flex; }
     section { padding: 3.5rem 1.25rem; }
     #hero { padding: 6rem 1.25rem 3rem; }
-    h1.hero-name { font-size: 2.4rem; }
-    .about-grid, .projects-pane.active, .skills-full, .contact-grid-links { grid-template-columns: 1fr; }
-    .intern-card { grid-template-columns: 1fr; }
+    .about-grid, .graphic-layout-row, .pane-content-view.active, .skills-full, .contact-grid-links { grid-template-columns: 1fr; flex-direction: column; }
     .subpage-inner { padding: 2rem 1.25rem 4rem; }
-    .intern-detail-header { flex-direction: column; }
     footer { margin-left: 0; }
   }
 </style>
@@ -607,6 +530,7 @@
   </div>
 </nav>
 
+<!-- ══════════════ HERO (COMPACTED DESIGN) ══════════════ -->
 <section id="hero">
   <div class="hero-bg-glow"></div>
   <div class="hero-bg-glow2"></div>
@@ -638,6 +562,7 @@
 
 <div class="divider"></div>
 
+<!-- ABOUT ME -->
 <section id="about">
   <div class="section-label">// 01 — about</div>
   <h2 class="section-title">Who I Am</h2>
@@ -692,6 +617,7 @@
 
 <div class="divider"></div>
 
+<!-- INTERESTS -->
 <section id="interests">
   <div class="section-label">// 02 — research interests</div>
   <h2 class="section-title">Engineering Curiosity</h2>
@@ -713,110 +639,73 @@
 
 <div class="divider"></div>
 
+<!-- PROJECTS WORKSPACE -->
 <section id="projects">
-  <div class="section-label">// 03 — project workspace</div>
+  <div class="section-label">// 03 — Featured Layout Workspace</div>
   <h2 class="section-title">What I've Built</h2>
   
   <div class="project-tab-nav">
-    <button class="tab-trigger active" onclick="switchProjectTab(event, 'sys-integration-pane')">Systems Integration & Design</button>
-    <button class="tab-trigger" onclick="switchProjectTab(event, 'github-repos-pane')">GitHub Repositories</button>
+    <button class="tab-trigger active" onclick="switchMainTab(event, 'sys-integration', 'projects')">Systems Integration & Design</button>
+    <button class="tab-trigger" onclick="switchMainTab(event, 'github-repos', 'projects')">GitHub Repositories</button>
   </div>
 
-  <div class="projects-pane active" id="sys-integration-pane">
-    <div class="project-card">
-      <div class="project-num">PROJECT · 01</div>
-      <div class="patent-badge">⚙ Core Mechanical Work</div>
-      <h3>Mechanical Rotary Device</h3>
-      <p>A flagship dual-mode rotary mechanism integrating a Geneva wheel and dog clutch system. This foundational build served as my key entry point to mastering complex assemblies and kinematics in SolidWorks.</p>
-      <button class="view-btn" onclick="openSubpage('projects-sub')">
-        View Technical Details →
-      </button>
-    </div>
-    <div class="project-card">
-      <div class="project-num">PROJECT · 02</div>
-      <h3>Grip Stability & Stress Analyzer</h3>
-      <p>Load cell-based measurement system using HX711 and Arduino Uno to evaluate grip stability and tremor patterns for stress-level estimation.</p>
-      <button class="view-btn" onclick="openSubpage('projects-sub')">
-        View Technical Details →
-      </button>
-    </div>
-    <div class="project-card">
-      <div class="project-num">PROJECT · 03</div>
-      <h3>Adaptive Self-Mutating Authentication</h3>
-      <p>8051-based digital lock using hardware timers to generate non-deterministic passwords post-login, mitigating replay attacks and shoulder-surfing.</p>
-      <button class="view-btn" onclick="openSubpage('projects-sub')">
-        View Technical Details →
-      </button>
-    </div>
-    <div class="project-card">
-      <div class="project-num">PROJECT · 04</div>
-      <h3>Single-Axis Gimbal System</h3>
-      <p>Stabilization gimbal using Arduino Nano, MPU-6050, and SG90 servo achieving real-time angular stability via inertial sensing and closed-loop feedback.</p>
-      <button class="view-btn" onclick="openSubpage('projects-sub')">
-        View Technical Details →
+  <div class="graphic-layout-row main-project-tab" id="sys-integration">
+    <div class="graphic-layout-preview">🛠️</div>
+    <div class="graphic-layout-desc">
+      <p>"These are the projects that I have computed so far. They highlight my focus on developing, implementing hardware-software system integration and building functional prototypes to address and embedded systems applications."</p>
+      <button class="click-here-btn" onclick="openSubpage('projects-sub', 'sys-integration-pane')">
+        🔗 <span>Click Here</span> To View Projects
       </button>
     </div>
   </div>
 
-  <div class="projects-pane" id="github-repos-pane">
-    <div class="project-card" style="grid-column: span 2;">
-      <div class="project-num">REPOSITORY · PRODUCTION</div>
-      <h3>hand-gesture-controller-vol-bright</h3>
-      <p>A computer vision human-machine interface pipeline configured natively in Python using OpenCV and MediaPipe architectures. The tracking engine continuously estimates user skeletal landmark distances from real-time video frames to control hardware audio mixer levels and physical display backlight brightness parameters without physical component wear.</p>
-      <div class="project-links-row">
-        <button class="view-btn" onclick="openSubpage('projects-sub')" style="margin-top:0;">
-          View Technical Details →
-        </button>
-        <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" class="proj-git-btn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-          Open Repository Link
-        </a>
-      </div>
+  <div class="graphic-layout-row main-project-tab" id="github-repos" style="display: none;">
+    <div class="graphic-layout-preview">💻</div>
+    <div class="graphic-layout-desc">
+      <p>"These projects showcase my hands-on approach to solving real-world problems through innovative design and engineering, highlighting my research interests and automated systems. Each project reflects my journey in creating thoughtful solutions."</p>
+      <button class="click-here-btn" onclick="openSubpage('projects-sub', 'github-repos-pane')">
+        🔗 <span>Click Here</span> To View Repositories
+      </button>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- EXPERIENCE WORKSPACE -->
 <section id="internships">
-  <div class="section-label">// 04 — experience</div>
-  <h2 class="section-title">Internships & Training</h2>
-  <div class="intern-cards">
-    <div class="intern-card">
-      <div class="intern-icon">🤖</div>
-      <div class="intern-info">
-        <h3>Computer Vision & AI Summer Intern</h3>
-        <div class="intern-meta">PixelBotix · June 2026 – Present</div>
-        <p>Developing practical skills in Computer Vision, image processing, object detection, and AI-based visual recognition through intensive hands-on training.</p>
-        <div class="exp-actions">
-          <button class="view-btn" onclick="openSubpage('intern-sub')">
-            View Full Details →
-          </button>
-        </div>
-      </div>
+  <div class="section-label">// 04 — Internship Opportunities</div>
+  <h2 class="section-title">Experience</h2>
+
+  <div class="project-tab-nav">
+    <button class="tab-trigger active" onclick="switchMainTab(event, 'pixelbotix-tab', 'internships')">Internships</button>
+    <button class="tab-trigger" onclick="switchMainTab(event, 'kuka-tab', 'internships')">Training</button>
+  </div>
+
+  <div class="graphic-layout-row main-intern-tab" id="pixelbotix-tab">
+    <div class="graphic-layout-preview">🤖</div>
+    <div class="graphic-layout-desc">
+      <p>"I am eager to contribute to creative projects and enhance my skills in embedded systems, computer vision frameworks, and artificial intelligence with real-world applications. Let's connect to any ready challenges inside environments!"</p>
+      <button class="click-here-btn" onclick="openSubpage('intern-sub', 'pixelbotix-pane')">
+        🔗 <span>Click Here</span> For Full Details
+      </button>
     </div>
-    <div class="intern-card">
-      <div class="intern-icon indigo-icon">🏭</div>
-      <div class="intern-info">
-        <h3>Industrial Robotics & Automation Training</h3>
-        <div class="intern-meta">Aditya Birla Group & KUKA · February 2026</div>
-        <p>Gained core certified industry exposure to industrial robotic arms, automation workflows, and plant process operations sponsored by Birla Carbon.</p>
-        <div class="exp-actions">
-          <button class="view-btn" onclick="openSubpage('intern-sub')">
-            View Full Details →
-          </button>
-          <a href="kuka.pdf" target="_blank" class="cert-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-            View Certificate
-          </a>
-        </div>
-      </div>
+  </div>
+
+  <div class="graphic-layout-row main-intern-tab" id="kuka-tab" style="display: none;">
+    <div class="graphic-layout-preview">🏭</div>
+    <div class="graphic-layout-desc">
+      <p>"Gained core certified industry exposure to industrial robotic arms, automation workflows, and plant process operations sponsored by Birla Carbon at KUKA Chennai Centre."</p>
+      <button class="click-here-btn" onclick="openSubpage('intern-sub', 'kuka-pane')">
+        🔗 <span>Click Here</span> For Certificate & Training Details
+      </button>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
+<!-- HACKATHONS -->
 <section id="hackathons">
   <div class="section-label">// 05 — hackathons & achievements</div>
   <h2 class="section-title">Competing & Building</h2>
@@ -847,6 +736,7 @@
 
 <div class="divider"></div>
 
+<!-- SKILLS -->
 <section id="skills">
   <div class="section-label">// 06 — technical skills</div>
   <h2 class="section-title">Tools & Technologies</h2>
@@ -914,6 +804,7 @@
 
 <div class="divider"></div>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="section-label">// 07 — get in touch</div>
   <h2 class="section-title">Let's Connect</h2>
@@ -946,174 +837,168 @@
   <p>Built with precision by <span>Sailakshmi B T</span> · Robotics & Automation · MIT Anna University · Chennai</p>
 </footer>
 
+<!-- ── PROJECTS SUBPAGE DEEP DIVE ── -->
 <div class="subpage" id="projects-sub">
   <div class="subpage-inner">
     <button class="back-btn" onclick="closeSubpage('projects-sub')">
-      ← Back to Portfolio
+      ← Go Back to Portfolio
     </button>
-    <div class="section-label">// Featured Projects — Deep Dive</div>
-    <h1>Technical Project Details</h1>
-    <p class="subpage-subtitle">Comprehensive breakdown of all four engineering projects — hardware, firmware, and design.</p>
+    <div class="section-label">// Featured Workspace — Inner Content</div>
+    <h1>Technical Workspace Inventory</h1>
+    <p class="subpage-subtitle" style="margin-bottom: 2rem;">Deep-dive analytical review of system and software pipelines.</p>
 
-    <div class="proj-detail">
-      <div class="proj-detail-num">01</div>
-      <div class="patent-badge">⚙ Foundational SolidWorks Work</div>
-      <h2>Mechanical Rotary Device</h2>
-      <div class="proj-tech-row">
-        <span class="tech-pill cyan">SolidWorks</span>
-        <span class="tech-pill">Mechanical Design</span>
-        <span class="tech-pill">Geneva Wheel</span>
-        <span class="tech-pill">Dog Clutch</span>
-        <span class="tech-pill cyan">Parametric Modeling</span>
+    <!-- SYSTEMS INTEGRATION -->
+    <div class="pane-content-view" id="sys-integration-pane">
+      <div class="proj-detail">
+        <div class="proj-detail-num">01</div>
+        <div class="patent-badge">⚙ Core Mechanical Work</div>
+        <h2>Mechanical Rotary Device</h2>
+        <div class="proj-tech-row">
+          <span class="tech-pill cyan">SolidWorks</span>
+          <span class="tech-pill">Mechanical Design</span>
+          <span class="tech-pill">Geneva Wheel</span>
+          <span class="tech-pill">Dog Clutch</span>
+        </div>
+        <p>This project involved the design and development of a novel dual-mode rotary mechanism that integrates two distinct power-transmission principles into a single compact assembly.</p>
+        <ul>
+          <li>Parametric 3D part configuration built completely within SolidWorks environment scripts.</li>
+          <li>Alternates output motion smoothly between intermittent index steps and high-efficiency torque paths.</li>
+        </ul>
       </div>
-      <p>This project involved the design and development of a novel dual-mode rotary mechanism that integrates two distinct power-transmission principles into a single compact assembly. Acting as a critical milestone in my technical development, this deep mechanical implementation serves as the foundational major work through which I built my practical command of SolidWorks and mechanical modeling pipelines.</p>
-      <p><strong style="color:var(--white)">Core Mechanism:</strong> The device combines a Geneva wheel with a dog clutch. The configuration allows the assembly to adaptively alternate output motion between discrete indexing steps and continuous, high-efficiency rotation from a unified input shaft.</p>
-      <ul>
-        <li>Designed entirely from scratch in SolidWorks, executing full 3D parametric part configuration, detailed mating scripts, and interference checking.</li>
-        <li>Utilized to master advanced CAD features, including motion studies, clearance analysis, and structural layout configurations of complex physical interactions.</li>
-        <li>Engineered with a strict emphasis on fabricability — optimizing tolerances so components can be machined via traditional milling operations.</li>
-        <li>Developed a highly versatile mechanism with scalability for sorting matrices and custom packaging systems.</li>
-      </ul>
-      <div class="proj-highlight">💡 Major Development Build: This engineering project was the catalyst for transitioning my CAD abilities to strong SolidWorks competency.</div>
+
+      <div class="proj-detail">
+        <div class="proj-detail-num">02</div>
+        <h2>Grip Stability & Stress Analyzer</h2>
+        <div class="proj-tech-row">
+          <span class="tech-pill cyan">Arduino Uno R3</span>
+          <span class="tech-pill">HX711</span>
+          <span class="tech-pill">Load Cell</span>
+          <span class="tech-pill cyan">Biomedical Sensing</span>
+        </div>
+        <p>A non-invasive biological tracking node that isolates involuntary muscular tremors to estimate physical stress levels dynamically.</p>
+        <ul>
+          <li>Configured HX711 24-bit ADC sampling rates for precise data mapping loops.</li>
+          <li>Correlates time-domain force frequency shifts to diagnostic psychological tables.</li>
+        </ul>
+      </div>
+
+      <div class="proj-detail">
+        <div class="proj-detail-num">03</div>
+        <h2>Adaptive Self-Mutating Authentication System</h2>
+        <div class="proj-tech-row">
+          <span class="tech-pill cyan">8051 (AT89S52)</span>
+          <span class="tech-pill">Embedded C</span>
+          <span class="tech-pill">Hardware Timers</span>
+          <span class="tech-pill cyan">Structural Security</span>
+        </div>
+        <p>Digital hardware locking setup leveraging internal timers as entropy seeds to calculate single-use mutated PIN codes post-login.</p>
+        <ul>
+          <li>Mitigates replay attacks and tracking vectors completely in low-level Embedded C profiles.</li>
+          <li>Deploys an independent verification framework to lock execution loops on threshold violations.</li>
+        </ul>
+      </div>
+
+      <div class="proj-detail">
+        <div class="proj-detail-num">04</div>
+        <h2>Single-Axis Gimbal System</h2>
+        <div class="proj-tech-row">
+          <span class="tech-pill cyan">Arduino Nano</span>
+          <span class="tech-pill">MPU-6050</span>
+          <span class="tech-pill">SG90 Servo</span>
+          <span class="tech-pill cyan">Feedback Controls</span>
+        </div>
+        <p>Real-time angular position stabilization device powered by closed-loop proportional calculations from processing inertial data feeds.</p>
+        <ul>
+          <li>Captures immediate axis deviations from MPU-6050 sensor array readings.</li>
+          <li>Drives dynamic pulse adjustments to maintain rigid horizon references under external disturbance vectors.</li>
+        </ul>
+      </div>
     </div>
 
-    <div class="proj-detail">
-      <div class="proj-detail-num">02</div>
-      <h2>Grip Stability & Stress Analyzer</h2>
-      <div class="proj-tech-row">
-        <span class="tech-pill cyan">Arduino Uno R3</span>
-        <span class="tech-pill">HX711</span>
-        <span class="tech-pill">Load Cell</span>
-        <span class="tech-pill">Signal Processing</span>
-        <span class="tech-pill cyan">Biomedical Sensing</span>
+    <!-- GITHUB REPOSITORIES -->
+    <div class="pane-content-view single-layout" id="github-repos-pane">
+      <div class="proj-detail">
+        <div class="proj-detail-num">GIT</div>
+        <h2>Hand Gesture Volume and Brightness Controller</h2>
+        <div class="proj-tech-row">
+          <span class="tech-pill cyan">Python</span>
+          <span class="tech-pill cyan">OpenCV</span>
+          <span class="tech-pill">MediaPipe</span>
+          <span class="tech-pill">Human-Machine Interface</span>
+        </div>
+        <p>An AI-powered computer vision system built in Python that utilizes real-time hand gesture tracking to control Windows system volume and monitor brightness seamlessly. By using a standard webcam, the application translates physical distance metrics between your fingers into hardware execution commands.</p>
+        <ul>
+          <li><strong>Dual Hand Independence:</strong> Dedicated execution mapping based on hand classification:
+            <br>• Right Hand: Controls the system master volume.
+            <br>• Left Hand: Controls the monitor display brightness.
+          </li>
+          <li><strong>Intuitive Precision Control:</strong> Adjusts levels dynamically by increasing or decreasing the physical distance between your Thumb Tip and Index Finger Tip. Bring your Thumb and Index finger apart to raise levels; pinch them close together to lower levels.</li>
+          <li><strong>Graceful Resource Termination:</strong> Safely releases localized webcam threads and closes video windows immediately when clicking on the camera view and pressing the "q" key on your keyboard.</li>
+        </ul>
+        <div class="project-links-row">
+          <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" class="proj-git-btn">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            Open GitHub Codebase Repository
+          </a>
+        </div>
       </div>
-      <p>A non-invasive physiological measurement system designed to estimate a user's stress level by analyzing grip force patterns and micro-tremors. The system leverages the relationship between psychological stress and involuntary muscle behavior — providing a quantitative, objective measurement tool for stress evaluation without clinical-grade equipment.</p>
-      <p><strong style="color:var(--white)">Hardware Stack:</strong> A calibrated load cell was interfaced with the HX711 24-bit ADC module, providing high-resolution force readings with minimal noise. The HX711 communicates with the Arduino Uno via a custom 2-wire protocol. Continuous sampling at high frequency enables tremor frequency analysis in the time domain.</p>
-      <ul>
-        <li>Load cell calibration performed using known reference weights to ensure measurement accuracy and repeatability.</li>
-        <li>HX711 configured for 80 SPS (samples per second) mode to capture rapid force fluctuations indicative of tremor.</li>
-        <li>Grip stability score computed from variance and standard deviation of the force signal over a defined sampling window.</li>
-        <li>Stress-level estimation derived by correlating measured tremor frequency and grip inconsistency with established physiological stress markers.</li>
-        <li>Serial output to PC for real-time visualization and logging of grip data over time.</li>
-      </ul>
-      <div class="proj-highlight">💡 Demonstrates the application of embedded sensing for health tech — bridging hardware engineering and biomedical insight.</div>
-    </div>
-
-    <div class="proj-detail">
-      <div class="proj-detail-num">03</div>
-      <h2>Adaptive Self-Mutating Authentication System</h2>
-      <div class="proj-tech-row">
-        <span class="tech-pill cyan">8051 (AT89S52)</span>
-        <span class="tech-pill">Embedded C</span>
-        <span class="tech-pill">Hardware Timers</span>
-        <span class="tech-pill">UART / Keypad</span>
-        <span class="tech-pill cyan">Cybersecurity Workflow</span>
-      </div>
-      <p>A hardware-level digital authentication system designed on the 8051 (AT89S52) microcontroller that generates a fresh, non-deterministic password after every successful login event. The system directly addresses two common attack vectors on static PIN systems: replay attacks and shoulder-surfing.</p>
-      <p><strong style="color:var(--white)">Authentication Logic:</strong> Hardware timers within the 8051 are exploited as a source of temporal entropy. Since timer values at the moment of login are highly variable, they serve as a seed for a lightweight password mutation algorithm implemented in Embedded C. This ensures each generated password is statistically unique.</p>
-      <ul>
-        <li>Password mutation algorithm implemented entirely in Embedded C — no external RNG module required.</li>
-        <li>4×4 matrix keypad used for user input; 16×2 LCD for real-time feedback and prompt display.</li>
-        <li>Post-authentication, the new password is generated and displayed briefly, then stored in internal EEPROM/RAM for next-cycle validation.</li>
-        <li>Failed login attempt counter implemented — system locks after N incorrect tries to prevent brute-force entry.</li>
-        <li>Focuses on exploring operational reverse engineering and hardware execution workflows rather than abstract cryptographic code.</li>
-      </ul>
-      <div class="proj-highlight">🔐 A firmware architecture project that bridges embedded structures and structural security workflows directly relevant to IoT system parameters.</div>
-    </div>
-
-    <div class="proj-detail">
-      <div class="proj-detail-num">04</div>
-      <h2>Hand Gesture Vol/Bright Controller</h2>
-      <div class="proj-tech-row">
-        <span class="tech-pill cyan">Python</span>
-        <span class="tech-pill cyan">OpenCV</span>
-        <span class="tech-pill">MediaPipe</span>
-        <span class="tech-pill">PyAutoGUI</span>
-        <span class="tech-pill">Human-Machine Interface</span>
-      </div>
-      <p>An AI-powered computer vision system built in Python that utilizes real-time hand gesture tracking to control Windows system volume and monitor brightness seamlessly. By using a standard webcam, the application translates physical distance metrics between your fingers into hardware execution commands.</p>
-      <ul>
-        <li><strong>Dual Hand Independence:</strong> Dedicated execution mapping based on hand classification:
-          <br>• Right Hand: Controls the system master volume.
-          <br>• Left Hand: Controls the monitor display brightness.
-        </li>
-        <li><strong>Intuitive Precision Control:</strong> Adjusts levels dynamically by increasing or decreasing the physical distance between your Thumb Tip and Index Finger Tip. Bring your Thumb and Index finger apart to raise levels; pinch them close together to lower levels.</li>
-        <li><strong>Graceful Resource Termination:</strong> Safely releases localized webcam threads and closes video windows immediately when clicking on the camera view and pressing the "q" key on your keyboard.</li>
-        <li>Implemented low-pass coordinate boundary filters to eliminate noise, guaranteeing highly predictable desk adjustments without dedicated external components.</li>
-      </ul>
-      <div class="proj-highlight">💻 View the full codebase directly on GitHub: <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" style="color:var(--cyan);text-decoration:underline;">hand-gesture-controller-vol-bright</a></div>
     </div>
   </div>
 </div>
 
+<!-- ── INTERNSHIPS SUBPAGE DEEP DIVE ── -->
 <div class="subpage" id="intern-sub">
   <div class="subpage-inner">
     <button class="back-btn" onclick="closeSubpage('intern-sub')">
-      ← Back to Portfolio
+      ← Go Back to Portfolio
     </button>
-    <div class="section-label">// Experience — Full Breakdown</div>
-    <h1>Internships & Training</h1>
-    <p class="subpage-subtitle">A detailed look at hands-on professional training across AI, Computer Vision, and Industrial Robotics.</p>
+    <div class="section-label">// Professional Tracks — Inner Content</div>
+    <h1>Experience Records</h1>
+    <p class="subpage-subtitle" style="margin-bottom: 2rem;">Overview records detailing industry alignment competencies.</p>
 
-    <div class="intern-detail">
-      <div class="intern-detail-header">
-        <div class="intern-detail-icon">🤖</div>
-        <div>
-          <h2>Computer Vision & AI Summer Intern</h2>
-          <div class="intern-detail-org">PixelBotix</div>
-          <div class="intern-detail-date">June 2026 – Present &nbsp;|&nbsp; Chennai, India</div>
+    <!-- Pixelbotix -->
+    <div class="pane-content-view single-layout" id="pixelbotix-pane">
+      <div class="intern-detail">
+        <div class="intern-detail-header">
+          <div class="intern-detail-icon">🤖</div>
+          <div>
+            <h2>Computer Vision & AI Summer Intern</h2>
+            <div class="intern-detail-org">PixelBotix</div>
+            <div class="intern-detail-date">June 2026 &nbsp;|&nbsp; Chennai, India</div>
+          </div>
         </div>
-      </div>
-      <p>An intensive, industry-aligned summer internship focused on the practical application of Computer Vision and Artificial Intelligence. Working within a hands-on training environment, this role bridges academic robotics knowledge with real-world AI engineering workflows, specifically targeting visual perception systems used in autonomous and semi-autonomous robotic applications.</p>
-      <p><strong style="color:var(--white)">Key Areas of Focus:</strong></p>
-      <ul>
-        <li><strong style="color:#94A3B8">Image Processing Fundamentals:</strong> Study and application of core CV operations including filtering, edge detection, morphological operations, and histogram-based techniques using OpenCV and Python.</li>
-        <li><strong style="color:#94A3B8">Object Detection:</strong> Hands-on exposure to detection frameworks and algorithms, understanding bounding box prediction, intersection-over-union metrics, and annotation pipelines.</li>
-        <li><strong style="color:#94A3B8">AI-Based Visual Recognition:</strong> Introduction to deep learning-based visual recognition, including CNN architectures, feature extraction concepts, and inference pipelines for classification and detection tasks.</li>
-        <li><strong style="color:#94A3B8">Practical Implementation:</strong> Building and testing end-to-end vision pipelines — from raw image capture to processed output.</li>
-      </ul>
-      <div class="learning-tags">
-        <span class="learning-tag">Python</span>
-        <span class="learning-tag">OpenCV</span>
-        <span class="learning-tag">Image Processing</span>
-        <span class="learning-tag">Object Detection</span>
-        <span class="learning-tag">Deep Learning (Intro)</span>
-        <span class="learning-tag">CNN Architectures</span>
-        <span class="learning-tag">AI Visual Recognition</span>
-        <span class="learning-tag">Data Annotation</span>
+        <p>An intensive, industry-aligned summer internship focused on the practical implementation and structural application of Computer Vision technologies and Artificial Intelligence architectures.</p>
+        <ul>
+          <li>Executes edge-detection operations, spatial image manipulation scripts, and morphological filter processing inside native Python environments utilizing OpenCV libraries.</li>
+          <li>Constructs automated bounding box data configurations and develops foundational convolutional network tracking engines configured for robotic perception targets.</li>
+        </ul>
       </div>
     </div>
 
-    <div class="intern-detail">
-      <div class="intern-detail-header">
-        <div class="intern-detail-icon ind">🏭</div>
-        <div>
-          <h2>Industrial Robotics & Automation Certified Training</h2>
-          <div class="intern-detail-org">Aditya Birla Group (Birla Carbon) & KUKA Robotics</div>
-          <div class="intern-detail-date">February 2026 &nbsp;|&nbsp; KUKA ROBOTICS Chennai Training Centre</div>
+    <!-- KUKA -->
+    <div class="pane-content-view single-layout" id="kuka-pane">
+      <div class="intern-detail">
+        <div class="intern-detail-header">
+          <div class="intern-detail-icon ind">🏭</div>
+          <div>
+            <h2>Industrial Robotics & Automation Certified Training</h2>
+            <div class="intern-detail-org">Aditya Birla Group & KUKA Robotics</div>
+            <div class="intern-detail-date">February 2026 &nbsp;|&nbsp; KUKA Chennai Centre</div>
+          </div>
         </div>
-      </div>
-      <p>A certified, industry-immersive training program sponsored by Birla Carbon and conducted directly at the KUKA Robotics Chennai Training Centre. This program provided critical technical capabilities, bridging high-level theoretical automation architectures with physical manufacturing system deployments.</p>
-      <p><strong style="color:var(--white)">Key Technical Aspects & Syllabus:</strong></p>
-      <ul>
-        <li><strong style="color:#94A3B8">Fundamentals of Industrial Robotics and Automation Systems:</strong> Gained foundational knowledge of multi-axis manipulators, coordinate system configurations, and automated material handling workflows.</li>
-        <li><strong style="color:#94A3B8">Exposure to Robotic Arm Programming and Applications:</strong> Practical engagement with robotic controller paths, teach pendant operations, and task script definitions.</li>
-        <li><strong style="color:#94A3B8">Industrial Safety Practices and Interlock Systems:</strong> In-depth study of physical zoning protection, hardware safety protocols, emergency loops, and modern industrial interlock matrices.</li>
-        <li><strong style="color:#94A3B8">Introduction to Industry 4.0 Concepts and Smart Manufacturing:</strong> Exploratory study of data-driven systems, edge communication parameters, and plant network automation layouts.</li>
-        <li><strong style="color:#94A3B8">Real-time Case Insights on Plant Operations and Process Automation:</strong> Reviewed practical operating diagnostics and live tracking methodologies derived from Aditya Birla facility parameters.</li>
-      </ul>
-      <div class="learning-tags">
-        <span class="learning-tag">KUKA Robotics</span>
-        <span class="learning-tag">Birla Carbon</span>
-        <span class="learning-tag">Robotic Programming</span>
-        <span class="learning-tag">Industrial Automation</span>
-        <span class="learning-tag">Industry 4.0</span>
-        <span class="learning-tag">Industrial Interlocks</span>
-        <span class="learning-tag">Smart Manufacturing</span>
-        <span class="learning-tag">Process Safety</span>
+        <p>Certified industry program focused on physical kinematics configuration loops, safety interlocking logic layouts, and smart manufacturing parameters.</p>
+        <div class="exp-actions" style="margin-bottom: 1.5rem;">
+          <a href="kuka.pdf" target="_blank" class="cert-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            Launch Certified PDF Document
+          </a>
+        </div>
+        <ul>
+          <li>Programmed multi-axis robotic controller trajectories using dedicated manual teach pendants.</li>
+          <li>Analyzed electrical failure handling sequences and fail-safe safety interlocks on manufacturing plant grids.</li>
+        </ul>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -1123,56 +1008,60 @@
     document.getElementById('nav-links').classList.toggle('open');
   }
 
-  // Close nav on link click (mobile)
+  // Close nav on mobile layouts
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => {
       document.getElementById('nav-links').classList.remove('open');
     });
   });
 
-  // ── EXTENDED SUB-PANES NAVIGATION SYSTEM TAB CONTROL FILTER ──
-  function switchProjectTab(event, targetPaneId) {
-    const navButtons = document.querySelectorAll('.tab-trigger');
-    const contentPanes = document.querySelectorAll('.projects-pane');
+  // ── DASHBOARD SELECTOR LOGIC ──
+  function switchMainTab(event, activeTabId, sectionType) {
+    const tabClass = sectionType === 'projects' ? '.main-project-tab' : '.main-intern-tab';
+    const container = event.currentTarget.parentElement;
     
-    navButtons.forEach(btn => btn.classList.remove('active'));
-    contentPanes.forEach(pane => pane.classList.remove('active'));
+    container.querySelectorAll('.tab-trigger').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll(tabClass).forEach(tab => tab.style.display = 'none');
     
     event.currentTarget.classList.add('active');
-    document.getElementById(targetPaneId).classList.add('active');
+    document.getElementById(activeTabId).style.display = 'flex';
   }
 
-  // ── SUBPAGE TRANSITIONS ──
-  function openSubpage(id) {
-    const sp = document.getElementById(id);
-    sp.classList.add('active');
-    sp.scrollTop = 0;
+  // ── SUBPAGE ROUTED VIEW TRANSITIONS ──
+  function openSubpage(subpageContainerId, uniquePaneId) {
+    const subpageElement = document.getElementById(subpageContainerId);
+    
+    subpageElement.querySelectorAll('.pane-content-view').forEach(p => p.classList.remove('active'));
+    document.getElementById(uniquePaneId).classList.add('active');
+    
+    subpageElement.classList.add('active');
+    subpageElement.scrollTop = 0;
     document.body.style.overflow = 'hidden';
   }
 
-  function closeSubpage(id) {
-    document.getElementById(id).classList.remove('active');
+  function closeSubpage(subpageContainerId) {
+    document.getElementById(subpageContainerId).classList.remove('active');
     document.body.style.overflow = '';
   }
 
-  // ── SCROLL NAV HIGHLIGHT ──
+  // ── SCROLL NAV HIGHLIGHTING ──
   const sections = document.querySelectorAll('section[id]');
-  const navAs = document.querySelectorAll('.nav-links a');
+  const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    let currentSectionId = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) currentSectionId = sec.id;
     });
-    navAs.forEach(a => {
-      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
+    navLinks.forEach(link => {
+      link.style.color = link.getAttribute('href') === '#' + currentSectionId ? 'var(--white)' : '';
     });
   });
 
-  // ── KEYBOARD: ESC closes subpages ──
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.subpage.active').forEach(sp => {
-        sp.classList.remove('active');
+  // ── KEYBOARD ESC SHUTDOWN ──
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      document.querySelectorAll('.subpage.active').forEach(openPage => {
+        openPage.classList.remove('active');
         document.body.style.overflow = '';
       });
     }
