@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sailakshmi B T — Robotics & Embedded Systems</title>
+<title>Sailakshmi's Portfolio</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -263,9 +264,27 @@
   .tag.cyan { color: var(--cyan); background: var(--cyan-dim); }
   .tag.cyan:hover { border-color: var(--cyan); }
 
-  /* ── PROJECTS ── */
+  /* ── PROJECTS & TAB FILTER ── */
   #projects { padding-top: 1rem; }
-  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .project-tab-nav {
+    display: flex; gap: 1.5rem; margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;
+  }
+  .tab-trigger {
+    background: none; border: none; outline: none;
+    font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 600;
+    letter-spacing: 0.05em; color: var(--muted); cursor: pointer;
+    padding: 0.25rem 0.5rem; position: relative; transition: color 0.25s;
+    text-transform: uppercase;
+  }
+  .tab-trigger.active { color: var(--cyan); }
+  .tab-trigger.active::after {
+    content: ''; position: absolute; bottom: -13px; left: 0; right: 0;
+    height: 2px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan);
+  }
+  .projects-pane { display: none; }
+  .projects-pane.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  
   .project-card {
     background: var(--bg-card);
     border: 1px solid var(--border);
@@ -310,6 +329,17 @@
   }
   .view-btn:hover { gap: 0.6rem; }
   .view-btn svg { width: 14px; height: 14px; }
+  
+  .project-links-row { display: flex; gap: 1rem; margin-top: 1rem; }
+  .proj-git-btn {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+    color: var(--muted); background: var(--bg-surface);
+    border: 1px solid var(--border); padding: 0.3rem 0.65rem; border-radius: 4px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .proj-git-btn:hover { color: var(--cyan); border-color: var(--border-glow); background: var(--cyan-dim); }
+  .proj-git-btn svg { width: 12px; height: 12px; }
 
   /* ── INTERNSHIPS ── */
   #internships { padding-top: 1rem; }
@@ -526,10 +556,11 @@
   .intern-detail ul { color: #94A3B8; font-size: 0.88rem; line-height: 1.75; padding-left: 1.25rem; margin-bottom: 0.75rem; }
   .intern-detail ul li { margin-bottom: 0.4rem; }
   .learning-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-  .learning-tag {
+  .learning-tags .learning-tag {
     font-size: 0.72rem; font-family: 'JetBrains Mono', monospace;
     padding: 0.3rem 0.7rem; border-radius: 5px;
     color: #94A3B8; border: 1px solid var(--border); background: var(--bg-hover);
+    display: inline-block; margin-bottom: 0.25rem;
   }
 
   /* ── RESPONSIVE ── */
@@ -542,7 +573,7 @@
     section { padding: 3.5rem 1.25rem; }
     #hero { padding: 6rem 1.25rem 3rem; }
     h1.hero-name { font-size: 2.4rem; }
-    .about-grid, .projects-grid, .skills-full, .contact-grid-links { grid-template-columns: 1fr; }
+    .about-grid, .projects-pane.active, .skills-full, .contact-grid-links { grid-template-columns: 1fr; }
     .intern-card { grid-template-columns: 1fr; }
     .subpage-inner { padding: 2rem 1.25rem 4rem; }
     .intern-detail-header { flex-direction: column; }
@@ -552,10 +583,8 @@
 </head>
 <body>
 
-<!-- Circuit trace decoration -->
 <div class="circuit-trace"></div>
 
-<!-- NAV -->
 <nav id="main-nav">
   <a href="#hero" class="nav-logo">SAIL<span>.</span>BT</a>
   <ul class="nav-links" id="nav-links">
@@ -578,7 +607,6 @@
   </div>
 </nav>
 
-<!-- ══════════════ HERO ══════════════ -->
 <section id="hero">
   <div class="hero-bg-glow"></div>
   <div class="hero-bg-glow2"></div>
@@ -610,7 +638,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ ABOUT ══════════════ -->
 <section id="about">
   <div class="section-label">// 01 — about</div>
   <h2 class="section-title">Who I Am</h2>
@@ -665,7 +692,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ INTERESTS ══════════════ -->
 <section id="interests">
   <div class="section-label">// 02 — research interests</div>
   <h2 class="section-title">Engineering Curiosity</h2>
@@ -687,58 +713,71 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ PROJECTS ══════════════ -->
 <section id="projects">
-  <div class="section-label">// 03 — featured projects</div>
+  <div class="section-label">// 03 — project workspace</div>
   <h2 class="section-title">What I've Built</h2>
-  <div class="projects-grid">
-    <!-- Card 1 -->
+  
+  <div class="project-tab-nav">
+    <button class="tab-trigger active" onclick="switchProjectTab(event, 'sys-integration-pane')">Systems Integration & Design</button>
+    <button class="tab-trigger" onclick="switchProjectTab(event, 'github-repos-pane')">GitHub Repositories</button>
+  </div>
+
+  <div class="projects-pane active" id="sys-integration-pane">
     <div class="project-card">
       <div class="project-num">PROJECT · 01</div>
       <div class="patent-badge">⚙ Core Mechanical Work</div>
       <h3>Mechanical Rotary Device</h3>
       <p>A flagship dual-mode rotary mechanism integrating a Geneva wheel and dog clutch system. This foundational build served as my key entry point to mastering complex assemblies and kinematics in SolidWorks.</p>
       <button class="view-btn" onclick="openSubpage('projects-sub')">
-        View Technical Details
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        View Technical Details →
       </button>
     </div>
-    <!-- Card 2 -->
     <div class="project-card">
       <div class="project-num">PROJECT · 02</div>
       <h3>Grip Stability & Stress Analyzer</h3>
       <p>Load cell-based measurement system using HX711 and Arduino Uno to evaluate grip stability and tremor patterns for stress-level estimation.</p>
       <button class="view-btn" onclick="openSubpage('projects-sub')">
-        View Technical Details
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        View Technical Details →
       </button>
     </div>
-    <!-- Card 3 -->
     <div class="project-card">
       <div class="project-num">PROJECT · 03</div>
       <h3>Adaptive Self-Mutating Authentication</h3>
       <p>8051-based digital lock using hardware timers to generate non-deterministic passwords post-login, mitigating replay attacks and shoulder-surfing.</p>
       <button class="view-btn" onclick="openSubpage('projects-sub')">
-        View Technical Details
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        View Technical Details →
       </button>
     </div>
-    <!-- Card 4 -->
     <div class="project-card">
       <div class="project-num">PROJECT · 04</div>
       <h3>Single-Axis Gimbal System</h3>
       <p>Stabilization gimbal using Arduino Nano, MPU-6050, and SG90 servo achieving real-time angular stability via inertial sensing and closed-loop feedback.</p>
       <button class="view-btn" onclick="openSubpage('projects-sub')">
-        View Technical Details
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        View Technical Details →
       </button>
+    </div>
+  </div>
+
+  <div class="projects-pane" id="github-repos-pane">
+    <div class="project-card" style="grid-column: span 2;">
+      <div class="project-num">REPOSITORY · PRODUCTION</div>
+      <h3>hand-gesture-controller-vol-bright</h3>
+      <p>A computer vision human-machine interface pipeline configured natively in Python using OpenCV and MediaPipe architectures. The tracking engine continuously estimates user skeletal landmark distances from real-time video frames to control hardware audio mixer levels and physical display backlight brightness parameters without physical component wear.</p>
+      <div class="project-links-row">
+        <button class="view-btn" onclick="openSubpage('projects-sub')" style="margin-top:0;">
+          View Technical Details →
+        </button>
+        <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" class="proj-git-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          Open Repository Link
+        </a>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══════════════ INTERNSHIPS ══════════════ -->
 <section id="internships">
   <div class="section-label">// 04 — experience</div>
   <h2 class="section-title">Internships & Training</h2>
@@ -751,8 +790,7 @@
         <p>Developing practical skills in Computer Vision, image processing, object detection, and AI-based visual recognition through intensive hands-on training.</p>
         <div class="exp-actions">
           <button class="view-btn" onclick="openSubpage('intern-sub')">
-            View Full Details
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            View Full Details →
           </button>
         </div>
       </div>
@@ -765,11 +803,10 @@
         <p>Gained core certified industry exposure to industrial robotic arms, automation workflows, and plant process operations sponsored by Birla Carbon.</p>
         <div class="exp-actions">
           <button class="view-btn" onclick="openSubpage('intern-sub')">
-            View Full Details
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            View Full Details →
           </button>
           <a href="kuka.pdf" target="_blank" class="cert-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
             View Certificate
           </a>
         </div>
@@ -780,7 +817,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ HACKATHONS ══════════════ -->
 <section id="hackathons">
   <div class="section-label">// 05 — hackathons & achievements</div>
   <h2 class="section-title">Competing & Building</h2>
@@ -811,7 +847,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ SKILLS ══════════════ -->
 <section id="skills">
   <div class="section-label">// 06 — technical skills</div>
   <h2 class="section-title">Tools & Technologies</h2>
@@ -879,7 +914,6 @@
 
 <div class="divider"></div>
 
-<!-- ══════════════ CONTACT ══════════════ -->
 <section id="contact">
   <div class="section-label">// 07 — get in touch</div>
   <h2 class="section-title">Let's Connect</h2>
@@ -912,9 +946,6 @@
   <p>Built with precision by <span>Sailakshmi B T</span> · Robotics & Automation · MIT Anna University · Chennai</p>
 </footer>
 
-<!-- ══════════════════════════════════════
-     SUB-PAGE: PROJECTS
-════════════════════════════════════════ -->
 <div class="subpage" id="projects-sub">
   <div class="subpage-inner">
     <button class="back-btn" onclick="closeSubpage('projects-sub')">
@@ -924,7 +955,6 @@
     <h1>Technical Project Details</h1>
     <p class="subpage-subtitle">Comprehensive breakdown of all four engineering projects — hardware, firmware, and design.</p>
 
-    <!-- PROJECT 1 -->
     <div class="proj-detail">
       <div class="proj-detail-num">01</div>
       <div class="patent-badge">⚙ Foundational SolidWorks Work</div>
@@ -937,7 +967,7 @@
         <span class="tech-pill cyan">Parametric Modeling</span>
       </div>
       <p>This project involved the design and development of a novel dual-mode rotary mechanism that integrates two distinct power-transmission principles into a single compact assembly. Acting as a critical milestone in my technical development, this deep mechanical implementation serves as the foundational major work through which I built my practical command of SolidWorks and mechanical modeling pipelines.</p>
-      <p><strong style="color:var(--white)">Core Mechanism:</strong> The device combines a Geneva wheel (an intermittent motion mechanism commonly used in film transport and indexing machinery) with a dog clutch (a positive engagement coupling for direct torque transfer). The configuration allows the assembly to adaptively alternate output motion between discrete indexing steps and continuous, high-efficiency rotation from a unified input shaft.</p>
+      <p><strong style="color:var(--white)">Core Mechanism:</strong> The device combines a Geneva wheel with a dog clutch. The configuration allows the assembly to adaptively alternate output motion between discrete indexing steps and continuous, high-efficiency rotation from a unified input shaft.</p>
       <ul>
         <li>Designed entirely from scratch in SolidWorks, executing full 3D parametric part configuration, detailed mating scripts, and interference checking.</li>
         <li>Utilized to master advanced CAD features, including motion studies, clearance analysis, and structural layout configurations of complex physical interactions.</li>
@@ -947,7 +977,6 @@
       <div class="proj-highlight">💡 Major Development Build: This engineering project was the catalyst for transitioning my CAD abilities to strong SolidWorks competency.</div>
     </div>
 
-    <!-- PROJECT 2 -->
     <div class="proj-detail">
       <div class="proj-detail-num">02</div>
       <h2>Grip Stability & Stress Analyzer</h2>
@@ -959,7 +988,7 @@
         <span class="tech-pill cyan">Biomedical Sensing</span>
       </div>
       <p>A non-invasive physiological measurement system designed to estimate a user's stress level by analyzing grip force patterns and micro-tremors. The system leverages the relationship between psychological stress and involuntary muscle behavior — providing a quantitative, objective measurement tool for stress evaluation without clinical-grade equipment.</p>
-      <p><strong style="color:var(--white)">Hardware Stack:</strong> A calibrated load cell was interfaced with the HX711 24-bit ADC module, providing high-resolution force readings with minimal noise. The HX711 communicates with the Arduino Uno via a custom 2-wire protocol (CLK + DOUT). Continuous sampling at high frequency enables tremor frequency analysis in the time domain.</p>
+      <p><strong style="color:var(--white)">Hardware Stack:</strong> A calibrated load cell was interfaced with the HX711 24-bit ADC module, providing high-resolution force readings with minimal noise. The HX711 communicates with the Arduino Uno via a custom 2-wire protocol. Continuous sampling at high frequency enables tremor frequency analysis in the time domain.</p>
       <ul>
         <li>Load cell calibration performed using known reference weights to ensure measurement accuracy and repeatability.</li>
         <li>HX711 configured for 80 SPS (samples per second) mode to capture rapid force fluctuations indicative of tremor.</li>
@@ -970,7 +999,6 @@
       <div class="proj-highlight">💡 Demonstrates the application of embedded sensing for health tech — bridging hardware engineering and biomedical insight.</div>
     </div>
 
-    <!-- PROJECT 3 -->
     <div class="proj-detail">
       <div class="proj-detail-num">03</div>
       <h2>Adaptive Self-Mutating Authentication System</h2>
@@ -981,8 +1009,8 @@
         <span class="tech-pill">UART / Keypad</span>
         <span class="tech-pill cyan">Cybersecurity Workflow</span>
       </div>
-      <p>A hardware-level digital authentication system designed on the 8051 (AT89S52) microcontroller that generates a fresh, non-deterministic password after every successful login event. The system directly addresses two common attack vectors on static PIN systems: replay attacks (capturing and reusing valid credentials) and shoulder-surfing (visual observation of PIN entry).</p>
-      <p><strong style="color:var(--white)">Authentication Logic:</strong> Hardware timers within the 8051 are exploited as a source of temporal entropy. Since timer values at the moment of login are highly variable (dependent on exact user interaction timing), they serve as a seed for a lightweight password mutation algorithm implemented in Embedded C. This ensures each generated password is statistically unique.</p>
+      <p>A hardware-level digital authentication system designed on the 8051 (AT89S52) microcontroller that generates a fresh, non-deterministic password after every successful login event. The system directly addresses two common attack vectors on static PIN systems: replay attacks and shoulder-surfing.</p>
+      <p><strong style="color:var(--white)">Authentication Logic:</strong> Hardware timers within the 8051 are exploited as a source of temporal entropy. Since timer values at the moment of login are highly variable, they serve as a seed for a lightweight password mutation algorithm implemented in Embedded C. This ensures each generated password is statistically unique.</p>
       <ul>
         <li>Password mutation algorithm implemented entirely in Embedded C — no external RNG module required.</li>
         <li>4×4 matrix keypad used for user input; 16×2 LCD for real-time feedback and prompt display.</li>
@@ -993,35 +1021,31 @@
       <div class="proj-highlight">🔐 A firmware architecture project that bridges embedded structures and structural security workflows directly relevant to IoT system parameters.</div>
     </div>
 
-    <!-- PROJECT 4 -->
     <div class="proj-detail">
       <div class="proj-detail-num">04</div>
-      <h2>Single-Axis Gimbal System</h2>
+      <h2>Hand Gesture Vol/Bright Controller</h2>
       <div class="proj-tech-row">
-        <span class="tech-pill cyan">Arduino Nano</span>
-        <span class="tech-pill">MPU-6050</span>
-        <span class="tech-pill">SG90 Servo</span>
-        <span class="tech-pill">PID Control</span>
-        <span class="tech-pill cyan">Closed-Loop Feedback</span>
-        <span class="tech-pill">I2C Protocol</span>
+        <span class="tech-pill cyan">Python</span>
+        <span class="tech-pill cyan">OpenCV</span>
+        <span class="tech-pill">MediaPipe</span>
+        <span class="tech-pill">PyAutoGUI</span>
+        <span class="tech-pill">Human-Machine Interface</span>
       </div>
-      <p>A real-time camera/payload stabilization system engineered to counteract angular disturbances on a single axis (pitch or roll). The system continuously reads inertial data from a 6-DOF IMU, computes the correction angle, and drives a micro servo to maintain a leveled platform — even as the base structure is tilted or disturbed.</p>
-      <p><strong style="color:var(--white)">Control Architecture:</strong> The MPU-6050 IMU communicates over I2C with the Arduino Nano, delivering accelerometer and gyroscope data at high sample rates. A complementary filter (weighted blend of accelerometer angle and integrated gyroscope rate) is applied to fuse sensor data and produce a stable, drift-corrected angle estimate.</p>
+      <p>An AI-powered computer vision system built in Python that utilizes real-time hand gesture tracking to control Windows system volume and monitor brightness seamlessly. By using a standard webcam, the application translates physical distance metrics between your fingers into hardware execution commands.</p>
       <ul>
-        <li>MPU-6050 initialized over I2C at 0x68 address; raw 16-bit register values converted to physical units (°/s, m/s²).</li>
-        <li>Complementary filter implemented: angle = 0.98 × (angle + gyro × dt) + 0.02 × accel_angle — balancing gyro precision with accelerometer drift correction.</li>
-        <li>SG90 servo controlled via Arduino's Servo library, mapped from computed correction angle to PWM pulse width (1ms–2ms).</li>
-        <li>Loop frequency tuned to achieve sub-20ms response time, ensuring smooth and visually stable correction under dynamic disturbance.</li>
-        <li>Extensible to dual-axis (pitch + roll) by adding a second servo and expanding the filter to a full complementary or Kalman filter implementation.</li>
+        <li><strong>Dual Hand Independence:</strong> Dedicated execution mapping based on hand classification:
+          <br>• Right Hand: Controls the system master volume.
+          <br>• Left Hand: Controls the monitor display brightness.
+        </li>
+        <li><strong>Intuitive Precision Control:</strong> Adjusts levels dynamically by increasing or decreasing the physical distance between your Thumb Tip and Index Finger Tip. Bring your Thumb and Index finger apart to raise levels; pinch them close together to lower levels.</li>
+        <li><strong>Graceful Resource Termination:</strong> Safely releases localized webcam threads and closes video windows immediately when clicking on the camera view and pressing the "q" key on your keyboard.</li>
+        <li>Implemented low-pass coordinate boundary filters to eliminate noise, guaranteeing highly predictable desk adjustments without dedicated external components.</li>
       </ul>
-      <div class="proj-highlight">⚙️ A clean demonstration of real-time closed-loop feedback control — the foundation of advanced robotics, drone stabilization, and autonomous systems.</div>
+      <div class="proj-highlight">💻 View the full codebase directly on GitHub: <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" style="color:var(--cyan);text-decoration:underline;">hand-gesture-controller-vol-bright</a></div>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════
-     SUB-PAGE: INTERNSHIPS
-════════════════════════════════════════ -->
 <div class="subpage" id="intern-sub">
   <div class="subpage-inner">
     <button class="back-btn" onclick="closeSubpage('intern-sub')">
@@ -1031,7 +1055,6 @@
     <h1>Internships & Training</h1>
     <p class="subpage-subtitle">A detailed look at hands-on professional training across AI, Computer Vision, and Industrial Robotics.</p>
 
-    <!-- INTERNSHIP 1 -->
     <div class="intern-detail">
       <div class="intern-detail-header">
         <div class="intern-detail-icon">🤖</div>
@@ -1044,10 +1067,10 @@
       <p>An intensive, industry-aligned summer internship focused on the practical application of Computer Vision and Artificial Intelligence. Working within a hands-on training environment, this role bridges academic robotics knowledge with real-world AI engineering workflows, specifically targeting visual perception systems used in autonomous and semi-autonomous robotic applications.</p>
       <p><strong style="color:var(--white)">Key Areas of Focus:</strong></p>
       <ul>
-        <li><strong style="color:#94A3B8">Image Processing Fundamentals:</strong> Study and application of core CV operations including filtering, edge detection (Canny, Sobel), morphological operations, and histogram-based techniques using OpenCV and Python.</li>
-        <li><strong style="color:#94A3B8">Object Detection:</strong> Hands-on exposure to detection frameworks and algorithms, understanding bounding box prediction, intersection-over-union (IoU) metrics, and annotation pipelines.</li>
+        <li><strong style="color:#94A3B8">Image Processing Fundamentals:</strong> Study and application of core CV operations including filtering, edge detection, morphological operations, and histogram-based techniques using OpenCV and Python.</li>
+        <li><strong style="color:#94A3B8">Object Detection:</strong> Hands-on exposure to detection frameworks and algorithms, understanding bounding box prediction, intersection-over-union metrics, and annotation pipelines.</li>
         <li><strong style="color:#94A3B8">AI-Based Visual Recognition:</strong> Introduction to deep learning-based visual recognition, including CNN architectures, feature extraction concepts, and inference pipelines for classification and detection tasks.</li>
-        <li><strong style="color:#94A3B8">Practical Implementation:</strong> Building and testing end-to-end vision pipelines — from raw image capture to processed output — within constrained environments relevant to robotics applications.</li>
+        <li><strong style="color:#94A3B8">Practical Implementation:</strong> Building and testing end-to-end vision pipelines — from raw image capture to processed output.</li>
       </ul>
       <div class="learning-tags">
         <span class="learning-tag">Python</span>
@@ -1061,7 +1084,6 @@
       </div>
     </div>
 
-    <!-- INTERNSHIP 2 -->
     <div class="intern-detail">
       <div class="intern-detail-header">
         <div class="intern-detail-icon ind">🏭</div>
@@ -1107,6 +1129,18 @@
       document.getElementById('nav-links').classList.remove('open');
     });
   });
+
+  // ── EXTENDED SUB-PANES NAVIGATION SYSTEM TAB CONTROL FILTER ──
+  function switchProjectTab(event, targetPaneId) {
+    const navButtons = document.querySelectorAll('.tab-trigger');
+    const contentPanes = document.querySelectorAll('.projects-pane');
+    
+    navButtons.forEach(btn => btn.classList.remove('active'));
+    contentPanes.forEach(pane => pane.classList.remove('active'));
+    
+    event.currentTarget.classList.add('active');
+    document.getElementById(targetPaneId).classList.add('active');
+  }
 
   // ── SUBPAGE TRANSITIONS ──
   function openSubpage(id) {
