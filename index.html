@@ -123,7 +123,6 @@
   .hamburger span { width: 22px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
 
   /* ── SECTION BASE ── */
-  /* Reduced padding-top and padding-bottom here to remove chunk space gaps */
   section { padding: 3rem 3rem 3rem 5rem; max-width: 1100px; margin: 0 auto; }
   .section-label {
     font-family: 'JetBrains Mono', monospace;
@@ -148,7 +147,6 @@
   }
 
   /* ── HERO ── */
-  /* Changed min-height from 100vh to fit content, fixing the huge blank space bug */
   #hero {
     min-height: auto;
     display: flex;
@@ -267,7 +265,7 @@
   .tag.cyan:hover { border-color: var(--cyan); }
 
   /* ── PORTFOLIO GRAPHIC WORKSPACE SECTIONS ── */
-  #projects, #internships { padding-top: 3rem; }
+  #projects, #internships, #hackathons { padding-top: 3rem; }
   .project-tab-nav {
     display: flex; gap: 1.5rem; margin-bottom: 1.5rem;
     border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;
@@ -311,31 +309,33 @@
   .click-here-btn:hover { transform: translateX(4px); color: var(--cyan); }
   .click-here-btn svg { width: 14px; height: 14px; color: var(--cyan); }
 
-  /* ── HACKATHONS ── */
-  #hackathons { padding-top: 3rem; }
-  .hack-list { display: flex; flex-direction: column; gap: 1rem; }
+  /* ── HACKATHON ITEMS (AS INLINED IN IMAGE_38AFE5.PNG) ── */
+  .hack-list { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
   .hack-item {
     background: var(--bg-card);
     border: 1px solid var(--border);
     border-radius: 12px; padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; gap: 1.25rem;
+    display: flex; align-items: center; gap: 1.5rem;
     transition: all 0.2s;
   }
   .hack-item:hover { border-color: var(--border-glow); background: var(--bg-hover); }
   .hack-badge {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.75rem; font-weight: 700;
-    padding: 0.3rem 0.75rem; border-radius: 6px;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 0.4rem 0.85rem; border-radius: 6px;
     white-space: nowrap; flex-shrink: 0;
+    letter-spacing: 0.05em; text-align: center;
+    min-width: 95px;
   }
-  .badge-finalist { background: rgba(251,191,36,0.15); color: #FBBF24; border: 1px solid rgba(251,191,36,0.35); }
-  .badge-2nd { background: rgba(0,212,255,0.12); color: var(--cyan); border: 1px solid var(--border-glow); }
-  .badge-part { background: var(--indigo-dim); color: var(--indigo); border: 1px solid rgba(129,140,248,0.3); }
+  .badge-finalist { background: rgba(251,191,36,0.06); color: #FBBF24; border: 1px solid rgba(251,191,36,0.25); }
+  .badge-2nd { background: rgba(0,212,255,0.06); color: var(--cyan); border: 1px solid var(--border-glow); }
+  .badge-part { background: rgba(129,140,248,0.06); color: var(--indigo); border: 1px solid rgba(129,140,248,0.25); }
+  .hack-info { flex: 1; }
   .hack-info h3 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.95rem; font-weight: 600; color: var(--white); margin-bottom: 0.20rem;
+    font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: 0.25rem;
   }
-  .hack-info p { font-size: 0.82rem; color: var(--muted); }
+  .hack-info p { font-size: 0.9rem; color: #94A3B8; line-height: 1.5; }
 
   /* ── SKILLS ── */
   #skills { padding-top: 3rem; }
@@ -449,14 +449,7 @@
   .proj-detail p, .intern-detail p { color: #94A3B8; font-size: 0.9rem; line-height: 1.75; margin-bottom: 0.75rem; }
   .proj-detail ul, .intern-detail ul { color: #94A3B8; font-size: 0.88rem; line-height: 1.75; padding-left: 1.25rem; margin-bottom: 0.75rem; }
   .proj-detail ul li, .intern-detail ul li { margin-bottom: 0.4rem; }
-  .proj-highlight {
-    background: var(--cyan-dim); border: 1px solid var(--border-glow);
-    border-radius: 8px; padding: 0.75rem 1rem; margin-top: 0.75rem;
-    font-size: 0.84rem; color: var(--cyan);
-    display: flex; align-items: center; gap: 0.5rem;
-  }
   
-  /* ── GITHUB BTN FIX ── */
   .project-links-row { display: flex; margin-top: 1.5rem; }
   .proj-git-btn {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -501,6 +494,7 @@
     .about-grid, .graphic-layout-row, .pane-content-view.active, .skills-full, .contact-grid-links { grid-template-columns: 1fr; flex-direction: column; }
     .subpage-inner { padding: 2rem 1.25rem 4rem; }
     footer { margin-left: 0; }
+    .hack-item { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
   }
 </style>
 </head>
@@ -519,7 +513,7 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
     <li>
-      <a href="Sailakshmi_Resume.pdf" download="Sailakshmi_Resume.pdf" class="nav-resume-btn">
+      <a href="Sailakshmi_Resume.pdf" target="_blank" class="nav-resume-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
         Resume
       </a>
@@ -530,7 +524,7 @@
   </div>
 </nav>
 
-<!-- ══════════════ HERO (COMPACTED DESIGN) ══════════════ -->
+<!-- HERO -->
 <section id="hero">
   <div class="hero-bg-glow"></div>
   <div class="hero-bg-glow2"></div>
@@ -552,7 +546,7 @@
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
-      <a href="Sailakshmi_Resume.pdf" download="Sailakshmi_Resume.pdf" class="hero-link">
+      <a href="Sailakshmi_Resume.pdf" target="_blank" class="hero-link">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         Resume
       </a>
@@ -705,31 +699,22 @@
 
 <div class="divider"></div>
 
-<!-- HACKATHONS -->
+<!-- HACKATHONS WORKSPACE -->
 <section id="hackathons">
-  <div class="section-label">// 05 — hackathons & achievements</div>
+  <div class="section-label">// 05 — Technical Competitions</div>
   <h2 class="section-title">Competing & Building</h2>
-  <div class="hack-list">
-    <div class="hack-item">
-      <div class="hack-badge badge-finalist">FINALIST</div>
-      <div class="hack-info">
-        <h3>Smart India Hackathon 2025</h3>
-        <p>Contributed to AI/ML-based identification of cryptographic primitives and protocols in multi-architecture firmware binaries.</p>
-      </div>
-    </div>
-    <div class="hack-item">
-      <div class="hack-badge badge-2nd">2ND PLACE</div>
-      <div class="hack-info">
-        <h3>H2TS Hackathon 2025</h3>
-        <p>Built an AI-driven SOS platform for emergency situations — secured 2nd place overall.</p>
-      </div>
-    </div>
-    <div class="hack-item">
-      <div class="hack-badge badge-part">PARTICIPANT</div>
-      <div class="hack-info">
-        <h3>VISA 24 Hours Hackathon 2026</h3>
-        <p>Competed in a 24-hour innovation sprint, building fast and shipping under pressure.</p>
-      </div>
+  
+  <div class="project-tab-nav">
+    <button class="tab-trigger active" onclick="switchMainTab(event, 'hackathon-sprints', 'hackathons')">Sprints & Standings</button>
+  </div>
+
+  <div class="graphic-layout-row main-hack-tab" id="hackathon-sprints">
+    <div class="graphic-layout-preview">🏆</div>
+    <div class="graphic-layout-desc">
+      <p>"Collaborated closely with my teammates to design, prototype, and deploy scalable technological solutions under rigorous sprint pressures. Together, we transformed complex problem statements into functional, optimized systems within demanding time constraints."</p>
+      <button class="click-here-btn" onclick="openSubpage('hackathons-sub', 'hackathons-pane')">
+        🔗 <span>Click Here</span> To View Achievements
+      </button>
     </div>
   </div>
 </section>
@@ -1002,13 +987,50 @@
   </div>
 </div>
 
+<!-- ── HACKATHONS SUBPAGE DEEP DIVE ── -->
+<div class="subpage" id="hackathons-sub">
+  <div class="subpage-inner">
+    <button class="back-btn" onclick="closeSubpage('hackathons-sub')">
+      ← Go Back to Portfolio
+    </button>
+    <div class="section-label">// Competition Workspace — Inner Content</div>
+    <h1>Technical Sprints & Records</h1>
+    <p class="subpage-subtitle" style="margin-bottom: 2rem;">Overview of live builds, sprints, and team placements across technical competitions.</p>
+
+    <div class="pane-content-view single-layout active" id="hackathons-pane">
+      <div class="hack-list">
+        <div class="hack-item">
+          <div class="hack-badge badge-finalist">FINALIST</div>
+          <div class="hack-info">
+            <h3>Smart India Hackathon 2025</h3>
+            <p>Contributed to AI/ML-based identification of cryptographic primitives and protocols in multi-architecture firmware binaries.</p>
+          </div>
+        </div>
+        <div class="hack-item">
+          <div class="hack-badge badge-2nd">2ND PLACE</div>
+          <div class="hack-info">
+            <h3>H2TS Hackathon 2025</h3>
+            <p>Built an AI-driven SOS platform for emergency situations — secured 2nd place overall.</p>
+          </div>
+        </div>
+        <div class="hack-item">
+          <div class="hack-badge badge-part">PARTICIPANT</div>
+          <div class="hack-info">
+            <h3>VISA 24 Hours Hackathon 2026</h3>
+            <p>Competed in a 24-hour innovation sprint, building fast and shipping under pressure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
   // ── NAV TOGGLE ──
   function toggleNav() {
     document.getElementById('nav-links').classList.toggle('open');
   }
 
-  // Close nav on mobile layouts
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => {
       document.getElementById('nav-links').classList.remove('open');
@@ -1017,7 +1039,10 @@
 
   // ── DASHBOARD SELECTOR LOGIC ──
   function switchMainTab(event, activeTabId, sectionType) {
-    const tabClass = sectionType === 'projects' ? '.main-project-tab' : '.main-intern-tab';
+    let tabClass = '.main-project-tab';
+    if (sectionType === 'internships') tabClass = '.main-intern-tab';
+    if (sectionType === 'hackathons') tabClass = '.main-hack-tab';
+    
     const container = event.currentTarget.parentElement;
     
     container.querySelectorAll('.tab-trigger').forEach(btn => btn.classList.remove('active'));
