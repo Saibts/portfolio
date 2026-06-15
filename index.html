@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sailakshmi's Portfolio</title>
+<title>Sailakshmi's Portfolio - Light Theme</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -302,7 +302,7 @@
   .hack-info h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem; }
   .hack-info p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
 
-  /* ── SKILLS MATRIX ── */
+  /* ── SKILLS ── */
   .skills-full { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
   .skill-group {
     background: var(--bg-surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
@@ -324,7 +324,7 @@
   }
   .skill-tag:hover { color: var(--cyan); border-color: var(--cyan); }
 
-  /* ── CONTACT (MATCHES IMAGE_853FC0.PNG) ── */
+  /* ── CONTACT ── */
   .contact-container { max-width: 900px; margin: 0 auto; text-align: center; }
   .contact-text { color: var(--text-muted); font-size: 1.05rem; font-weight: 400; line-height: 1.8; margin-bottom: 3.5rem; max-width: 680px; margin-left: auto; margin-right: auto; }
   .contact-grid-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
@@ -381,6 +381,7 @@
   }
   .proj-detail:hover, .intern-detail:hover { box-shadow: var(--shadow-md); border-color: var(--cyan); }
   
+  /* Project Detail Tracking Numbers Removed completely */
   .proj-detail h2, .intern-detail h2 {
     font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;
   }
@@ -560,14 +561,14 @@
           <div class="skill-row-label"><span>Computer Vision / AI</span><span style="color:var(--indigo)">Growing</span></div>
           <div class="skill-bar"><div class="skill-fill" style="width:45%"></div></div>
         </div>
-        <div class="skill-row">
-          <div class="skill-row-label"><span>MATLAB / Simulink</span><span style="color:var(--indigo)">Intermediate</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:52%"></div></div>
-        </div>
-        <!-- Injected Skill Tracking Point -->
+        <!-- Re-added KiCAD inside Section 1 Overview -->
         <div class="skill-row">
           <div class="skill-row-label"><span>KiCAD</span><span style="color:var(--indigo)">Growing</span></div>
           <div class="skill-bar"><div class="skill-fill" style="width:40%"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-row-label"><span>MATLAB / Simulink</span><span style="color:var(--indigo)">Intermediate</span></div>
+          <div class="skill-bar"><div class="skill-fill" style="width:52%"></div></div>
         </div>
       </div>
     </div>
@@ -794,7 +795,7 @@
   <p>Built with precision by <span>Sailakshmi B T</span> · Robotics & Automation · MIT Anna University · Chennai</p>
 </footer>
 
-<!-- ── PROJECTS SUBPAGE DEEP DIVE (PROJECT NUMBERS EXTRACTED CLEANLY) ── -->
+<!-- ── PROJECTS SUBPAGE DEEP DIVE ── -->
 <div class="subpage" id="projects-sub">
   <div class="subpage-inner">
     <button class="back-btn" onclick="closeSubpage('projects-sub')">
@@ -807,6 +808,7 @@
     <!-- SYSTEMS INTEGRATION -->
     <div class="pane-content-view" id="sys-integration-pane">
       <div class="proj-detail">
+        <!-- Project tracking background numbers removed completely across details -->
         <div class="cert-btn" style="color: var(--cyan); background: var(--cyan-dim); border-color: rgba(2,132,199,0.2); margin-bottom: 0.5rem; pointer-events: none;">⚙ Core Mechanical Work</div>
         <h2>Mechanical Rotary Device</h2>
         <div class="proj-tech-row">
@@ -871,6 +873,7 @@
     <!-- GITHUB REPOSITORIES -->
     <div class="pane-content-view single-layout" id="github-repos-pane">
       <div class="proj-detail">
+        <div class="proj-detail-num">GIT</div>
         <h2>Hand Gesture Volume and Brightness Controller</h2>
         <div class="proj-tech-row">
           <span class="tech-pill cyan">Python</span>
@@ -1016,7 +1019,8 @@
   </div>
   
   <div class="resume-pdf-container">
-    <iframe id="resume-iframe" src=""></iframe>
+    <!-- Notice: We keep the container clean, iframe handles standard desktop render profiles -->
+    <iframe src="Sailakshmi_Resume.pdf"></iframe>
   </div>
 </div>
 
@@ -1062,22 +1066,23 @@
     document.body.style.overflow = '';
   }
 
-  // Mobile Device Smart Resume Bypass Handling Rule
+  // Mobile Device vs Desktop Smart Routing Trigger Framework
   function handleResumeClick() {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    // Check match criteria isolating standard handheld view ports or touch interfaces
+    const isMobile = window.matchMedia("(max-width: 768px)").matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     
     if (isMobile) {
-      // Instantly open raw file route without checking for modal fallbacks or prompt wrappers
+      // Bypasses local iframe security exceptions entirely on phones to render edge-to-edge natively
       window.open('Sailakshmi_Resume.pdf', '_blank');
     } else {
-      // Desktop immersive inline view mapping logic
-      const iframe = document.getElementById('resume-iframe');
-      if (!iframe.src || iframe.src === '') {
-        iframe.src = 'Sailakshmi_Resume.pdf';
-      }
-      document.getElementById('resume-viewer').classList.add('active');
-      document.body.style.overflow = 'hidden';
+      // Keeps core elegant full desktop workspace presentation frames active
+      openResume();
     }
+  }
+
+  function openResume() {
+    document.getElementById('resume-viewer').classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
   
   function closeResume() {
