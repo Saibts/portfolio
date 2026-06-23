@@ -4,40 +4,35 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sailakshmi's Portfolio - Dark Academia</title>
-<link rel="icon" type="image/x-icon" href="favicon.ico" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Dark Academia Theme Palette */
-    --bg-main: #1c1917; /* Deep charcoal/brown */
-    --bg-surface: #292524; /* Espresso */
-    --bg-card: #292524;
-    --bg-hover: #44403c; /* Lighter warm grey/brown */
-    --text-main: #e7e5e4; /* Parchment */
-    --text-muted: #a8a29e; /* Faded parchment */
-    --cyan: #d4af37; /* Antique Gold replacing cyan */
-    --cyan-dim: rgba(212, 175, 55, 0.1);
-    --indigo: #7f1d1d; /* Deep Burgundy replacing indigo */
-    --indigo-dim: rgba(127, 29, 29, 0.15);
-    --border: #57534e; /* Vintage border */
-    --border-glow: rgba(212, 175, 55, 0.15);
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.2);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+    /* Dark Academia / Brass Palette */
+    --bg-main: #141210; 
+    --bg-surface: #221f1d; 
+    --bg-card: rgba(34, 31, 29, 0.6);
+    --bg-hover: rgba(54, 49, 45, 0.4); 
+    --text-main: #e8e4dc; 
+    --text-muted: #a39c94; 
+    --cyan: #cfa858; /* Antique Brass/Gold */
+    --cyan-dim: rgba(207, 168, 88, 0.1);
+    --indigo: #5c1a1a; /* Aged Burgundy */
+    --border: #4a443d; 
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.4);
+    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.6), 0 6px 6px rgba(0, 0, 0, 0.4);
   }
   
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; font-size: 16px; }
 
-  /* ── CUSTOM GLOWING MECHANICAL CURSORS ── */
+  /* ── SEAMLESS CSS CURSOR ── */
   body, html {
-    /* Standard: Sharp Mechanical Brass Dart */
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><polygon points="2,2 10,24 14,14 24,10" fill="%231c1917" stroke="%23d4af37" stroke-width="1.5" stroke-linejoin="round"/><line x1="2" y1="2" x2="14" y2="14" stroke="%23d4af37" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="%237f1d1d" stroke="%23d4af37" stroke-width="1"/></svg>') 2 2, auto;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><polygon points="2,2 10,24 14,14 24,10" fill="%23141210" stroke="%23cfa858" stroke-width="1.5" stroke-linejoin="round"/><line x1="2" y1="2" x2="14" y2="14" stroke="%23cfa858" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="%235c1a1a" stroke="%23cfa858" stroke-width="1"/></svg>') 2 2, auto;
   }
-
-  a, button, .click-here-btn, .nav-resume-btn, .tab-trigger, .hero-link, .cert-btn, .proj-git-btn, label, input, textarea {
-    /* Hover: Ignited Brass Dart with multi-layered glowing aura */
+  a, button, .nav-item, .tilt-card, .cert-link {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle cx="20" cy="20" r="18" fill="%23d4af37" opacity="0.15"/><circle cx="20" cy="20" r="12" fill="%23d4af37" opacity="0.3"/><circle cx="20" cy="20" r="6" fill="%23d4af37" opacity="0.6"/><polygon points="8,8 16,30 20,20 30,16" fill="%23ffffff" stroke="%23d4af37" stroke-width="2" stroke-linejoin="round"/><line x1="8" y1="8" x2="20" y2="20" stroke="%237f1d1d" stroke-width="1.5"/><circle cx="20" cy="20" r="2" fill="%23d4af37" stroke="%237f1d1d" stroke-width="1"/></svg>') 8 8, pointer !important;
   }
 
@@ -46,1184 +41,750 @@
     color: var(--text-main);
     font-family: 'Lora', serif;
     line-height: 1.6;
-    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* ── CINEMATIC ANIMATIONS ── */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98);
-    filter: blur(10px) brightness(0.7);
-    transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0) brightness(1);
+  /* ── MIDNIGHT SPOTLIGHT ── */
+  body::before {
+    content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(circle 600px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(207, 168, 88, 0.06), transparent 80%);
+    pointer-events: none; z-index: 9000; transition: background 0.1s ease;
   }
 
-  /* Stagger delays for grid items (Skills, Tags, Hackathons) */
-  .stagger-1 { transition-delay: 0.1s; }
-  .stagger-2 { transition-delay: 0.2s; }
-  .stagger-3 { transition-delay: 0.3s; }
-  .stagger-4 { transition-delay: 0.4s; }
-
-  /* ── CANDLELIGHT PULSE ── */
-  @keyframes candlelight {
-    0%, 100% { opacity: 0.6; transform: translateY(-50%) scale(1); filter: blur(40px); }
-    50% { opacity: 0.85; transform: translateY(-50%) scale(1.05); filter: blur(50px); }
+  /* ── LAYOUT FRAMEWORK (Split Screen) ── */
+  .layout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 10;
   }
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 3rem 1rem 4rem;
-    background: rgba(28, 25, 23, 0.9);
-    backdrop-filter: blur(10px);
+  @media (min-width: 1024px) {
+    .layout-container { display: flex; justify-content: space-between; gap: 4rem; }
+    .left-pane {
+      width: 40%; position: sticky; top: 0; height: 100vh;
+      padding: 6rem 0; display: flex; flex-direction: column; justify-content: space-between;
+      overflow-y: auto;
+    }
+    .left-pane::-webkit-scrollbar { width: 0; }
+    .right-pane { width: 55%; padding: 6rem 0; }
+  }
+
+  @media (max-width: 1023px) {
+    .left-pane { padding: 4rem 0 2rem; }
+    .right-pane { padding: 2rem 0 4rem; }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; margin-bottom: 2rem; }
+  }
+
+  /* ── ENIGMA CIPHER ── */
+  /* Fallback visibility ensures the text doesn't disappear if JS fails */
+  .cipher-text { opacity: 1; transition: opacity 0.4s ease; }
+  .cipher-text.loading { opacity: 0; }
+
+  /* ── LEFT PANE STYLES ── */
+  .hero-name {
+    font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 4vw, 3.5rem);
+    font-weight: 700; line-height: 1.1; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: -0.02em;
+    display: block; /* Forces visibility */
+  }
+  .hero-role {
+    font-family: 'Courier Prime', monospace; font-size: 1rem; color: var(--cyan);
+    margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .hero-desc { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; max-width: 380px; margin-bottom: 2rem; }
+
+  .nav-links { display: flex; flex-direction: column; gap: 1.25rem; list-style: none; margin-top: 2rem; }
+  .nav-item {
+    display: flex; align-items: center; gap: 1rem; color: var(--text-muted);
+    font-family: 'Courier Prime', monospace; font-size: 0.85rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s ease;
+  }
+  .nav-item::before { content: ''; width: 30px; height: 1px; background: var(--border); transition: all 0.3s ease; }
+  .nav-item:hover, .nav-item.active { color: var(--cyan); transform: translateX(5px); }
+  .nav-item:hover::before, .nav-item.active::before { width: 60px; background: var(--cyan); }
+
+  .social-links { display: flex; align-items: center; gap: 1.25rem; margin-top: 3rem; margin-bottom: 2rem;}
+  .social-icon { color: var(--text-muted); transition: all 0.3s ease; display: inline-flex; }
+  .social-icon:hover { color: var(--cyan); transform: translateY(-3px); }
+  .social-icon svg { width: 22px; height: 22px; }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem; font-weight: 700; color: var(--bg-main); background: var(--cyan);
+    padding: 0.6rem 1.2rem; border-radius: 4px; text-transform: uppercase; text-decoration: none;
+    letter-spacing: 0.05em; transition: all 0.3s ease; border: none; outline: none;
+  }
+  .btn-primary:hover { background: #e3b965; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(207, 168, 88, 0.3); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem; font-weight: 700; color: var(--text-main); background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 4px; text-transform: uppercase;
+    text-decoration: none; letter-spacing: 0.05em; transition: all 0.3s ease;
+  }
+  .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+
+  .cert-link {
+    display: inline-flex; align-items: center; gap: 0.3rem; font-family: 'Courier Prime', monospace;
+    font-size: 0.75rem; font-weight: 700; color: var(--cyan); background: var(--cyan-dim);
+    border: 1px solid rgba(207, 168, 88, 0.3); padding: 0.3rem 0.6rem; border-radius: 4px;
+    text-decoration: none; transition: all 0.3s ease; margin-right: 0.5rem; margin-bottom: 0.5rem;
+  }
+  .cert-link:hover { background: rgba(207, 168, 88, 0.2); border-color: var(--cyan); transform: translateY(-1px); }
+
+  /* ── RIGHT PANE STYLES ── */
+  section { margin-bottom: 6rem; scroll-margin-top: 6rem; }
+  .section-eyebrow {
+    display: none; font-family: 'Courier Prime', monospace; font-size: 0.85rem; color: var(--cyan);
+    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; position: sticky;
+    top: 0; background: rgba(20, 18, 16, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 20;
     border-bottom: 1px solid var(--border);
-    transition: all 0.3s;
   }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700; font-size: 1.2rem;
-    color: var(--text-main);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    font-style: italic;
-  }
-  .nav-logo span { color: var(--cyan); font-style: normal; }
-  .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
-  .nav-links a {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.9rem; font-weight: 600;
-    color: var(--text-muted);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    position: relative;
-  }
-  .nav-links a::after {
-    content: ''; position: absolute; bottom: -4px; left: 0;
-    width: 0; height: 1px; background: var(--cyan);
-    transition: width 0.2s;
-  }
-  .nav-links a:hover { color: var(--cyan); }
-  .nav-links a:hover::after { width: 100%; }
-  
-  .nav-resume-btn {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--bg-main) !important;
-    background: var(--cyan);
-    padding: 0.5rem 1.2rem;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    transition: all 0.2s;
-    box-shadow: var(--shadow-sm);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .nav-resume-btn:hover { background: #b89758; transform: translateY(-1px); box-shadow: var(--shadow-md); }
-  .nav-resume-btn svg { width: 14px; height: 14px; }
-  
-  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-  .hamburger span { width: 22px; height: 2px; background: var(--text-main); border-radius: 2px; transition: all 0.3s; }
+  @media (max-width: 1023px) { .section-eyebrow { display: block; } }
 
-  /* ── SECTION BASE ── */
-  section { padding: 4rem 3rem 4rem 5rem; max-width: 1100px; margin: 0 auto; }
-  .section-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.85rem; font-weight: 400;
-    color: var(--cyan);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.75rem;
-  }
-  h2.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    font-style: italic;
-  }
-  .divider {
-    width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-    margin: 0;
+  .right-pane section { display: none; opacity: 0; }
+  .right-pane section.active-section { display: block; animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
   }
 
-  /* ── HERO ── */
-  #hero {
-    min-height: auto;
-    display: flex;
-    align-items: center;
-    padding-top: 10rem;
-    padding-bottom: 5rem;
-    position: relative;
-    overflow: hidden;
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 700; color: var(--cyan); margin-bottom: 2rem; font-style: italic; line-height: 1.2;
+    border-bottom: 1px solid var(--border); padding-bottom: 1rem;
   }
-  .hero-bg-glow {
-    position: absolute; 
-    top: 50%; 
-    right: -150px;
-    transform: translateY(-50%);
-    width: 800px; 
-    height: 800px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .hero-content { position: relative; z-index: 1; max-width: 800px; }
-  .hero-eyebrow {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.9rem; font-weight: 400;
-    color: var(--cyan);
-    letter-spacing: 0.1em; margin-bottom: 1.5rem;
+  
+  .subsection-title {
+    font-family: 'Courier Prime', monospace; font-size: 0.9rem; color: var(--text-muted);
+    letter-spacing: 0.1em; text-transform: uppercase; margin: 3rem 0 1.5rem;
     display: flex; align-items: center; gap: 0.75rem;
-    text-transform: uppercase;
   }
-  .hero-eyebrow::before {
-    content: ''; display: inline-block;
-    width: 40px; height: 1px; background: var(--cyan);
+  .subsection-title::after {
+    content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent);
   }
-  h1.hero-name {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 6.5vw, 5.5rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.25rem;
-    color: var(--text-main);
-  }
-  .hero-tagline {
-    font-size: 1.15rem; color: var(--text-muted);
-    max-width: 600px; margin-bottom: 2.5rem;
-    line-height: 1.8;
-  }
-  .hero-links { display: flex; flex-wrap: wrap; gap: 1rem; }
-  .hero-link {
-    display: flex; align-items: center; gap: 0.5rem;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.9rem; font-weight: 700;
-    color: var(--text-main);
-    text-decoration: none;
-    border: 1px solid var(--border);
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
-    transition: all 0.2s;
-    background: var(--bg-surface);
-    box-shadow: var(--shadow-sm);
-    cursor: pointer;
-    outline: none;
-  }
-  .hero-link:hover {
-    color: var(--cyan); border-color: var(--cyan);
-    background: var(--bg-hover);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-  }
-  .hero-link svg { width: 16px; height: 16px; }
 
-  /* ── ABOUT ── */
-  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3.5rem; align-items: start; }
-  .about-text p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
-  .about-edu {
-    background: var(--bg-surface);
-    border: 1px solid var(--border);
-    border-radius: 4px; padding: 1.5rem;
-    border-left: 4px solid var(--indigo);
-    box-shadow: var(--shadow-sm);
+  .text-content p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; text-align: justify;}
+  .highlight { color: var(--text-main); font-weight: 500; }
+
+  /* ── 3D BRASS TILT CARDS ── */
+  .tilt-card {
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
+    padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 6px;
+    background: transparent; border: 1px solid transparent;
+    transition: transform 0.1s ease, background 0.3s ease, border-color 0.3s ease;
+    text-decoration: none; position: relative; overflow: hidden; transform-style: preserve-3d;
   }
-  .about-edu-label {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.8rem; font-weight: 700; color: var(--cyan); letter-spacing: 0.1em;
-    text-transform: uppercase; margin-bottom: 0.75rem;
-  }
-  .about-edu h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.25rem;
-  }
-  .about-edu p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.75rem; font-family: 'Courier Prime', monospace; }
-  .cgpa-badge {
-    display: inline-block;
-    background: var(--cyan-dim); color: var(--cyan);
-    border: 1px solid var(--cyan);
-    font-family: 'Courier Prime', monospace; font-weight: 700;
-    font-size: 0.85rem; padding: 0.3rem 0.8rem;
-    border-radius: 2px;
-  }
+  @media (min-width: 640px) { .tilt-card { grid-template-columns: 130px 1fr; gap: 1.5rem; } }
   
-  .skills-grid { display: flex; flex-direction: column; gap: 1.2rem; }
-  .skill-row { display: flex; flex-direction: column; gap: 0.4rem; }
-  .skill-row-label { font-size: 0.9rem; font-family: 'Courier Prime', monospace; font-weight: 400; color: var(--text-main); display: flex; justify-content: space-between; }
-  .skill-row-label span:last-child { color: var(--cyan); font-weight: 700; font-size: 0.8rem;}
-  .skill-bar { height: 4px; background: var(--border); border-radius: 0px; overflow: hidden; }
-  .skill-fill { height: 100%; background: var(--cyan); }
+  .tilt-card:hover { background: var(--bg-card); border-color: rgba(207, 168, 88, 0.3); box-shadow: var(--shadow-md); }
+  .tilt-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(105deg, transparent 20%, rgba(207, 168, 88, 0.12) 25%, rgba(207, 168, 88, 0.04) 30%, transparent 40%);
+    background-size: 200% 200%; background-position: var(--glare-x, 100%) var(--glare-y, 100%);
+    pointer-events: none; transition: background-position 0.1s ease; z-index: 2;
+  }
+  .tilt-card-content { transform: translateZ(30px); display: contents; } 
 
-  /* ── INTERESTS ── */
-  .interests-text { color: var(--text-muted); line-height: 1.8; font-size: 1.1rem; max-width: 800px; margin-bottom: 2rem; }
-  .tag-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .card-meta {
+    font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--text-muted);
+    text-transform: uppercase; margin-top: 0.25rem; line-height: 1.5;
+  }
+  .card-body h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
+    color: var(--text-main); margin-bottom: 0.4rem; transition: color 0.2s;
+  }
+  .tilt-card:hover .card-body h3 { color: var(--cyan); }
+  .card-body .org { font-style: italic; color: var(--text-muted); margin-bottom: 0.75rem; display: block; font-size: 0.95rem; }
+  .card-body p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+
+  /* ── TAGS & LISTS ── */
+  .tags-wrapper { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .tag {
-    font-family: 'Courier Prime', monospace; font-weight: 700;
-    font-size: 0.85rem; padding: 0.5rem 1rem;
-    border-radius: 4px; border: 1px solid var(--border);
-    color: var(--text-main); background: var(--bg-surface);
-    transition: all 0.2s; box-shadow: var(--shadow-sm);
+    font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: var(--cyan);
+    background: var(--cyan-dim); padding: 0.3rem 0.6rem; border-radius: 2px; border: 1px solid rgba(207, 168, 88, 0.2);
   }
-  .tag:hover { border-color: var(--indigo); transform: translateY(-2px); box-shadow: var(--shadow-md); color: var(--indigo); }
-  .tag.cyan { color: var(--cyan); border-color: rgba(212, 175, 55, 0.3); }
-  .tag.cyan:hover { border-color: var(--cyan); color: var(--cyan); }
 
-  /* ── PORTFOLIO WORKSPACE ── */
-  .project-tab-nav {
-    display: flex; gap: 1.5rem; margin-bottom: 2rem;
-    border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;
-  }
-  .tab-trigger {
-    background: none; border: none; outline: none;
-    font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600;
-    color: var(--text-muted); cursor: pointer;
-    padding: 0.25rem 0.5rem; position: relative; transition: color 0.2s;
-    letter-spacing: 0.05em; font-style: italic;
-  }
-  .tab-trigger.active { color: var(--cyan); font-style: normal; }
-  .tab-trigger.active::after {
-    content: ''; position: absolute; bottom: -12px; left: 0; right: 0;
-    height: 2px; background: var(--cyan);
-  }
-  
-  .graphic-layout-row {
-    display: flex; align-items: flex-start; gap: 2rem;
-    background: var(--bg-surface); border: 1px solid var(--border);
-    border-radius: 4px; padding: 2rem; margin-top: 1rem;
-    box-shadow: var(--shadow-md);
-  }
-  .graphic-layout-preview {
-    width: 70px; height: 70px; border-radius: 4px;
-    background: var(--bg-main); border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 2rem; flex-shrink: 0; filter: sepia(0.5);
-  }
-  .graphic-layout-desc { flex: 1; }
-  .graphic-layout-desc p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.25rem; font-style: italic; }
-  
-  .click-here-btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Courier Prime', monospace; font-size: 0.9rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--text-main); background: var(--bg-hover); 
-    border: 1px solid var(--border); cursor: pointer;
-    padding: 0.6rem 1.2rem; border-radius: 4px; transition: all 0.2s;
-  }
-  .click-here-btn span { color: var(--cyan); }
-  .click-here-btn:hover { border-color: var(--cyan); transform: translateX(4px); }
+  .skill-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+  @media (min-width: 640px) { .skill-grid { grid-template-columns: 1fr 1fr; } }
+  .skill-category { margin-bottom: 1.5rem; }
+  .skill-category h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text-main); margin-bottom: 0.5rem; font-style: italic;}
+  .skill-category::before { content: ''; display: block; width: 20px; height: 1px; background: var(--cyan); margin-bottom: 0.5rem; }
 
-  /* ── HACKATHONS ── */
-  .hack-list { display: flex; flex-direction: column; gap: 1rem; width: 100%; }
-  .hack-item {
-    background: var(--bg-surface);
-    border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-    border-radius: 4px; padding: 1.5rem;
-    display: flex; align-items: center; gap: 1.5rem;
-    transition: all 0.2s;
+  .simple-list { list-style: none; padding: 0; }
+  .simple-list li {
+    font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.75rem;
+    padding-left: 1.2rem; position: relative;
   }
-  .hack-item:hover { border-color: var(--cyan); box-shadow: var(--shadow-md); }
-  .hack-badge {
-    font-family: 'Courier Prime', monospace; font-size: 0.8rem; font-weight: 700;
-    padding: 0.4rem 0.85rem; border-radius: 2px;
-    white-space: nowrap; flex-shrink: 0; letter-spacing: 0.05em; text-align: center; min-width: 100px;
-    border: 1px solid var(--border);
+  .simple-list li::before {
+    content: "❖"; position: absolute; left: 0; color: var(--cyan); font-size: 0.7rem; top: 3px;
   }
-  .badge-2nd { background: var(--cyan-dim); color: var(--cyan); border-color: rgba(212, 175, 55, 0.4); }
-  .badge-part { background: var(--indigo-dim); color: #fca5a5; border-color: rgba(127, 29, 29, 0.4); }
-  .hack-info h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.3rem; }
-  .hack-info p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; }
-
-  /* ── SKILLS ── */
-  .skills-full { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .skill-group {
-    background: var(--bg-surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-    border-radius: 4px; padding: 1.5rem; transition: all 0.2s;
-  }
-  .skill-group:hover { border-color: var(--cyan); box-shadow: var(--shadow-md); }
-  .skill-group-title {
-    font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--text-main);
-    margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-style: italic;
-  }
-  .skill-group-title::before { content: ''; width: 6px; height: 6px; transform: rotate(45deg); background: var(--cyan); }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .skill-tag {
-    font-family: 'Courier Prime', monospace; font-weight: 400;
-    font-size: 0.85rem; padding: 0.4rem 0.8rem;
-    border-radius: 2px; border: 1px solid var(--border);
-    color: var(--text-muted); background: var(--bg-main);
-    transition: all 0.15s;
-  }
-  .skill-tag:hover { color: var(--cyan); border-color: var(--cyan); }
-
-  /* ── CONTACT ── */
-  .contact-container { max-width: 900px; margin: 0 auto; text-align: center; }
-  .contact-text { color: var(--text-muted); font-size: 1.1rem; font-weight: 400; line-height: 1.8; margin-bottom: 3.5rem; max-width: 680px; margin-left: auto; margin-right: auto; }
-  .contact-grid-links { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .contact-card-link {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.1rem;
-    color: var(--text-main); text-decoration: none;
-    padding: 2.5rem 1.5rem; border-radius: 4px; border: 1px solid var(--border);
-    background: var(--bg-surface); box-shadow: var(--shadow-sm); transition: all 0.2s ease;
-  }
-  .contact-card-link:hover { border-color: var(--cyan); box-shadow: var(--shadow-md); transform: translateY(-2px); }
-  .contact-card-link svg { width: 32px; height: 32px; color: var(--cyan); margin-bottom: 1.25rem; }
-  .contact-card-link span { font-family: 'Courier Prime', monospace; font-weight: 400; font-size: 0.85rem; color: var(--text-muted); margin-top: 1.25rem; word-break: break-all; }
 
   /* ── FOOTER ── */
   footer {
-    text-align: center; padding: 2.5rem;
-    font-family: 'Courier Prime', monospace; font-size: 0.85rem;
-    color: var(--text-muted); border-top: 1px solid var(--border);
-    background: var(--bg-surface);
+    border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 4rem;
+    font-family: 'Courier Prime', monospace; font-size: 0.85rem; color: var(--text-muted); text-align: center;
   }
-  footer span { color: var(--cyan); font-weight: 700; }
+  footer span { color: var(--cyan); }
 
-  /* ── SUB-PAGES GRID HOUSINGS ── */
-  .subpage {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: var(--bg-main); overflow-y: auto;
-    animation: fadeInUp 0.3s ease;
-  }
-  .subpage.active { display: block; }
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .subpage-inner { max-width: 1000px; margin: 0 auto; padding: 5rem 2rem; }
-  .back-btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Courier Prime', monospace; font-size: 0.9rem; font-weight: 700;
-    color: var(--text-main); background: var(--bg-surface);
-    border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-    padding: 0.6rem 1.25rem; border-radius: 4px; cursor: pointer; margin-bottom: 2.5rem;
-    transition: all 0.2s; text-decoration: none; text-transform: uppercase;
-  }
-  .back-btn:hover { border-color: var(--cyan); color: var(--cyan); background: var(--bg-hover); transform: translateX(-4px); }
-  
-  .pane-content-view { display: none; }
-  .pane-content-view.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-  .pane-content-view.single-layout.active { display: grid; grid-template-columns: 1fr; }
-
-  .proj-detail, .intern-detail {
-    background: var(--bg-surface); border: 1px solid var(--border); box-shadow: var(--shadow-sm);
-    border-radius: 4px; padding: 2rem; margin-bottom: 1.5rem;
-    position: relative; overflow: hidden; transition: box-shadow 0.2s;
-  }
-  .proj-detail:hover, .intern-detail:hover { box-shadow: var(--shadow-md); border-color: var(--cyan); }
-  
-  .proj-detail h2, .intern-detail h2 {
-    font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.5rem;
-  }
-  .proj-tech-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
-  .tech-pill {
-    font-family: 'Courier Prime', monospace; font-size: 0.8rem; font-weight: 400; padding: 0.3rem 0.7rem;
-    border-radius: 2px; border: 1px solid var(--border);
-    color: #fca5a5; background: var(--indigo-dim);
-  }
-  .tech-pill.cyan { color: var(--cyan); background: var(--cyan-dim); border-color: rgba(212, 175, 55, 0.3); }
-  .proj-detail p, .intern-detail p { color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
-  .proj-detail ul, .intern-detail ul { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; padding-left: 1.25rem; margin-bottom: 1rem; }
-  .proj-detail ul li, .intern-detail ul li { margin-bottom: 0.5rem; }
-  
-  .project-links-row { display: flex; margin-top: 1.5rem; gap: 1rem; }
-  .proj-git-btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Courier Prime', monospace; font-size: 0.85rem; font-weight: 700;
-    color: var(--bg-main); background: var(--cyan); box-shadow: var(--shadow-sm);
-    border: none; padding: 0.6rem 1.2rem; border-radius: 4px;
-    text-decoration: none; transition: all 0.2s; text-transform: uppercase;
-  }
-  .proj-git-btn:hover { background: #b89758; transform: translateY(-1px); }
-  .proj-git-btn svg { width: 18px !important; height: 18px !important; flex-shrink: 0; }
-
-  .cert-btn {
-    display: inline-flex; align-items: center; gap: 0.35rem;
-    font-family: 'Courier Prime', monospace; font-size: 0.85rem; font-weight: 700;
-    color: var(--cyan); background: var(--cyan-dim); border: 1px solid rgba(212, 175, 55, 0.4); 
-    cursor: pointer; padding: 0.45rem 1rem; border-radius: 4px;
-    text-decoration: none; transition: all 0.2s;
-  }
-  .cert-btn:hover { background: rgba(212, 175, 55, 0.2); border-color: var(--cyan); transform: translateY(-1px); }
-  .cert-btn svg { width: 14px; height: 14px; }
-  
-  .intern-detail-header { display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.5rem; }
-  .intern-detail-icon {
-    width: 60px; height: 60px; border-radius: 4px;
-    background: var(--bg-main); border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem; flex-shrink: 0; filter: sepia(0.5);
-  }
-  .intern-detail-icon.ind { border-color: rgba(127, 29, 29, 0.4); }
-  .intern-detail-org { font-size: 1rem; font-weight: 600; font-family: 'Playfair Display', serif; color: var(--cyan); margin-bottom: 0.15rem; font-style: italic; }
-  .intern-detail-date { font-family: 'Courier Prime', monospace; font-size: 0.85rem; color: var(--text-muted); }
-
-  /* ── FULL SCREEN RESUME VIEWER ── */
+  /* ── RESUME VIEWER MODAL ── */
   .resume-fullscreen {
-    display: none; 
-    position: fixed; inset: 0; z-index: 9999;
-    background: var(--bg-main);
-    flex-direction: column;
-    animation: fadeInUp 0.3s ease;
+    display: none; position: fixed; inset: 0; z-index: 15000; background: var(--bg-main); flex-direction: column; animation: fadeInSub 0.4s ease;
   }
   .resume-fullscreen.active { display: flex; }
-  
-  .resume-toolbar {
-    height: 70px; display: flex; align-items: center; justify-content: space-between;
-    padding: 0 1.5rem; background: var(--bg-surface);
-    border-bottom: 1px solid var(--border); box-shadow: var(--shadow-sm);
-  }
-  
-  .resume-pdf-container {
-    flex: 1; position: relative; width: 100%; height: 100%;
-    -webkit-overflow-scrolling: touch; overflow: auto;
-  }
-  
-  .resume-pdf-container iframe {
-    width: 100%; height: 100%; border: none; position: absolute; inset: 0; z-index: 2; background: #fff;
-  }
+  @keyframes fadeInSub { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
+  .resume-toolbar { height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; background: var(--bg-surface); border-bottom: 1px solid var(--border); }
+  .resume-pdf-container { flex: 1; position: relative; width: 100%; height: 100%; overflow: hidden; }
+  .resume-pdf-container iframe { width: 100%; height: 100%; border: none; position: absolute; inset: 0; background: var(--bg-main); }
+  .back-text-btn { background: none; border: none; color: var(--text-main); font-family: 'Courier Prime', monospace; font-weight: 700; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
+  .back-text-btn:hover { color: var(--cyan); }
 
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
-    .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--bg-surface); padding: 1.5rem; gap: 1.25rem; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); }
-    .nav-links.open { display: flex; }
-    .hamburger { display: flex; }
-    section { padding: 3.5rem 1.5rem; }
-    #hero { padding: 8rem 1.5rem 4rem; }
-    .about-grid, .graphic-layout-row, .pane-content-view.active, .skills-full, .contact-grid-links { grid-template-columns: 1fr; flex-direction: column; }
-    .subpage-inner { padding: 3rem 1.5rem 4rem; }
-    .resume-toolbar { padding: 0 1rem; }
-  }
 </style>
 </head>
 <body>
 
-<nav id="main-nav">
-  <a href="#hero" class="nav-logo">Sailakshmi's<span> Portfolio</span></a>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#interests">Research</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#internships">Experience</a></li>
-    <li><a href="#hackathons">Hackathons</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li>
-      <a href="#" onclick="handleResumeClick(); return false;" class="nav-resume-btn">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-        Resume
-      </a>
-    </li>
-  </ul>
-  <div class="hamburger" id="hamburger" onclick="toggleNav()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<section id="hero">
-  <div class="hero-bg-glow"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Robotics & Automation Engineer</div>
-    <h1 class="hero-name">Sailakshmi B T</h1>
-    <p class="hero-tagline">Passionate about building intelligent systems by integrating autonomous AI agents with embedded hardware. I specialize in exploring new engineering frontiers—from rapid prototyping to localized AI deployments—to solve complex, real-world challenges.</p>
-
-    <div class="hero-links">
-      <a href="mailto:sailakshmibt2006@gmail.com" class="hero-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-        sailakshmibt2006@gmail.com
-      </a>
-      <a href="https://github.com/Saibts" target="_blank" class="hero-link">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-        github.com/Saibts
-      </a>
-      <a href="https://linkedin.com/in/sailakshmi-65a696327" target="_blank" class="hero-link">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <button onclick="handleResumeClick()" class="hero-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        Resume
-      </button>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="about">
-  <div class="section-label">// 01 — about</div>
-  <h2 class="section-title">Who I Am</h2>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>Hi, I'm Sailakshmi — a Robotics and Automation Engineering student. My passion lies in creating innovative solutions that integrate AI agents with physical systems, enabling autonomous and efficient operations. I thrive on challenges that require a blend of creativity, technical expertise, and practical implementation.</p>
-      <div class="about-edu">
-        <div class="about-edu-label">Education</div>
-        <h3>B.E. Robotics and Automation</h3>
-        <p>Madras Institute of Technology · Anna University · 2024–2028</p>
-        <div class="cgpa-badge">CGPA: 8.99 / 10.0</div>
-        <div style="margin-top:0.85rem">
-          <p style="font-size:0.85rem;color:var(--text-muted); margin-bottom: 0;">HSC (2024): 94.16% &nbsp;|&nbsp; SSLC (2022): 95.2%</p>
-        </div>
-      </div>
-    </div>
+<div class="layout-container">
+  
+  <!-- ================= LEFT PANE ================= -->
+  <header class="left-pane">
     <div>
-     <div class="section-label" style="margin-bottom:1.2rem;">// Technical Skills Overview</div>
-      <div class="skills-grid">
-        <div class="skill-row">
-          <div class="skill-row-label"><span>AI Agents & LLMs</span><span style="color:var(--cyan)">Intermediate</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:55%"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-row-label"><span>SolidWorks / CAD</span><span style="color:var(--cyan)">Proficient</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:65%"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-row-label"><span>Embedded Systems</span><span style="color:var(--cyan)">Proficient</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:68%"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-row-label"><span>Arduino / Sensor Interfacing</span><span style="color:var(--cyan)">Proficient</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-row-label"><span>Python</span><span style="color:var(--text-muted)">Intermediate</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:50%; background: var(--text-muted);"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-row-label"><span>MATLAB / Simulink</span><span style="color:var(--text-muted)">Intermediate</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:52%; background: var(--text-muted);"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-row-label"><span>Computer Vision / AI</span><span style="color:var(--text-muted)">Growing</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:45%; background: var(--text-muted);"></div></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-row-label"><span>KiCAD</span><span style="color:var(--text-muted)">Growing</span></div>
-          <div class="skill-bar"><div class="skill-fill" style="width:40%; background: var(--text-muted);"></div></div>
-        </div>
-      </div> 
+      <!-- Fixed the name heading to ensure it is always visible -->
+      <h1 class="hero-name cipher-text" data-original="Sailakshmi B T">Sailakshmi B T</h1>
+      <div class="hero-role">Robotics & Automation Engineer</div>
+      <p class="hero-desc">Building intelligent systems by integrating autonomous AI agents with embedded hardware. I specialize in exploring new engineering frontiers—from rapid prototyping to localized AI deployments—to solve complex, real-world challenges.</p>
+      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-item active">01. About Me</a></li>
+          <li><a href="#experience" class="nav-item">02. Experience</a></li>
+          <li><a href="#projects" class="nav-item">03. Projects & Builds</a></li>
+          <li><a href="#hackathons" class="nav-item">04. Hackathons</a></li>
+          <li><a href="#skills" class="nav-item">05. Technical Skills</a></li>
+          <li><a href="#leadership" class="nav-item">06. Leadership & Certs</a></li>
+        </ul>
+      </nav>
     </div>
-  </div>
-</section>
 
-<div class="divider"></div>
+    <div>
+      <div class="social-links">
+        <a href="https://github.com/Saibts" target="_blank" class="social-icon" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/sailakshmi-65a696327" target="_blank" class="social-icon" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+        <a href="mailto:sailakshmibt2006@gmail.com" class="social-icon" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        </a>
+      </div>
 
-<section id="interests">
-  <div class="section-label">// 02 — research interests</div>
-  <h2 class="section-title">Engineering Curiosity</h2>
-  <p class="interests-text">My interests lie at the intersection of embedded systems, robotics, control engineering, and intelligent hardware development. I'm particularly focused on building systems that combine innovation, functionality, and real-world impact — exploring solutions that address genuine engineering challenges. I'm eager to contribute to advancements in technology through impactful research and practical implementations.</p>
-  <div class="tag-grid">
-    <span class="tag cyan">SolidWorks</span>
-    <span class="tag cyan">Mechanical Design</span>
-    <span class="tag">Embedded Systems</span>
-    <span class="tag">Arduino & Microcontrollers</span>
-    <span class="tag cyan">AI Agents & LLMs</span>
-    <span class="tag cyan">Industrial Robotics</span>
-    <span class="tag">Computer Vision</span>
-    <span class="tag cyan">Hardware Prototyping</span>
-    <span class="tag">Firmware Engineering</span>
-    <span class="tag">PCB Workflow (KiCAD)</span>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="projects">
-  <div class="section-label">// 03 — Featured Layout Workspace</div>
-  <h2 class="section-title">What I've Built</h2>
-  
-  <div class="project-tab-nav">
-    <button class="tab-trigger active" onclick="switchMainTab(event, 'sys-integration', 'projects')">Systems Integration & Design</button>
-    <button class="tab-trigger" onclick="switchMainTab(event, 'github-repos', 'projects')">GitHub Repositories</button>
-  </div>
-
-  <div class="graphic-layout-row main-project-tab" id="sys-integration">
-    <div class="graphic-layout-preview">🛠️</div>
-    <div class="graphic-layout-desc">
-      <p>"These are the projects that I have computed so far. They highlight my focus on developing, implementing hardware-software system integration and building functional prototypes to address embedded systems applications."</p>
-      <button class="click-here-btn" onclick="openSubpage('projects-sub', 'sys-integration-pane')">
-        🔗 <span>Click Here</span> To View Projects
+      <button onclick="handleResumeClick()" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        View Full Resume
       </button>
     </div>
-  </div>
+  </header>
 
-  <div class="graphic-layout-row main-project-tab" id="github-repos" style="display: none;">
-    <div class="graphic-layout-preview">💻</div>
-    <div class="graphic-layout-desc">
-      <p>"These projects showcase my hands-on approach to solving real-world problems through innovative design, specifically highlighting my capabilities in AI architectures, agentic developments, and automated systems."</p>
-      <button class="click-here-btn" onclick="openSubpage('projects-sub', 'github-repos-pane')">
-        🔗 <span>Click Here</span> To View Repositories
-      </button>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="internships">
-  <div class="section-label">// 04 — Internship Opportunities</div>
-  <h2 class="section-title">Experience</h2>
-
-  <div class="project-tab-nav">
-    <button class="tab-trigger active" onclick="switchMainTab(event, 'pixelbotix-tab', 'internships')">Internships</button>
-    <button class="tab-trigger" onclick="switchMainTab(event, 'kuka-tab', 'internships')">Training</button>
-  </div>
-
-  <div class="graphic-layout-row main-intern-tab" id="pixelbotix-tab">
-    <div class="graphic-layout-preview">🤖</div>
-    <div class="graphic-layout-desc">
-      <p>"I am eager to contribute to creative projects and enhance my skills in embedded systems, computer vision frameworks, and artificial intelligence with real-world applications. Let's connect to any ready challenges inside environments!"</p>
-      <button class="click-here-btn" onclick="openSubpage('intern-sub', 'pixelbotix-pane')">
-        🔗 <span>Click Here</span> For Full Details
-      </button>
-    </div>
-  </div>
-
-  <div class="graphic-layout-row main-intern-tab" id="kuka-tab" style="display: none;">
-    <div class="graphic-layout-preview">🏭</div>
-    <div class="graphic-layout-desc">
-      <p>"Gained core certified industry exposure to industrial robotic arms, automation workflows, and plant process operations sponsored by Birla Carbon at KUKA Chennai Centre."</p>
-      <button class="click-here-btn" onclick="openSubpage('intern-sub', 'kuka-pane')">
-        🔗 <span>Click Here</span> For Certificate & Training Details
-      </button>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="hackathons">
-  <div class="section-label">// 05 — Technical Competitions</div>
-  <h2 class="section-title">Competing & Building</h2>
-  
-  <div class="project-tab-nav">
-    <button class="tab-trigger active" onclick="switchMainTab(event, 'hackathon-sprints', 'hackathons')">Sprints & Standings</button>
-  </div>
-
-  <div class="graphic-layout-row main-hack-tab" id="hackathon-sprints">
-    <div class="graphic-layout-preview">🏆</div>
-    <div class="graphic-layout-desc">
-      <p>"Collaborated closely with my teammates to design, prototype, and deploy scalable technological solutions under rigorous sprint pressures. Together, we transformed complex problem statements into functional, optimized systems within demanding time constraints."</p>
-      <button class="click-here-btn" onclick="openSubpage('hackathons-sub', 'hackathons-pane')">
-        🔗 <span>Click Here</span> To View Achievements
-      </button>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="skills">
-  <div class="section-label">// 06 — technical skills</div>
-  <h2 class="section-title">Tools & Technologies</h2>
-  <div class="skills-full">
-    <div class="skill-group">
-      <div class="skill-group-title">Programming & Analysis</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">Embedded C</span>
-        <span class="skill-tag">MATLAB</span>
-        <span class="skill-tag">Simulink</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">AI, Agentic & Web Systems</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Google ADK</span>
-        <span class="skill-tag">Gemini API</span>
-        <span class="skill-tag">Ollama / Llama 3.2</span>
-        <span class="skill-tag">FastAPI</span>
-        <span class="skill-tag">Pytest / Uvicorn</span>
-        <span class="skill-tag">Prompt Engineering</span>
-        <span class="skill-tag">WebSockets</span>
-        <span class="skill-tag">Web Speech API</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Embedded Systems & Hardware</div>
-      <div class="skill-tags">
-        <span class="skill-tag">8051 (AT89S52)</span>
-        <span class="skill-tag">Arduino Uno R3</span>
-        <span class="skill-tag">Arduino Nano</span>
-        <span class="skill-tag">Sensor Interfacing</span>
-        <span class="skill-tag">Timer-Based Logic</span>
-        <span class="skill-tag">HX711</span>
-        <span class="skill-tag">MPU-6050</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Design & Electronic Tools</div>
-      <div class="skill-tags">
-        <span class="skill-tag">SolidWorks</span>
-        <span class="skill-tag">KiCAD</span>
-        <span class="skill-tag">Canva</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Cybersecurity & RE Workflow</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Firmware Binary Mapping (Experience)</span>
-        <span class="skill-tag">Binwalk Workflow</span>
-        <span class="skill-tag">Ghidra Navigation</span>
-        <span class="skill-tag">Ubuntu Environment</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Certifications</div>
-      <div class="skill-tags">
-        <span class="skill-tag">AI Capabilities and Limitations - Anthropic</span>
-        <span class="skill-tag">Prompt Engineering - AWS</span>
-        <span class="skill-tag">Industrial Robotics - KUKA</span>
-        <span class="skill-tag">Python – Udemy</span>
-        <span class="skill-tag">HTML – Udemy</span>
-        <span class="skill-tag">Automation in Mfg – NPTEL Elite</span>
-      </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-title">Leadership & Soft Skills</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Placement Rep 2026</span>
-        <span class="skill-tag">Joint Treasurer – MIT Quill</span>
-        <span class="skill-tag">Office Bearer - SAHA</span>
-        <span class="skill-tag">ARME Member</span>
-        <span class="skill-tag">YRC Volunteer</span>
-        <span class="skill-tag">Anchoring</span>
-        <span class="skill-tag">Content Creation</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="contact">
-  <div class="section-label">// 07 — get in touch</div>
-  <h2 class="section-title" style="text-align: center; font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 2rem;">Let’s Connect</h2>
-  <div class="contact-container">
-    <p class="contact-text">Always eager to connect with fellow engineers, innovators, and researchers. Open to internships, research collaborations, and exciting engineering challenges.</p>
+  <!-- ================= RIGHT PANE ================= -->
+  <main class="right-pane">
     
-    <div class="contact-grid-links">
-      <a href="mailto:sailakshmibt2006@gmail.com" class="contact-card-link">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-          <polyline points="22,6 12,13 2,6"></polyline>
-        </svg>
-        Email
-        <span>sailakshmibt2006@gmail.com</span>
-      </a>
+    <!-- 1. ABOUT -->
+    <section id="about" class="active-section">
+      <div class="section-eyebrow">01. About Me</div>
+      <h2 class="section-title cipher-text" data-original="01. About Me">01. About Me</h2>
       
-      <a href="https://github.com/Saibts" target="_blank" class="contact-card-link">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-        </svg>
-        GitHub
-        <span>github.com/Saibts</span>
-      </a>
+      <!-- Reverted to the flowing paragraph style -->
+      <div class="text-content">
+        <p>I am an undergraduate student currently maintaining a <span class="highlight">CGPA of 8.99</span> in the <strong>Robotics and Automation</strong> program at the <span class="highlight">Madras Institute of Technology, Anna University</span> (Batch 2024–2028). My engineering foundation is built on exceptional academics, having secured 94.16% in my HSC and 95.2% in my SSLC.</p>
+        <p>My work bridges two main disciplines: <span class="highlight">Embedded Hardware Design</span>—where I utilize Arduino, 8051 arrays, and CAD pipelines to build physical prototypes—and <span class="highlight">Autonomous AI Systems</span>, where I implement modern LLMs, function-calling agents, and Computer Vision frameworks.</p>
+        <p>Whether I am analyzing firmware binaries, designing complex Geneva drives in SolidWorks, or architecting secure agentic networks, my ultimate goal remains consistent: to engineer robust, automated systems that solve complex, real-world problems intelligently.</p>
+      </div>
+
+      <div class="tags-wrapper" style="margin-top: 2rem;">
+        <span class="tag">SolidWorks</span>
+        <span class="tag">Embedded C</span>
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Google ADK</span>
+        <span class="tag">Ollama / Local LLMs</span>
+        <span class="tag">Arduino & 8051</span>
+        <span class="tag">PID Control Logic</span>
+        <span class="tag">Computer Vision</span>
+        <span class="tag">Firmware Analysis</span>
+      </div>
+    </section>
+
+    <!-- 2. EXPERIENCE -->
+    <section id="experience">
+      <div class="section-eyebrow">02. Experience</div>
+      <h2 class="section-title cipher-text" data-original="02. Experience">02. Experience</h2>
       
-      <a href="https://linkedin.com/in/sailakshmi-65a696327" target="_blank" class="contact-card-link">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-        </svg>
-        LinkedIn
-        <span>/in/sailakshmi-65a696327</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>Built with precision by <span>Sailakshmi B T</span> · Robotics & Automation · MIT Anna University · Chennai</p>
-</footer>
-
-<div class="subpage" id="projects-sub">
-  <div class="subpage-inner">
-    <button class="back-btn" onclick="closeSubpage('projects-sub')">
-      ← Go Back to Portfolio
-    </button>
-    <div class="section-label">// Featured Workspace — Inner Content</div>
-    <h1 style="font-family:'Playfair Display', serif; font-size: 2.4rem; color:var(--text-main); margin-bottom: 0.5rem; font-style: italic;">Technical Workspace Inventory</h1>
-    <p style="color:var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem;">Deep-dive analytical review of system and software pipelines.</p>
-
-    <div class="pane-content-view" id="sys-integration-pane">
-      <div class="proj-detail">
-        <div class="cert-btn" style="color: var(--cyan); background: var(--cyan-dim); border-color: rgba(212, 175, 55, 0.2); margin-bottom: 0.5rem; pointer-events: none;">⚙ Core Mechanical Work</div>
-        <h2>Mechanical Rotary Device</h2>
-        <div class="proj-tech-row">
-          <span class="tech-pill cyan">SolidWorks</span>
-          <span class="tech-pill">Mechanical Design</span>
-          <span class="tech-pill">Geneva Wheel</span>
-          <span class="tech-pill">Dog Clutch</span>
-        </div>
-        <p>This project involved the design and development of a novel dual-mode rotary mechanism that integrates two distinct power-transmission principles into a single compact assembly.</p>
-        <ul>
-          <li>Parametric 3D part configuration built completely within SolidWorks environment scripts.</li>
-          <li>Alternates output motion smoothly between intermittent index steps and high-efficiency torque paths.</li>
-        </ul>
-      </div>
-
-      <div class="proj-detail">
-        <h2>Grip Stability & Stress Analyzer</h2>
-        <div class="proj-tech-row">
-          <span class="tech-pill cyan">Arduino Uno R3</span>
-          <span class="tech-pill">HX711</span>
-          <span class="tech-pill">Load Cell</span>
-          <span class="tech-pill cyan">Biomedical Sensing</span>
-        </div>
-        <p>A non-invasive biological tracking node that isolates involuntary muscular tremors to estimate physical stress levels dynamically.</p>
-        <ul>
-          <li>Configured HX711 24-bit ADC sampling rates for precise data mapping loops.</li>
-          <li>Correlates time-domain force frequency shifts to diagnostic psychological tables.</li>
-        </ul>
-      </div>
-
-      <div class="proj-detail">
-        <h2>Adaptive Self-Mutating Authentication System</h2>
-        <div class="proj-tech-row">
-          <span class="tech-pill cyan">8051 (AT89S52)</span>
-          <span class="tech-pill">Embedded C</span>
-          <span class="tech-pill">Hardware Timers</span>
-          <span class="tech-pill cyan">Structural Security</span>
-        </div>
-        <p>Digital hardware locking setup leveraging internal timers as entropy seeds to calculate single-use mutated PIN codes post-login.</p>
-        <ul>
-          <li>Mitigates replay attacks and tracking vectors completely in low-level Embedded C profiles.</li>
-          <li>Deploys an independent verification framework to lock execution loops on threshold violations.</li>
-        </ul>
-      </div>
-
-      <div class="proj-detail">
-        <h2>Single-Axis Gimbal System</h2>
-        <div class="proj-tech-row">
-          <span class="tech-pill cyan">Arduino Nano</span>
-          <span class="tech-pill">MPU-6050</span>
-          <span class="tech-pill">SG90 Servo</span>
-          <span class="tech-pill cyan">Feedback Controls</span>
-        </div>
-        <p>Real-time angular position stabilization device powered by closed-loop proportional calculations from processing inertial data feeds.</p>
-        <ul>
-          <li>Captures immediate axis deviations from MPU-6050 sensor array readings.</li>
-          <li>Drives dynamic pulse adjustments to maintain rigid horizon references under external disturbance vectors.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="pane-content-view single-layout" id="github-repos-pane">
-      
-      <div class="proj-detail">
-        <div class="proj-detail-num" style="font-family:'Courier Prime', monospace; color:var(--text-muted); font-size: 0.8rem; letter-spacing: 0.1em;">GIT</div>
-        <h2>Capstone Project: Student Life Concierge AI Agent</h2>
-        <div class="proj-tech-row">
-          <span class="tech-pill cyan">Google ADK</span>
-          <span class="tech-pill cyan">Gemini API</span>
-          <span class="tech-pill">Python</span>
-          <span class="tech-pill">FastAPI</span>
-          <span class="tech-pill">Pytest / Uvicorn</span>
-        </div>
-        <p>Developed a production-grade, hierarchical multi-agent Capstone project to automate academic workload management by parsing student email databases for deadlines and reserving calendar focus blocks.</p>
-        <ul>
-          <li>Implemented an input validation and containment layer to protect the agent against adversarial instruction prompts (jailbreak attacks), achieving a 100% security and routing verification score.</li>
-          <li>Built the backend using FastAPI and established a complete test suite with Pytest, using mock services to verify performance under local evaluation checks.</li>
-        </ul>
-        <div class="project-links-row">
-          <a href="https://github.com/Saibts/student-life-concierge-app" target="_blank" class="proj-git-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            Open GitHub Codebase Repository
-          </a>
-        </div>
-      </div>
-
-      <div class="proj-detail">
-        <div class="proj-detail-num" style="font-family:'Courier Prime', monospace; color:var(--text-muted); font-size: 0.8rem; letter-spacing: 0.1em;">GIT</div>
-        <h2>Orion Local AI Assistant</h2>
-        <div class="proj-tech-row">
-          <span class="tech-pill cyan">Python</span>
-          <span class="tech-pill cyan">FastAPI</span>
-          <span class="tech-pill">Ollama / Llama 3.2</span>
-          <span class="tech-pill">WebSockets</span>
-          <span class="tech-pill">Web Speech API</span>
-        </div>
-        <p>Engineered a fully offline, privacy-first AI assistant by integrating Meta's Llama 3.2 with Ollama for local LLM inference, eliminating cloud dependency while preserving low-latency performance.</p>
-        <ul>
-          <li>Built an asynchronous FastAPI backend with WebSocket communication to deliver real-time agent state transitions (Standby, Thinking, Speaking) and complete local response deliveries.</li>
-          <li>Implemented a function-calling (tool-use) framework enabling the AI to autonomously execute backend actions, including live CPU/RAM diagnostics and local file operations.</li>
-          <li>Designed a classic, dark interface with integrated Speech-to-Text (STT) pipelines for hands-free, voice-driven interaction.</li>
-        </ul>
-        <div class="project-links-row">
-          <a href="https://github.com/Saibts/orion-local-ai" target="_blank" class="proj-git-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            Open GitHub Codebase Repository
-          </a>
-        </div>
-      </div>
-
-      <div class="proj-detail">
-        <div class="proj-detail-num" style="font-family:'Courier Prime', monospace; color:var(--text-muted); font-size: 0.8rem; letter-spacing: 0.1em;">GIT</div>
-        <h2>Hand Gesture Volume and Brightness Controller</h2>
-        <div class="proj-tech-row">
-          <span class="tech-pill cyan">Python</span>
-          <span class="tech-pill cyan">OpenCV</span>
-          <span class="tech-pill">MediaPipe</span>
-          <span class="tech-pill">Human-Machine Interface</span>
-        </div>
-        <p>An AI-powered computer vision system built in Python that utilizes real-time hand gesture tracking to control Windows system volume and monitor brightness seamlessly. By using a standard webcam, the application translates physical distance metrics between your fingers into hardware execution commands.</p>
-        <ul>
-          <li><strong>Dual Hand Independence:</strong> Dedicated execution mapping based on hand classification:
-            <br>• Right Hand: Controls the system master volume.
-            <br>• Left Hand: Controls the monitor display brightness.
-          </li>
-        </ul>
-        <div class="project-links-row">
-          <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" class="proj-git-btn">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-            Open GitHub Codebase Repository
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="subpage" id="intern-sub">
-  <div class="subpage-inner">
-    <button class="back-btn" onclick="closeSubpage('intern-sub')">
-      ← Go Back to Portfolio
-    </button>
-    <div class="section-label">// Professional Tracks — Inner Content</div>
-    <h1 style="font-family:'Playfair Display', serif; font-size: 2.4rem; color:var(--text-main); margin-bottom: 0.5rem; font-style: italic;">Experience Records</h1>
-    <p style="color:var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem;">Overview records detailing industry alignment competencies.</p>
-
-    <div class="pane-content-view single-layout" id="pixelbotix-pane">
-      <div class="intern-detail">
-        <div class="intern-detail-header">
-          <div class="intern-detail-icon">🤖</div>
-          <div>
-            <h2>Computer Vision & AI Summer Intern</h2>
-            <div class="intern-detail-org">PixelBotix</div>
-            <div class="intern-detail-date">June 2026 &nbsp;|&nbsp; Chennai, India</div>
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">June 2026<br>Chennai, India</div>
+          <div class="card-body">
+            <h3>Computer Vision & AI Summer Intern</h3>
+            <span class="org">PixelBotix</span>
+            <p>Engaged in an intensive, industry-aligned internship focusing on practical implementations of CV technologies and AI architectures. Executed edge-detection operations, spatial image manipulation scripts, and morphological filter processing within native Python environments using OpenCV. Constructed automated bounding box configurations for tracking targets.</p>
+            <div class="tags-wrapper">
+              <span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">AI Visual Recognition</span>
+            </div>
           </div>
         </div>
-        <p>An intensive, industry-aligned summer internship focused on the practical implementation and structural application of Computer Vision technologies and Artificial Intelligence architectures.</p>
-        <ul>
-          <li>Executes edge-detection operations, spatial image manipulation scripts, and morphological filter processing inside native Python environments utilizing OpenCV libraries.</li>
-          <li>Constructs automated bounding box data configurations and develops foundational convolutional network tracking engines configured for robotic perception targets.</li>
-        </ul>
       </div>
-    </div>
 
-    <div class="pane-content-view single-layout" id="kuka-pane">
-      <div class="intern-detail">
-        <div class="intern-detail-header">
-          <div class="intern-detail-icon ind">🏭</div>
-          <div>
-            <h2>Industrial Robotics & Automation Certified Training</h2>
-            <div class="intern-detail-org">Aditya Birla Group & KUKA Robotics</div>
-            <div class="intern-detail-date">February 2026 &nbsp;|&nbsp; KUKA Chennai Centre</div>
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Feb 2026<br>KUKA Centre</div>
+          <div class="card-body">
+            <h3>Industrial Robotics & Automation Certified Training</h3>
+            <span class="org">Aditya Birla Group & KUKA Robotics</span>
+            <p>Gained core certified industry exposure to industrial robotic arms, automation workflows, and plant process operations. Programmed multi-axis robotic controller trajectories using manual teach pendants and analyzed electrical failure sequences and fail-safe safety interlocks on manufacturing grids.</p>
+            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+              <span class="tag">Kinematics</span><span class="tag">Industrial Safety</span><span class="tag">Industry 4.0</span>
+            </div>
+            <a href="kuka.pdf" target="_blank" class="btn-secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              View Certificate
+            </a>
           </div>
         </div>
-        <p>Certified industry program focused on physical kinematics configuration loops, safety interlocking logic layouts, and smart manufacturing parameters.</p>
-        
-        <div class="project-links-row" style="margin-bottom: 1.5rem;">
-          <a href="kuka.pdf" target="_blank" class="cert-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
-            Launch Certified PDF Document
-          </a>
-        </div>
-        <ul>
-          <li>Programmed multi-axis robotic controller trajectories using dedicated manual teach pendants.</li>
-          <li>Analyzed electrical failure handling sequences and fail-safe safety interlocks on manufacturing plant grids.</li>
-        </ul>
       </div>
-    </div>
-  </div>
-</div>
+    </section>
 
-<div class="subpage" id="hackathons-sub">
-  <div class="subpage-inner">
-    <button class="back-btn" onclick="closeSubpage('hackathons-sub')">
-      ← Go Back to Portfolio
-    </button>
-    <div class="section-label">// Competition Workspace — Inner Content</div>
-    <h1 style="font-family:'Playfair Display', serif; font-size: 2.4rem; color:var(--text-main); margin-bottom: 0.5rem; font-style: italic;">Technical Sprints & Records</h1>
-    <p style="color:var(--text-muted); font-size: 1.1rem; margin-bottom: 2.5rem;">Overview of live builds, sprints, and team placements across technical competitions.</p>
+    <!-- 3. PROJECTS -->
+    <section id="projects">
+      <div class="section-eyebrow">03. Projects & Builds</div>
+      <h2 class="section-title cipher-text" data-original="03. Projects & Builds">03. Projects & Builds</h2>
 
-    <div class="pane-content-view single-layout active" id="hackathons-pane">
-      <div class="hack-list">
-        <div class="hack-item">
-          <div class="hack-badge badge-part">PARTICIPANT</div>
-          <div class="hack-info">
+      <h3 class="subsection-title">Software & AI (GitHub Repositories)</h3>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Agentic AI<br>Software</div>
+          <div class="card-body">
+            <h3>Student Life Concierge AI Agent</h3>
+            <span class="org">Google 5-Day AI Agents Intensive (Capstone)</span>
+            <p>Developed a production-grade, hierarchical multi-agent framework to automate academic workload management by parsing student email databases for deadlines and reserving calendar focus blocks. Implemented an input validation layer to protect the agent against adversarial instruction prompts (jailbreaks), achieving a 100% security routing score.</p>
+            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+              <span class="tag">Google ADK</span><span class="tag">Gemini API</span><span class="tag">FastAPI</span><span class="tag">Pytest</span>
+            </div>
+            <a href="https://github.com/Saibts/student-life-concierge-app" target="_blank" class="btn-secondary">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              View Repository
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Local AI<br>Software</div>
+          <div class="card-body">
+            <h3>Orion Local AI Assistant</h3>
+            <span class="org">Independent Architecture</span>
+            <p>Engineered a fully offline, privacy-first AI assistant by integrating Meta's Llama 3.2 with Ollama. Built an asynchronous FastAPI backend with WebSocket communication to deliver real-time agent state transitions. Implemented a function-calling framework enabling the AI to autonomously execute live CPU/RAM diagnostics.</p>
+            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+              <span class="tag">Llama 3.2</span><span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">Web Speech API</span>
+            </div>
+            <a href="https://github.com/Saibts/orion-local-ai" target="_blank" class="btn-secondary">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              View Repository
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Computer Vision<br>HCI</div>
+          <div class="card-body">
+            <h3>Hand Gesture Volume & Brightness Controller</h3>
+            <span class="org">Human-Machine Interface</span>
+            <p>Built an AI-powered system translating real-time hand gesture tracking into Windows OS execution commands. Implemented dual hand independence: the right hand controls master volume, while the left hand controls display brightness.</p>
+            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+              <span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">Python</span>
+            </div>
+            <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" class="btn-secondary">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              View Repository
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="subsection-title">Hardware & Embedded Systems</h3>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Mech Design<br>Hardware</div>
+          <div class="card-body">
+            <h3>Mechanical Rotary Device [Design Patent Pending]</h3>
+            <span class="org">CAD & Prototyping</span>
+            <p>Designed a novel dual-mode rotary mechanism integrating two distinct power-transmission principles—a Geneva wheel and a dog clutch system—into a single compact assembly. Built completely within SolidWorks parametric environment scripts.</p>
+            <div class="tags-wrapper">
+              <span class="tag">SolidWorks</span><span class="tag">Mechanical Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Biomedical<br>Hardware</div>
+          <div class="card-body">
+            <h3>Grip Stability & Stress Analyzer</h3>
+            <span class="org">Sensor Integration</span>
+            <p>Developed a non-invasive load cell-based system using HX711 and Arduino Uno to evaluate grip stability and tremor patterns for stress-level estimation. Configured 24-bit ADC sampling rates to correlate time-domain force frequency shifts.</p>
+            <div class="tags-wrapper">
+              <span class="tag">Arduino Uno R3</span><span class="tag">HX711</span><span class="tag">Load Cell</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Cyber-Physical<br>Embedded</div>
+          <div class="card-body">
+            <h3>Adaptive Self-Mutating Authentication System</h3>
+            <span class="org">Security Infrastructure</span>
+            <p>Designed an 8051-based digital lock utilizing internal hardware timers as entropy seeds to calculate single-use, non-deterministic PIN codes post-login, effectively mitigating replay attacks and shoulder-surfing vectors in Embedded C.</p>
+            <div class="tags-wrapper">
+              <span class="tag">8051 (AT89S52)</span><span class="tag">Embedded C</span><span class="tag">Hardware Timers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Controls<br>Embedded</div>
+          <div class="card-body">
+            <h3>Single-Axis Gimbal System</h3>
+            <span class="org">Feedback Control Logic</span>
+            <p>Engineered a real-time angular position stabilization platform. Captured immediate axis deviations via MPU-6050 arrays and drove dynamic pulse adjustments to maintain rigid horizon references using closed-loop proportional calculations.</p>
+            <div class="tags-wrapper">
+              <span class="tag">Arduino Nano</span><span class="tag">MPU-6050</span><span class="tag">PID Control</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. HACKATHONS -->
+    <section id="hackathons">
+      <div class="section-eyebrow">04. Hackathons</div>
+      <h2 class="section-title cipher-text" data-original="04. Hackathons">04. Hackathons</h2>
+      
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Finalist<br>2025</div>
+          <div class="card-body">
             <h3>Smart India Hackathon (SIH 2025)</h3>
-            <p>Contributed to AI/ML-based identification of cryptographic primitives and protocols in multi-architecture firmware binaries.</p>
-          </div>
-        </div>
-        <div class="hack-item">
-          <div class="hack-badge badge-2nd">2ND PLACE</div>
-          <div class="hack-info">
-            <h3>H2TS Hackathon 2025</h3>
-            <p>Collaborated to develop an AI-driven SOS platform for emergency situations.</p>
-          </div>
-        </div>
-        <div class="hack-item">
-          <div class="hack-badge badge-part">PARTICIPANT</div>
-          <div class="hack-info">
-            <h3>VISA 24 Hours Hackathon 2026</h3>
-            <p>Competed in a 24-hour innovation sprint, building fast and shipping under pressure.</p>
+            <p>Contributed to the reverse-engineering workflow for AI/ML-based identification of cryptographic primitives and protocols within multi-architecture firmware binaries.</p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">2nd Place<br>2025</div>
+          <div class="card-body">
+            <h3>H2TS Hackathon</h3>
+            <p>Collaborated closely with a team to design, build, and deploy an AI-driven SOS platform tailored for rapid emergency situational response.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Participant<br>2026</div>
+          <div class="card-body">
+            <h3>VISA 24-Hour Hackathon</h3>
+            <p>Competed in an intense 24-hour innovation sprint, testing rapid prototyping limits, system deployment, and teamwork under extreme pressure constraints.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. SKILLS -->
+    <section id="skills">
+      <div class="section-eyebrow">05. Technical Skills</div>
+      <h2 class="section-title cipher-text" data-original="05. Technical Skills">05. Technical Skills</h2>
+      <div class="skill-grid">
+        
+        <div class="skill-category">
+          <h4>Design & Electronic Tools</h4>
+          <div class="tags-wrapper">
+            <span class="tag">SolidWorks</span><span class="tag">KiCAD</span><span class="tag">Canva</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4>Programming & Analysis</h4>
+          <div class="tags-wrapper">
+            <span class="tag">Python</span><span class="tag">Embedded C</span><span class="tag">MATLAB</span><span class="tag">Simulink</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4>Embedded Systems</h4>
+          <div class="tags-wrapper">
+            <span class="tag">8051 (AT89S52)</span><span class="tag">Arduino Uno & Nano</span><span class="tag">Sensor Interfacing</span><span class="tag">Hardware Timers</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4>Control Systems</h4>
+          <div class="tags-wrapper">
+            <span class="tag">PID Control</span><span class="tag">Motion Control</span><span class="tag">Closed-Loop Feedback</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4>AI, Agentic & Web Systems</h4>
+          <div class="tags-wrapper">
+            <span class="tag">Google ADK</span><span class="tag">Gemini API</span><span class="tag">Ollama / Llama 3.2</span><span class="tag">FastAPI</span><span class="tag">WebSockets</span>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4>Cybersecurity & RE</h4>
+          <div class="tags-wrapper">
+            <span class="tag">Firmware Binary Analysis</span><span class="tag">Binwalk</span><span class="tag">Ghidra</span><span class="tag">Ubuntu Linux</span>
+          </div>
+        </div>
+
+        <div class="skill-category" style="grid-column: 1 / -1;">
+          <h4>Languages</h4>
+          <div class="tags-wrapper">
+            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">English (Proficient)</span>
+            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Tamil (Proficient)</span>
+            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Telugu (Conversational)</span>
+            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Japanese (Elementary)</span>
+            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Hindi (Elementary)</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. LEADERSHIP & CERTIFICATIONS -->
+    <section id="leadership">
+      <div class="section-eyebrow">06. Leadership & Certs</div>
+      <h2 class="section-title cipher-text" data-original="06. Leadership & Certs">06. Leadership & Certs</h2>
+      
+      <div class="skill-grid">
+        <div>
+          <div class="skill-category">
+            <h4>Leadership & Involvement</h4>
+          </div>
+          <ul class="simple-list">
+            <li><strong>Placement Representative (2026–Present):</strong> Serving as a direct liaison between engineering students and placement coordinators.</li>
+            <li><strong>YRC Volunteer (2024–Present):</strong> Helped organize Youth Fest events specifically aimed at assisting visually challenged individuals.</li>
+            <li><strong>Joint Treasurer, MIT Quill (2025–26):</strong> Managed treasury operations for the college literary club.</li>
+            <li><strong>Office Bearer, SAHA (2025–26):</strong> Organized and coordinated academic events for the Science and Humanities Association.</li>
+            <li><strong>Member, ARME (2024–Present):</strong> Association of Robotics and Mechatronics Engineers.</li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="skill-category">
+            <h4>Certifications</h4>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
+            <a href="Anthropic.pdf" target="_blank" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              AI Capabilities & Limitations (Anthropic)
+            </a>
+            <a href="prompt engineering.pdf" target="_blank" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              Foundations of Prompt Engineering (AWS)
+            </a>
+            <a href="kuka.pdf" target="_blank" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              Industrial Robotics (KUKA Centre)
+            </a>
+            <a href="nptel.pdf" target="_blank" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              Automation in Manufacturing (NPTEL Elite)
+            </a>
+            <a href="Udemy-python.pdf" target="_blank" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              Python Basics (Udemy)
+            </a>
+            <a href="Udemy-html.pdf" target="_blank" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              HTML Basics (Udemy)
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Built with precision by <span>Sailakshmi B T</span></p>
+      <p style="margin-top: 0.5rem;">Robotics & Automation · MIT Anna University · Chennai</p>
+    </footer>
+
+  </main>
 </div>
 
+<!-- Full Screen Resume Viewer Modal -->
 <div class="resume-fullscreen" id="resume-viewer">
   <div class="resume-toolbar">
-    <button class="back-btn" onclick="closeResume()" style="margin: 0;">
-      ← Back
+    <button class="back-text-btn" onclick="closeResume()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Return to Portfolio
     </button>
-    
-    <div style="font-family:'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; color: var(--text-main); display: none; font-style: italic; @media (min-width: 600px){ display: block; }">
-      Sailakshmi B T - Resume
-    </div>
-
-    <a href="Sailakshmi_Resume.pdf" target="_blank" download class="proj-git-btn" style="margin: 0;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+    <a href="Sailakshmi_Resume.pdf" target="_blank" download class="btn-primary" style="margin: 0; padding: 0.4rem 1rem;">
       Download PDF
     </a>
   </div>
-  
   <div class="resume-pdf-container">
     <iframe src="Sailakshmi_BT_Resume.html"></iframe>
   </div>
 </div>
 
 <script>
-  // Nav toggle
-  function toggleNav() {
-    document.getElementById('nav-links').classList.toggle('open');
-  }
+  // ── 1. SPOTLIGHT EFFECT ──
+  document.addEventListener('mousemove', (e) => {
+    document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+    document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+  });
 
-  document.querySelectorAll('.nav-links a, .nav-links button').forEach(el => {
-    el.addEventListener('click', () => {
-      document.getElementById('nav-links').classList.remove('open');
+  // ── 2. THE ENIGMA CIPHER REVEAL ──
+  const cipherChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+<>{}[]';
+  function scrambleText(element) {
+    const originalText = element.getAttribute('data-original');
+    if (!originalText) return;
+    
+    // Explicitly make it visible right when it starts
+    element.classList.remove('loading');
+    
+    let iterations = 0;
+    const maxIterations = 15; 
+    const interval = setInterval(() => {
+      element.innerText = originalText.split('').map((char, index) => {
+        if(char === ' ') return ' ';
+        if(index < iterations / (maxIterations / originalText.length)) return originalText[index];
+        return cipherChars[Math.floor(Math.random() * cipherChars.length)];
+      }).join('');
+      iterations++;
+      if (iterations >= maxIterations) {
+        clearInterval(interval);
+        element.innerText = originalText;
+      }
+    }, 35); 
+  }
+  
+  // Initialize the first section title on load AND the left pane name
+  document.addEventListener("DOMContentLoaded", () => {
+    const heroName = document.querySelector('.hero-name');
+    if(heroName) {
+      setTimeout(() => {
+        scrambleText(heroName);
+      }, 100);
+    }
+
+    const firstTitle = document.querySelector('#about .cipher-text');
+    if(firstTitle) {
+      setTimeout(() => {
+        scrambleText(firstTitle);
+      }, 200);
+    }
+  });
+
+  // ── 3. 3D BRASS CARD TILT MECHANISM ──
+  document.querySelectorAll('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left; 
+      const y = e.clientY - rect.top;  
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -3; 
+      const rotateY = ((x - centerX) / centerX) * 3;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
+      const glareX = (x / rect.width) * 100;
+      const glareY = (y / rect.height) * 100;
+      card.style.setProperty('--glare-x', `${glareX}%`);
+      card.style.setProperty('--glare-y', `${glareY}%`);
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+      card.style.setProperty('--glare-x', `200%`);
+      card.style.setProperty('--glare-y', `200%`);
     });
   });
 
-  // Tab switcher
-  function switchMainTab(event, activeTabId, sectionType) {
-    let tabClass = '.main-project-tab';
-    if (sectionType === 'internships') tabClass = '.main-intern-tab';
-    if (sectionType === 'hackathons') tabClass = '.main-hack-tab';
-    
-    const container = event.currentTarget.parentElement;
-    container.querySelectorAll('.tab-trigger').forEach(btn => btn.classList.remove('active'));
-    document.querySelectorAll(tabClass).forEach(tab => tab.style.display = 'none');
-    
-    event.currentTarget.classList.add('active');
-    document.getElementById(activeTabId).style.display = 'flex';
-  }
+  // ── 4. TAB NAVIGATION SYSTEM (Click to show specific block) ──
+  const navItems = document.querySelectorAll('.nav-item');
+  const mainSections = document.querySelectorAll('.right-pane > section');
 
-  // Subpage open/close
-  function openSubpage(subpageContainerId, uniquePaneId) {
-    const subpageElement = document.getElementById(subpageContainerId);
-    subpageElement.querySelectorAll('.pane-content-view').forEach(p => p.classList.remove('active'));
-    document.getElementById(uniquePaneId).classList.add('active');
-    
-    subpageElement.classList.add('active');
-    subpageElement.scrollTop = 0;
-    document.body.style.overflow = 'hidden';
-  }
+  navItems.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Update active nav styling
+      navItems.forEach(item => item.classList.remove('active'));
+      this.classList.add('active');
 
-  function closeSubpage(subpageContainerId) {
-    document.getElementById(subpageContainerId).classList.remove('active');
-    document.body.style.overflow = '';
-  }
+      // Hide all sections
+      mainSections.forEach(sec => {
+        sec.classList.remove('active-section');
+        sec.style.display = 'none';
+      });
 
-  // Cinematic Scroll Animation Observer
-  const observerOptions = {
-    threshold: 0.15, // Waits until 15% of the element is visible
-    rootMargin: "0px 0px -10% 0px" // Triggers slightly before hitting the absolute bottom
-  };
+      // Show target section
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        targetSection.style.display = 'block';
+        // Allow display:block to render before triggering the animation
+        setTimeout(() => {
+          targetSection.classList.add('active-section');
+        }, 10);
 
-  const observerFade = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observerFade.unobserve(entry.target);
+        // Trigger Cipher effect on the newly opened section
+        const cipherTitle = targetSection.querySelector('.cipher-text');
+        if (cipherTitle) {
+          scrambleText(cipherTitle);
+        }
+      }
+      
+      // On mobile view, scroll up to the top of the right pane automatically
+      if(window.innerWidth <= 1023) {
+        window.scrollTo({ top: document.querySelector('.right-pane').offsetTop - 20, behavior: 'smooth' });
       }
     });
-  }, observerOptions);
-
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll('.fade-in').forEach(el => {
-      observerFade.observe(el);
-    });
   });
 
-  // Mobile Device vs Desktop Smart Routing Trigger Framework
+  // ── 5. RESUME MODAL HANDLER ──
   function handleResumeClick() {
-    // Detects if the user is on a mobile device
     const isMobile = window.matchMedia("(max-width: 768px)").matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    
     if (isMobile) {
-      // Opens your newly updated responsive HTML file on mobile
       window.open('Sailakshmi_BT_Resume.html', '_blank'); 
     } else {
-      // Opens the dark academia full-screen viewer on desktop
-      openResume();
+      document.getElementById('resume-viewer').classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
   }
 
-  function openResume() {
-    document.getElementById('resume-viewer').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  
   function closeResume() {
     document.getElementById('resume-viewer').classList.remove('active');
     document.body.style.overflow = '';
   }
 
-  // Active Scroll Nav Tracker
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let currentSectionId = '';
-    sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 120) currentSectionId = sec.id;
-    });
-    navLinks.forEach(link => {
-      link.style.color = link.getAttribute('href') === '#' + currentSectionId ? 'var(--cyan)' : '';
-    });
-  });
-
-  // Master Global Escape Sequence
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') {
-      document.querySelectorAll('.subpage.active, .resume-fullscreen.active').forEach(openPage => {
-        openPage.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    }
+    if (event.key === 'Escape') closeResume();
   });
 </script>
 </body>
