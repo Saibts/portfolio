@@ -488,10 +488,10 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
     <li>
-      <button onclick="handleResumeClick()" class="nav-resume-btn">
+      <a href="#" onclick="handleResumeClick(); return false;" class="nav-resume-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
         Resume
-      </button>
+      </a>
     </li>
   </ul>
   <div class="hamburger" id="hamburger" onclick="toggleNav()">
@@ -1126,12 +1126,14 @@
 
   // Mobile Device vs Desktop Smart Routing Trigger Framework
   function handleResumeClick() {
-    // Check match criteria isolating standard handheld view ports or touch interfaces
+    // Detects if the user is on a mobile device
     const isMobile = window.matchMedia("(max-width: 768px)").matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     
     if (isMobile) {
-      window.open('Sailakshmi_Resume.pdf', '_blank');
+      // Opens your newly updated responsive HTML file on mobile
+      window.open('Sailakshmi_BT_Resume.html', '_blank'); 
     } else {
+      // Opens the dark academia full-screen viewer on desktop
       openResume();
     }
   }
