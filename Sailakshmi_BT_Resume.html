@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sailakshmi B T — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1c1917;
+    --bg-panel: #292524;
+    --text-main: #e7e5e4;
+    --text-faded: #a8a29e;
+    --gold: #d4af37;
+    --burgundy: #7f1d1d;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    background-color: var(--bg);
+    color: var(--text-main);
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  body {
+    padding: 56px 20px 80px;
+  }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: var(--bg);
+  }
+
+  /* ===== Header ===== */
+  header {
+    text-align: center;
+    padding-bottom: 22px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid var(--burgundy);
+  }
+
+  h1.name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 2.6rem;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .contact-line {
+    margin-top: 12px;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--text-faded);
+    letter-spacing: 0.02em;
+  }
+
+  .contact-line a {
+    color: var(--text-faded);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-faded);
+  }
+
+  .contact-line a:hover {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+
+  .contact-sep {
+    color: var(--burgundy);
+    margin: 0 8px;
+  }
+
+  /* ===== Sections ===== */
+  section {
+    margin-bottom: 30px;
+    page-break-inside: avoid;
+  }
+
+  h2.section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  h2.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--burgundy), transparent);
+  }
+
+  .summary-text {
+    font-size: 0.98rem;
+    color: var(--text-main);
+    text-align: justify;
+  }
+
+  /* ===== Education ===== */
+  .edu-block {
+    page-break-inside: avoid;
+  }
+
+  .entry-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .entry-title {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--text-main);
+  }
+
+  .entry-org {
+    font-style: italic;
+    color: var(--text-main);
+  }
+
+  .entry-date {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.82rem;
+    color: var(--text-faded);
+    white-space: nowrap;
+  }
+
+  .entry-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.82rem;
+    color: var(--text-faded);
+    margin-top: 2px;
+  }
+
+  ul.bullets {
+    margin-top: 8px;
+    padding-left: 22px;
+  }
+
+  ul.bullets li {
+    margin-bottom: 6px;
+    font-size: 0.96rem;
+    color: var(--text-main);
+  }
+
+  ul.bullets li::marker {
+    color: var(--burgundy);
+  }
+
+  .item-block {
+    margin-bottom: 18px;
+    page-break-inside: avoid;
+  }
+
+  .item-block:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ===== Projects ===== */
+  .project-meta {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.8rem;
+    color: var(--text-faded);
+    margin-top: 3px;
+    margin-bottom: 8px;
+  }
+
+  /* ===== Technical Skills ===== */
+  .skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .skill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .skill-label {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 0.92rem;
+    min-width: 190px;
+  }
+
+  .skill-value {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    flex: 1;
+    min-width: 240px;
+  }
+
+  /* ===== Certifications & Leadership ===== */
+  .simple-list {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .simple-list li {
+    margin-bottom: 6px;
+    font-size: 0.96rem;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .simple-list li::before {
+    content: "❦";
+    position: absolute;
+    left: 0;
+    color: var(--burgundy);
+    font-size: 0.8rem;
+  }
+
+  .leader-block {
+    margin-bottom: 14px;
+    page-break-inside: avoid;
+  }
+
+  .leader-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .leader-bullet {
+    margin-top: 3px;
+    margin-left: 18px;
+    font-size: 0.93rem;
+    color: var(--text-main);
+  }
+
+  /* ===== Languages ===== */
+  .lang-row {
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .lang-row span {
+    margin-right: 6px;
+  }
+
+  .lang-sep {
+    color: var(--burgundy);
+    margin: 0 10px;
+  }
+
+  /* ===== Footer rule ===== */
+  .ornament {
+    text-align: center;
+    color: var(--burgundy);
+    font-size: 1rem;
+    margin: 36px 0 0;
+    letter-spacing: 0.5em;
+  }
+
+  /* ===== Print ===== */
+  @media print {
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    body {
+      background-color: var(--bg) !important;
+      padding: 0;
+    }
+
+    .page {
+      max-width: 100%;
+      padding: 30px 36px;
+    }
+
+    section {
+      page-break-inside: avoid;
+    }
+
+    .item-block, .leader-block, .edu-block {
+      page-break-inside: avoid;
+    }
+
+    h2.section-title {
+      page-break-after: avoid;
+    }
+
+    @page {
+      margin: 0.4in;
+      background: var(--bg);
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1.name { font-size: 1.9rem; }
+    .skill-label { min-width: 100%; }
+    .entry-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <h1 class="name">Sailakshmi B T</h1>
+    <div class="contact-line">
+      <span>+91 91641 32885</span><span class="contact-sep">|</span>
+      <a href="mailto:sailakshmibt2006@gmail.com">sailakshmibt2006@gmail.com</a><span class="contact-sep">|</span>
+      <span>Chennai, India</span>
+      <br style="display:block; margin-top:6px; content:'';">
+      <a href="https://github.com/Saibts" target="_blank" rel="noopener">github.com/Saibts</a><span class="contact-sep">|</span>
+      <a href="https://linkedin.com/in/sailakshmi-65a696327" target="_blank" rel="noopener">linkedin.com/in/sailakshmi-65a696327</a>
+    </div>
+  </header>
+
+  <section>
+    <h2 class="section-title">Professional Summary</h2>
+    <p class="summary-text">Robotics and Automation undergraduate (CGPA 8.99) at Madras Institute of Technology with hands-on experience in embedded systems, robotics, and AI-driven applications. Skilled in Arduino-based system design, sensor interfacing, and rapid prototyping. Interests span Computer Vision, industrial automation, embedded intelligence, and intelligent robotic systems.</p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Education</h2>
+    <div class="edu-block">
+      <div class="entry-row">
+        <span class="entry-title">Bachelor of Engineering – Robotics and Automation</span>
+        <span class="entry-date">2024 – 2028</span>
+      </div>
+      <div class="entry-sub">Madras Institute of Technology | CGPA: 8.99 / 10.0</div>
+      <ul class="bullets">
+        <li>Higher Secondary Certificate (2024) – 94.16%</li>
+        <li>Secondary School Certificate (2022) – 95.2%</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Internship &amp; Training</h2>
+
+    <div class="item-block">
+      <div class="entry-row">
+        <span class="entry-title">Computer Vision &amp; AI Summer Intern – PixelBotix</span>
+        <span class="entry-date">June 2026</span>
+      </div>
+      <ul class="bullets">
+        <li>Developed practical skills in Computer Vision, image processing, object detection, and AI-based visual recognition through intensive hands-on training and worked on some basic projects.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="entry-row">
+        <span class="entry-title">Industrial Robotics &amp; Automation Training – Birla Carbon &amp; KUKA</span>
+        <span class="entry-date">February 2026</span>
+      </div>
+      <ul class="bullets">
+        <li>Gained exposure to industrial robotic arm programming, Industry 4.0 concepts, automation workflows, and industrial safety practices.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Projects &amp; Research</h2>
+
+    <div class="item-block">
+      <div class="entry-title">Capstone Project: Student Life Concierge AI Agent (Kaggle &amp; Google 5-Day AI Agents Intensive)</div>
+      <div class="project-meta">Concierge Agents Track - Submission Grade | Google Agent Development Kit (ADK), Gemini API, Python, FastAPI, Pytest, Uvicorn</div>
+      <ul class="bullets">
+        <li>Developed a production-grade, hierarchical multi-agent Capstone project to automate academic workload management by parsing student email databases for deadlines and reserving calendar focus blocks.</li>
+        <li>Implemented an input validation and containment layer to protect the agent against adversarial instruction prompts (jailbreak attacks), achieving a 100% security and routing verification score.</li>
+        <li>Built the backend using FastAPI and established a complete test suite with Pytest, using mock services to verify performance under local evaluation checks.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="entry-title">Orion Local AI Assistant</div>
+      <div class="project-meta">Python, FastAPI, WebSockets, Ollama, Llama 3.2, Web Speech API</div>
+      <ul class="bullets">
+        <li>Engineered a fully offline, privacy-first AI assistant by integrating Meta's Llama 3.2 with Ollama for local LLM inference, eliminating cloud dependency while preserving low-latency performance.</li>
+        <li>Built an asynchronous FastAPI backend with WebSocket communication to deliver real-time agent state transitions (Standby, Thinking, Speaking) and complete, lower-latency local response deliveries.</li>
+        <li>Implemented a function-calling (tool-use) framework enabling the AI to autonomously execute backend actions, including live CPU/RAM/disk diagnostics and file read/list operations within a local workspace.</li>
+        <li>Designed a modern, glassmorphic web interface with integrated Speech-to-Text (STT) pipelines for hands-free, voice-driven interaction.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="entry-title">Mechanical Rotary Device [Design Patent Pending]</div>
+      <ul class="bullets">
+        <li>Designed a dual-mode rotary mechanism integrating a Geneva wheel and dog clutch system using SolidWorks; filed for a design patent.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="entry-title">Grip Stability &amp; Stress Analyzer</div>
+      <ul class="bullets">
+        <li>Developed a load cell-based system using HX711 and Arduino Uno to evaluate grip stability and tremor patterns for stress-level estimation.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="entry-title">Adaptive Self-Mutating Authentication System</div>
+      <ul class="bullets">
+        <li>Designed an 8051-based digital lock using hardware timers to generate non-deterministic passwords after each login, mitigating replay attacks and shoulder-surfing.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="entry-title">Single-Axis Gimbal System</div>
+      <ul class="bullets">
+        <li>Engineered a stabilization gimbal using Arduino Nano, MPU-6050, and SG90 servo motor, achieving real-time angular stability through inertial sensing and closed-loop feedback.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Hackathons &amp; Competitions</h2>
+
+    <div class="item-block">
+      <div class="entry-title">Smart India Hackathon 2025 - Finalist</div>
+      <ul class="bullets">
+        <li>Contributed to AI/ML-based identification of cryptographic primitives and protocols in multi-architecture firmware binaries.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="entry-title">H2TS Hackathon 2025 - 2nd Place</div>
+      <ul class="bullets">
+        <li>Collaborated to develop an AI-driven SOS platform for emergency situations.</li>
+      </ul>
+    </div>
+
+    <div class="item-block">
+      <div class="entry-title">VISA 24 Hours Hackathon 2026 - Participant</div>
+      <ul class="bullets">
+        <li>Competed in a 24-hour innovation sprint.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <span class="skill-label">Design Tools:</span>
+        <span class="skill-value">SolidWorks, KiCAD, Canva</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Control Systems:</span>
+        <span class="skill-value">PID Control, Motion Control, Stabilization Mechanisms, Closed-Loop Feedback</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Programming &amp; Analysis:</span>
+        <span class="skill-value">Python (Intermediate), Embedded C (Fundamentals), MATLAB/Simulink (Intermediate)</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Embedded Systems:</span>
+        <span class="skill-value">8051 Architecture (AT89S52), Arduino Uno R3, Arduino Nano, Sensor Interfacing, Timer-Based Logic</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">AI &amp; Agentic Systems:</span>
+        <span class="skill-value">Google Agent Development Kit (ADK), Gemini API, Ollama, Llama 3.2, FastAPI, Pytest, Uvicorn, Prompt Engineering</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Web &amp; Real-Time Systems:</span>
+        <span class="skill-value">WebSockets, Asynchronous Programming, Speech Recognition &amp; Synthesis (Web Speech API)</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Cybersecurity &amp; RE:</span>
+        <span class="skill-value">Binwalk, Ghidra, Ubuntu, Firmware Binary Analysis (experience with tools and workflow)</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-label">Soft Skills:</span>
+        <span class="skill-value">Communication, Anchoring, Content Creation, Critical Thinking, Problem Solving</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Certifications</h2>
+    <ul class="simple-list">
+      <li>AI Capabilities and Limitations – Anthropic</li>
+      <li>Foundations of Prompt Engineering – AWS Training &amp; Certifications</li>
+      <li>Python for Absolute Beginners – Udemy</li>
+      <li>Basics of HTML – Udemy</li>
+      <li>Automation in Manufacturing – NPTEL Elite Certification (67%)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="section-title">Leadership &amp; Extracurriculars</h2>
+
+    <div class="leader-block">
+      <div class="entry-row">
+        <span class="entry-title">Placement Representative</span>
+        <span class="entry-date">2026 – Present</span>
+      </div>
+      <div class="leader-bullet">Serving as liaison between students and placement coordinators for placement-related communications.</div>
+    </div>
+
+    <div class="leader-block">
+      <div class="entry-row">
+        <span class="entry-title">YRC Volunteer</span>
+        <span class="entry-date">2024 – Present</span>
+      </div>
+      <div class="leader-bullet">Helped organize Youth Fest events for visually challenged individuals.</div>
+    </div>
+
+    <div class="leader-block">
+      <div class="entry-row">
+        <span class="entry-title">Member, ARME</span>
+        <span class="entry-date">2024 – Present</span>
+      </div>
+      <div class="leader-bullet">Association of Robotics and Mechatronics Engineers.</div>
+    </div>
+
+    <div class="leader-block">
+      <div class="entry-row">
+        <span class="entry-title">Joint Treasurer, MIT Quill</span>
+        <span class="entry-date">2025 – 26</span>
+      </div>
+      <div class="leader-bullet">Managed treasury operations for the college literary club.</div>
+    </div>
+
+    <div class="leader-block">
+      <div class="entry-row">
+        <span class="entry-title">Office Bearer, SAHA</span>
+        <span class="entry-date">2025 – 26</span>
+      </div>
+      <div class="leader-bullet">Science and Humanities Association — organized and coordinated academic events.</div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Languages</h2>
+    <div class="lang-row">
+      <span>English (Proficient)</span><span class="lang-sep">|</span>
+      <span>Tamil (Proficient)</span><span class="lang-sep">|</span>
+      <span>Telugu (Conversational)</span><span class="lang-sep">|</span>
+      <span>Japanese (Elementary)</span><span class="lang-sep">|</span>
+      <span>Hindi (Elementary)</span>
+    </div>
+  </section>
+
+  <div class="ornament">❖ ❖ ❖</div>
+
+</div>
+</body>
+</html>
