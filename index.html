@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sailakshmi's Portfolio - Dark Academia</title>
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="icon" type="image/png" href="favicon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
@@ -297,7 +297,7 @@
       
       <!-- Reverted to the flowing paragraph style -->
       <div class="text-content">
-        <p>I am an undergraduate student currently maintaining a <span class="highlight">CGPA of 8.99</span> in the <strong>Robotics and Automation</strong> program at the <span class="highlight">Madras Institute of Technology, Anna University</span> (Batch 2024–2028). My engineering foundation is built on exceptional academics, having secured 94.16% in my HSC and 95.2% in my SSLC.</p>
+        <p>I am an undergraduate student currently maintaining a <span class="highlight">CGPA of 8.99</span> in the <strong>Robotics and Automation</strong> program at the <span class="highlight">Madras Institute of Technology, Anna University</span> (Batch 2024–2028). My engineering foundation is built on exceptional academics, having secured 94.16% in my HSC, 95.2% in my SSLC, and 81.82 percentile in <strong>JEE (Main) 2024 Paper 1 (B.E./B.Tech.)</strong> (CRL: 269,607 | OBC-NCL: 94,238).</p>
         <p>My work bridges two main disciplines: <span class="highlight">Embedded Hardware Design</span>—where I utilize Arduino, 8051 arrays, and CAD pipelines to build physical prototypes—and <span class="highlight">Autonomous AI Systems</span>, where I implement modern LLMs, function-calling agents, and Computer Vision frameworks.</p>
         <p>Whether I am analyzing firmware binaries, designing complex Geneva drives in SolidWorks, or architecting secure agentic networks, my ultimate goal remains consistent: to engineer robust, automated systems that solve complex, real-world problems intelligently.</p>
       </div>
@@ -359,7 +359,39 @@
       <div class="section-eyebrow">03. Projects & Builds</div>
       <h2 class="section-title cipher-text" data-original="03. Projects & Builds">03. Projects & Builds</h2>
 
-      <h3 class="subsection-title">Software & AI (GitHub Repositories)</h3>
+      <h3 class="subsection-title">Software & AI</h3>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Web App<br>React & AI</div>
+          <div class="card-body">
+            <h3>Agentic Masters Application Journey Tracker & Resume Analyzer</h3>
+            <span class="org">Privacy-First Architecture</span>
+            <p>Currently designing and building a 100% client-side, privacy-first web application to manage the Masters application pipeline. Integrating a local Resume Intelligence Engine using pdfjs-dist to parse PDFs and extract relevant engineering keywords without transmitting sensitive user data to external servers. Developing an ATS Scoring & Gap-Analysis Algorithm computing compatibility scores and actionable domain-specific milestones. Implementing multi-profile partitioning under a single browser session utilizing deep-copied states in LocalStorage, and designing a dynamic research planner suggesting starter topics and elite global publication venues (e.g., IEEE ICRA, NeurIPS).</p>
+            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+              <span class="tag">React</span><span class="tag">Vite</span><span class="tag">LocalStorage API</span><span class="tag">PDF.js</span><span class="tag">CSS3</span><span class="tag" style="color: #e3b965; border-color: #e3b965; background: rgba(227, 185, 101, 0.1);">In Progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tilt-card">
+        <div class="tilt-card-content">
+          <div class="card-meta">Local AI<br>Software</div>
+          <div class="card-body">
+            <h3>Orion Local AI Assistant</h3>
+            <span class="org">Independent Architecture</span>
+            <p>Currently engineering a fully offline, privacy-first AI assistant by integrating Meta's Llama 3.2 with Ollama. Building an asynchronous FastAPI backend with WebSocket communication to deliver real-time agent state transitions. Implementing a function-calling framework enabling the AI to autonomously execute live CPU/RAM diagnostics.</p>
+            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+              <span class="tag">Llama 3.2</span><span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">Web Speech API</span><span class="tag" style="color: #e3b965; border-color: #e3b965; background: rgba(227, 185, 101, 0.1);">In Progress</span>
+            </div>
+            <a href="https://github.com/Saibts/orion-local-ai" target="_blank" class="btn-secondary">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              View Repository
+            </a>
+          </div>
+        </div>
+      </div>
 
       <div class="tilt-card">
         <div class="tilt-card-content">
@@ -372,24 +404,6 @@
               <span class="tag">Google ADK</span><span class="tag">Gemini API</span><span class="tag">FastAPI</span><span class="tag">Pytest</span>
             </div>
             <a href="https://github.com/Saibts/student-life-concierge-app" target="_blank" class="btn-secondary">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-              View Repository
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="tilt-card">
-        <div class="tilt-card-content">
-          <div class="card-meta">Local AI<br>Software</div>
-          <div class="card-body">
-            <h3>Orion Local AI Assistant</h3>
-            <span class="org">Independent Architecture</span>
-            <p>Engineered a fully offline, privacy-first AI assistant by integrating Meta's Llama 3.2 with Ollama. Built an asynchronous FastAPI backend with WebSocket communication to deliver real-time agent state transitions. Implemented a function-calling framework enabling the AI to autonomously execute live CPU/RAM diagnostics.</p>
-            <div class="tags-wrapper" style="margin-bottom: 1rem;">
-              <span class="tag">Llama 3.2</span><span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">Web Speech API</span>
-            </div>
-            <a href="https://github.com/Saibts/orion-local-ai" target="_blank" class="btn-secondary">
               <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
               View Repository
             </a>
@@ -437,7 +451,7 @@
           <div class="card-body">
             <h3>Grip Stability & Stress Analyzer</h3>
             <span class="org">Sensor Integration</span>
-            <p>Developed a non-invasive load cell-based system using HX711 and Arduino Uno to evaluate grip stability and tremor patterns for stress-level estimation. Configured 24-bit ADC sampling rates to correlate time-domain force frequency shifts.</p>
+            <p>Developed a non-invasive load cell-based system using HX711 and Arduino Uno to evaluate grip stability and tremor patterns for stress-level estimation.</p>
             <div class="tags-wrapper">
               <span class="tag">Arduino Uno R3</span><span class="tag">HX711</span><span class="tag">Load Cell</span>
             </div>
@@ -552,7 +566,7 @@
         </div>
 
         <div class="skill-category">
-          <h4>Cybersecurity & RE</h4>
+          <h4>Cybersecurity & RE Workflow</h4>
           <div class="tags-wrapper">
             <span class="tag">Firmware Binary Analysis</span><span class="tag">Binwalk</span><span class="tag">Ghidra</span><span class="tag">Ubuntu Linux</span>
           </div>
@@ -769,13 +783,8 @@
 
   // ── 5. RESUME MODAL HANDLER ──
   function handleResumeClick() {
-    const isMobile = window.matchMedia("(max-width: 768px)").matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    if (isMobile) {
-      window.open('Sailakshmi_BT_Resume.html', '_blank'); 
-    } else {
-      document.getElementById('resume-viewer').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
+    document.getElementById('resume-viewer').classList.add('active');
+    document.body.style.overflow = 'hidden';
   }
 
   function closeResume() {
