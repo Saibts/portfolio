@@ -10,12 +10,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Courier+Prime:ital,wght@0,400;0,700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #141210; 
-    --bg-panel: #221f1d;
-    --text-main: #e8e4dc;
-    --text-faded: #a39c94;
-    --gold: #cfa858; 
-    --burgundy: #5c1a1a;
+    --bg: #100f0d;
+    --bg-panel: #1f1914;
+    --text-main: #e4d9c4;
+    --text-faded: #9c8b7a;
+    --gold: #b69556;
+    --burgundy: #5d1f1f;
+    --border: rgba(255, 235, 195, 0.12);
+    --panel-shadow: 0 26px 55px rgba(0, 0, 0, 0.45);
+    --highlight-glow: rgba(190, 154, 95, 0.14);
   }
 
   * {
@@ -30,7 +33,6 @@
     font-family: 'Lora', serif;
     font-size: 16px;
     line-height: 1.6;
-    overflow-x: hidden;
   }
 
   /* ── CUSTOM SEAMLESS CSS CURSORS ── */
@@ -43,13 +45,37 @@
   }
 
   body {
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(191, 148, 65, 0.12), transparent 18%),
+      radial-gradient(circle at 80% 12%, rgba(158, 115, 56, 0.08), transparent 14%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 48%, rgba(0, 0, 0, 0.14));
+    background-attachment: fixed;
     padding: 56px 20px 80px;
+    color: var(--text-main);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at top center, rgba(255, 232, 168, 0.04), transparent 22%),
+                radial-gradient(circle at calc(100% - 4rem) 20%, rgba(255, 185, 95, 0.02), transparent 10%);
+    z-index: 0;
   }
 
   .page {
-    max-width: 800px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 820px;
     margin: 0 auto;
-    background-color: var(--bg);
+    background-color: rgba(24, 18, 12, 0.96);
+    border: 1px solid rgba(255, 235, 195, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.48);
+    padding: 34px 30px;
   }
 
   /* ===== Header ===== */
@@ -67,6 +93,7 @@
     letter-spacing: 0.04em;
     color: var(--gold);
     text-transform: uppercase;
+    text-shadow: 0 5px 18px rgba(207, 168, 88, 0.14);
   }
 
   .contact-line {
@@ -110,6 +137,10 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    padding: 0.55rem 0.85rem;
+    background: rgba(207, 168, 88, 0.06);
+    border-radius: 999px;
+    border: 1px solid rgba(207, 168, 88, 0.08);
   }
 
   h2.section-title::after {
@@ -329,10 +360,66 @@
     }
   }
 
-  @media (max-width: 600px) {
-    h1.name { font-size: 1.9rem; }
-    .skill-label { min-width: 100%; }
-    .entry-row { flex-direction: column; align-items: flex-start; }
+  @media (max-width: 640px) {
+    body {
+      font-size: 14px;
+      padding: 28px 14px 50px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 0 6px;
+    }
+
+    h1.name {
+      font-size: 2rem;
+    }
+
+    h2.section-title {
+      font-size: 1rem;
+    }
+
+    .contact-line {
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    .entry-title {
+      font-size: 0.96rem;
+    }
+
+    .entry-sub,
+    .entry-date,
+    .project-meta,
+    .skill-value,
+    .lang-row,
+    .simple-list li,
+    .leader-bullet,
+    .summary-text,
+    ul.bullets li {
+      font-size: 0.88rem;
+    }
+
+    .entry-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    .skill-label {
+      min-width: 100%;
+      font-size: 0.9rem;
+    }
+
+    .skill-value {
+      min-width: 0;
+    }
+
+    .lang-row {
+      gap: 6px;
+    }
   }
 </style>
 </head>
@@ -368,7 +455,7 @@
       <ul class="bullets">
         <li>CGPA: 8.99 / 10.0 (current)</li>
         <li>Higher Secondary Certificate (2024): 94.16% | Secondary School Certificate (2022): 95.2%</li>
-        <li>JEE (Main) 2024: 81.82 percentile</li>
+        <li>JEE (Main) 2024: 81.82 percentile (CRL: 269,607 | OBC-NCL: 94,238)</li>
       </ul>
     </div>
   </section>
@@ -470,14 +557,14 @@
     <div class="item-block">
       <div class="entry-title">Smart India Hackathon 2025 – Finalist</div>
       <ul class="bullets">
-        <li>Built an AI/ML-based tool to identify cryptographic primitives and protocols in multi-architecture firmware binaries using static analysis.</li>
+        <li>Worked within a cross-functional team to develop an AI/ML-based system for identifying cryptographic primitives and protocols in multi-architecture firmware binaries, focusing on the reverse engineering workflow and data analysis. </li>
       </ul>
     </div>
 
     <div class="item-block">
       <div class="entry-title">H2TS Hackathon 2025 – 2nd Place</div>
       <ul class="bullets">
-        <li>Developed an AI-driven SOS platform for emergency response coordination; placed 2nd out of the competing teams.</li>
+        <li>Collaborated with my team to build an AI-driven SOS platform for emergency response coordination; placed 2nd out of the competing teams. </li>
       </ul>
     </div>
 
@@ -555,7 +642,7 @@
     </div>
     <div class="leader-block">
       <div class="entry-row">
-        <span class="entry-title">Office Bearer, SAHA</span>
+        <span class="entry-title">Office Bearer and Content Writer, SAHA</span>
         <span class="entry-date">2025 – 26</span>
       </div>
       <div class="leader-bullet">Science and Humanities Association – organized academic events.</div>
@@ -573,6 +660,20 @@
         <span class="entry-date">2024 – Present</span>
       </div>
       <div class="leader-bullet">Organized Youth Fest events for visually challenged individuals.</div>
+    </div>
+    <div class="leader-block">
+      <div class="entry-row">
+        <span class="entry-title">Assistant School Pupil Leader</span>
+        <span class="entry-date">2019 – 20</span>
+      </div>
+      <div class="leader-bullet">Exercised leadership and administrative support for student body operations and school-wide event coordination.</div>
+    </div>
+    <div class="leader-block">
+      <div class="entry-row">
+        <span class="entry-title">Master of Ceremonies (MC)</span>
+        <span class="entry-date">2017 – 20</span>
+      </div>
+      <div class="leader-bullet">Served as a professional host for multiple school events, developing public speaking and audience engagement skills. </div>
     </div>
   </section>
 
