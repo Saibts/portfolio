@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sailakshmi's Portfolio - Dark Academia</title>
-<link rel="icon" type="image/png" href="favicon.png" />
+<title>Sailakshmi's Portfolio - Cyber-Bio Tech</title>
+<link rel="icon" type="image/jpg" href="favicon.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Dark Academia / Brass Palette */
-    --bg-main: #141210; 
-    --bg-surface: #221f1d; 
-    --bg-card: rgba(34, 31, 29, 0.6);
-    --bg-hover: rgba(54, 49, 45, 0.4); 
-    --text-main: #e8e4dc; 
-    --text-muted: #a39c94; 
-    --cyan: #cfa858; /* Antique Brass/Gold */
-    --cyan-dim: rgba(207, 168, 88, 0.1);
-    --indigo: #5c1a1a; /* Aged Burgundy */
-    --border: #4a443d; 
-    --shadow-sm: 0 4px 6px rgba(0,0,0,0.4);
-    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.6), 0 6px 6px rgba(0, 0, 0, 0.4);
+    /* Cyber-Bio / Synth-Tech Palette */
+    --bg-main: #050914; 
+    --bg-surface: #0a1128; 
+    --bg-card: rgba(10, 17, 40, 0.7);
+    --bg-hover: rgba(0, 240, 255, 0.1); 
+    --text-main: #e0fbfc; 
+    --text-muted: #8d99ae; 
+    --cyan: #00f0ff; /* Neon Cyan */
+    --cyan-dim: rgba(0, 240, 255, 0.15);
+    --bio-green: #39ff14; /* Bio-luminescent Green */
+    --border: #1b263b; 
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.6);
+    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.2);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,28 +30,32 @@
 
   /* ── SEAMLESS CSS CURSOR ── */
   body, html {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><polygon points="2,2 10,24 14,14 24,10" fill="%23141210" stroke="%23cfa858" stroke-width="1.5" stroke-linejoin="round"/><line x1="2" y1="2" x2="14" y2="14" stroke="%23cfa858" stroke-width="1.5"/><circle cx="14" cy="14" r="2" fill="%235c1a1a" stroke="%23cfa858" stroke-width="1"/></svg>') 2 2, auto;
+    cursor: crosshair;
   }
   a, button, .nav-item, .tilt-card, .cert-link {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><circle cx="20" cy="20" r="18" fill="%23d4af37" opacity="0.15"/><circle cx="20" cy="20" r="12" fill="%23d4af37" opacity="0.3"/><circle cx="20" cy="20" r="6" fill="%23d4af37" opacity="0.6"/><polygon points="8,8 16,30 20,20 30,16" fill="%23ffffff" stroke="%23d4af37" stroke-width="2" stroke-linejoin="round"/><line x1="8" y1="8" x2="20" y2="20" stroke="%237f1d1d" stroke-width="1.5"/><circle cx="20" cy="20" r="2" fill="%23d4af37" stroke="%237f1d1d" stroke-width="1"/></svg>') 8 8, pointer !important;
+    cursor: pointer !important;
   }
 
   body {
     background: var(--bg-main);
     color: var(--text-main);
-    font-family: 'Lora', serif;
+    font-family: 'Rajdhani', sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    background-image: 
+      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
   }
 
   /* ── MIDNIGHT SPOTLIGHT ── */
   body::before {
     content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle 600px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(207, 168, 88, 0.06), transparent 80%);
+    background: radial-gradient(circle 600px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(0, 240, 255, 0.05), transparent 80%);
     pointer-events: none; z-index: 9000; transition: background 0.1s ease;
   }
 
-  /* ── LAYOUT FRAMEWORK (Split Screen) ── */
+  /* ── LAYOUT FRAMEWORK ── */
   .layout-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -78,67 +82,84 @@
   }
 
   /* ── ENIGMA CIPHER ── */
-  /* Fallback visibility ensures the text doesn't disappear if JS fails */
   .cipher-text { opacity: 1; transition: opacity 0.4s ease; }
   .cipher-text.loading { opacity: 0; }
 
   /* ── LEFT PANE STYLES ── */
   .hero-name {
-    font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 4vw, 3.5rem);
-    font-weight: 700; line-height: 1.1; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: -0.02em;
-    display: block; /* Forces visibility */
+    font-family: 'Orbitron', sans-serif; font-size: clamp(2.8rem, 4vw, 3.5rem);
+    font-weight: 900; line-height: 1.1; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: 0.02em;
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+    display: block; 
   }
   .hero-role {
-    font-family: 'Courier Prime', monospace; font-size: 1rem; color: var(--cyan);
-    margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.05em;
+    font-family: 'Fira Code', monospace; font-size: 1rem; color: var(--bio-green);
+    margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em;
   }
-  .hero-desc { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; max-width: 380px; margin-bottom: 2rem; }
+  .hero-desc { color: var(--text-muted); font-size: 1.15rem; line-height: 1.7; max-width: 380px; margin-bottom: 2rem; }
 
   .nav-links { display: flex; flex-direction: column; gap: 1.25rem; list-style: none; margin-top: 2rem; }
   .nav-item {
     display: flex; align-items: center; gap: 1rem; color: var(--text-muted);
-    font-family: 'Courier Prime', monospace; font-size: 0.85rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s ease;
+    font-family: 'Fira Code', monospace; font-size: 0.9rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.15em; text-decoration: none; transition: all 0.3s ease;
   }
-  .nav-item::before { content: ''; width: 30px; height: 1px; background: var(--border); transition: all 0.3s ease; }
-  .nav-item:hover, .nav-item.active { color: var(--cyan); transform: translateX(5px); }
-  .nav-item:hover::before, .nav-item.active::before { width: 60px; background: var(--cyan); }
+  .nav-item::before { content: ''; width: 30px; height: 2px; background: var(--border); transition: all 0.3s ease; }
+  .nav-item:hover, .nav-item.active { color: var(--cyan); transform: translateX(10px); text-shadow: 0 0 8px rgba(0, 240, 255, 0.5); }
+  .nav-item:hover::before, .nav-item.active::before { width: 60px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
 
-  .social-links { display: flex; align-items: center; gap: 1.25rem; margin-top: 3rem; margin-bottom: 2rem;}
+  .social-links { display: flex; align-items: center; gap: 1.25rem; margin-top: 3rem; margin-bottom: 1.5rem;}
   .social-icon { color: var(--text-muted); transition: all 0.3s ease; display: inline-flex; }
-  .social-icon:hover { color: var(--cyan); transform: translateY(-3px); }
+  .social-icon:hover { color: var(--bio-green); transform: translateY(-3px); filter: drop-shadow(0 0 5px var(--bio-green)); }
   .social-icon svg { width: 22px; height: 22px; }
 
   .btn-primary {
-    display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Courier Prime', monospace;
-    font-size: 0.85rem; font-weight: 700; color: var(--bg-main); background: var(--cyan);
-    padding: 0.6rem 1.2rem; border-radius: 4px; text-transform: uppercase; text-decoration: none;
-    letter-spacing: 0.05em; transition: all 0.3s ease; border: none; outline: none;
+    display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Fira Code', monospace;
+    font-size: 0.9rem; font-weight: 700; color: var(--bg-main); background: var(--cyan);
+    padding: 0.6rem 1.2rem; border-radius: 0px; border: 1px solid var(--cyan); text-transform: uppercase; text-decoration: none;
+    letter-spacing: 0.1em; transition: all 0.3s ease; outline: none; cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
   }
-  .btn-primary:hover { background: #e3b965; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(207, 168, 88, 0.3); }
+  .btn-primary:hover { background: transparent; color: var(--cyan); transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 240, 255, 0.6); }
 
   .btn-secondary {
-    display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Courier Prime', monospace;
-    font-size: 0.75rem; font-weight: 700; color: var(--text-main); background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 4px; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Fira Code', monospace;
+    font-size: 0.8rem; font-weight: 700; color: var(--text-main); background: rgba(0, 240, 255, 0.05);
+    border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 0px; text-transform: uppercase;
     text-decoration: none; letter-spacing: 0.05em; transition: all 0.3s ease;
   }
-  .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+  .btn-secondary:hover { border-color: var(--cyan); color: var(--bg-main); background: var(--cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
+
+  .project-filter-switcher {
+    display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;
+  }
+  .branch-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'Fira Code', monospace; font-size: 0.8rem; font-weight: 700;
+    color: var(--text-main); background: transparent; border: 1px solid var(--border);
+    padding: 0.55rem 1rem; border-radius: 0px; text-transform: uppercase;
+    letter-spacing: 0.1em; cursor: pointer; transition: all 0.25s ease;
+  }
+  .branch-btn:hover { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); }
+  .branch-btn.active { background: var(--cyan); border-color: var(--cyan); color: var(--bg-main); box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
+
+  .project-branch-group { display: none; }
+  .project-branch-group.active { display: block; }
 
   .cert-link {
-    display: inline-flex; align-items: center; gap: 0.3rem; font-family: 'Courier Prime', monospace;
-    font-size: 0.75rem; font-weight: 700; color: var(--cyan); background: var(--cyan-dim);
-    border: 1px solid rgba(207, 168, 88, 0.3); padding: 0.3rem 0.6rem; border-radius: 4px;
+    display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Fira Code', monospace;
+    font-size: 0.8rem; font-weight: 700; color: var(--bio-green); background: rgba(57, 255, 20, 0.05);
+    border: 1px solid rgba(57, 255, 20, 0.3); padding: 0.4rem 0.8rem; border-radius: 0px;
     text-decoration: none; transition: all 0.3s ease; margin-right: 0.5rem; margin-bottom: 0.5rem;
   }
-  .cert-link:hover { background: rgba(207, 168, 88, 0.2); border-color: var(--cyan); transform: translateY(-1px); }
+  .cert-link:hover { background: rgba(57, 255, 20, 0.15); border-color: var(--bio-green); transform: translateY(-1px); box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
 
   /* ── RIGHT PANE STYLES ── */
   section { margin-bottom: 6rem; scroll-margin-top: 6rem; }
   .section-eyebrow {
-    display: none; font-family: 'Courier Prime', monospace; font-size: 0.85rem; color: var(--cyan);
+    display: none; font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--cyan);
     text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; position: sticky;
-    top: 0; background: rgba(20, 18, 16, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 20;
+    top: 0; background: rgba(5, 9, 20, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 20;
     border-bottom: 1px solid var(--border);
   }
   @media (max-width: 1023px) { .section-eyebrow { display: block; } }
@@ -152,13 +173,18 @@
   }
 
   .section-title {
-    font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 2.5rem);
-    font-weight: 700; color: var(--cyan); margin-bottom: 2rem; font-style: italic; line-height: 1.2;
-    border-bottom: 1px solid var(--border); padding-bottom: 1rem;
+    font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 3vw, 2.5rem);
+    font-weight: 900; color: var(--text-main); margin-bottom: 2rem; line-height: 1.2;
+    border-bottom: 2px solid var(--border); padding-bottom: 1rem;
+    position: relative;
+  }
+  .section-title::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 2px; background: var(--cyan);
+    box-shadow: 0 0 10px var(--cyan);
   }
   
   .subsection-title {
-    font-family: 'Courier Prime', monospace; font-size: 0.9rem; color: var(--text-muted);
+    font-family: 'Fira Code', monospace; font-size: 1rem; color: var(--cyan);
     letter-spacing: 0.1em; text-transform: uppercase; margin: 3rem 0 1.5rem;
     display: flex; align-items: center; gap: 0.75rem;
   }
@@ -166,68 +192,61 @@
     content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent);
   }
 
-  .text-content p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; text-align: justify;}
-  .highlight { color: var(--text-main); font-weight: 500; }
+  .text-content p { color: var(--text-muted); font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem; text-align: justify;}
+  .highlight { color: var(--text-main); font-weight: 700; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
 
-  /* ── 3D BRASS TILT CARDS ── */
+  /* ── 3D CYBER TILT CARDS ── */
   .tilt-card {
     display: grid; grid-template-columns: 1fr; gap: 1rem;
-    padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 6px;
-    background: transparent; border: 1px solid transparent;
+    padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 0px;
+    background: rgba(10, 17, 40, 0.4); border: 1px solid var(--border);
     transition: transform 0.1s ease, background 0.3s ease, border-color 0.3s ease;
     text-decoration: none; position: relative; overflow: hidden; transform-style: preserve-3d;
   }
   @media (min-width: 640px) { .tilt-card { grid-template-columns: 130px 1fr; gap: 1.5rem; } }
   
-  .tilt-card:hover { background: var(--bg-card); border-color: rgba(207, 168, 88, 0.3); box-shadow: var(--shadow-md); }
+  .tilt-card:hover { background: var(--bg-card); border-color: var(--cyan); box-shadow: var(--shadow-md); }
   .tilt-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(105deg, transparent 20%, rgba(207, 168, 88, 0.12) 25%, rgba(207, 168, 88, 0.04) 30%, transparent 40%);
+    background: linear-gradient(105deg, transparent 20%, rgba(0, 240, 255, 0.1) 25%, rgba(0, 240, 255, 0.02) 30%, transparent 40%);
     background-size: 200% 200%; background-position: var(--glare-x, 100%) var(--glare-y, 100%);
     pointer-events: none; transition: background-position 0.1s ease; z-index: 2;
   }
   .tilt-card-content { transform: translateZ(30px); display: contents; } 
 
   .card-meta {
-    font-family: 'Courier Prime', monospace; font-size: 0.8rem; color: var(--text-muted);
-    text-transform: uppercase; margin-top: 0.25rem; line-height: 1.5;
+    font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--bio-green);
+    text-transform: uppercase; margin-top: 0.25rem; line-height: 1.5; font-weight: 700;
   }
   .card-body h3 {
-    font-family: 'Playfair Display', serif; font-size: 1.25rem; font-weight: 700;
-    color: var(--text-main); margin-bottom: 0.4rem; transition: color 0.2s;
+    font-family: 'Orbitron', sans-serif; font-size: 1.3rem; font-weight: 700;
+    color: var(--text-main); margin-bottom: 0.4rem; transition: color 0.2s; letter-spacing: 0.05em;
   }
   .tilt-card:hover .card-body h3 { color: var(--cyan); }
-  .card-body .org { font-style: italic; color: var(--text-muted); margin-bottom: 0.75rem; display: block; font-size: 0.95rem; }
-  .card-body p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .card-body .org { font-family: 'Fira Code', monospace; color: var(--text-muted); margin-bottom: 0.75rem; display: block; font-size: 0.9rem; text-transform: uppercase; }
+  .card-body p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
 
   /* ── TAGS & LISTS ── */
   .tags-wrapper { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .tag {
-    font-family: 'Courier Prime', monospace; font-size: 0.75rem; color: var(--cyan);
-    background: var(--cyan-dim); padding: 0.3rem 0.6rem; border-radius: 2px; border: 1px solid rgba(207, 168, 88, 0.2);
+    font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--cyan);
+    background: var(--cyan-dim); padding: 0.3rem 0.6rem; border-radius: 0px; border: 1px solid rgba(0, 240, 255, 0.3);
   }
 
   .skill-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
   @media (min-width: 640px) { .skill-grid { grid-template-columns: 1fr 1fr; } }
   .skill-category { margin-bottom: 1.5rem; }
-  .skill-category h4 { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text-main); margin-bottom: 0.5rem; font-style: italic;}
-  .skill-category::before { content: ''; display: block; width: 20px; height: 1px; background: var(--cyan); margin-bottom: 0.5rem; }
+  .skill-category h4 { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: 0.05em;}
+  .skill-category::before { content: ''; display: block; width: 30px; height: 2px; background: var(--bio-green); margin-bottom: 0.75rem; box-shadow: 0 0 5px var(--bio-green); }
 
   .simple-list { list-style: none; padding: 0; }
   .simple-list li {
-    font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.75rem;
-    padding-left: 1.2rem; position: relative;
+    font-size: 1.05rem; color: var(--text-muted); margin-bottom: 0.75rem;
+    padding-left: 1.5rem; position: relative;
   }
   .simple-list li::before {
-    content: "❖"; position: absolute; left: 0; color: var(--cyan); font-size: 0.7rem; top: 3px;
+    content: ">"; font-family: 'Fira Code', monospace; position: absolute; left: 0; color: var(--cyan); font-weight: 900;
   }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 4rem;
-    font-family: 'Courier Prime', monospace; font-size: 0.85rem; color: var(--text-muted); text-align: center;
-  }
-  footer span { color: var(--cyan); }
 
   /* ── RESUME VIEWER MODAL ── */
   .resume-fullscreen {
@@ -235,34 +254,99 @@
   }
   .resume-fullscreen.active { display: flex; }
   @keyframes fadeInSub { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
-  .resume-toolbar { height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; background: var(--bg-surface); border-bottom: 1px solid var(--border); }
+  .resume-toolbar { height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; background: var(--bg-surface); border-bottom: 1px solid var(--cyan); box-shadow: 0 0 15px rgba(0,240,255,0.2); }
   .resume-pdf-container { flex: 1; position: relative; width: 100%; height: 100%; overflow: hidden; }
   .resume-pdf-container iframe { width: 100%; height: 100%; border: none; position: absolute; inset: 0; background: var(--bg-main); }
-  .back-text-btn { background: none; border: none; color: var(--text-main); font-family: 'Courier Prime', monospace; font-weight: 700; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; }
-  .back-text-btn:hover { color: var(--cyan); }
+  .back-text-btn { background: none; border: none; color: var(--text-main); font-family: 'Fira Code', monospace; font-weight: 700; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
+  .back-text-btn:hover { color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
 
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 4rem;
+    font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--text-muted); text-align: center;
+  }
+  footer span { color: var(--cyan); font-weight: 700; text-shadow: 0 0 5px rgba(0, 240, 255, 0.4); }
+
+  /* ── SYSTEM COMMAND LINE TERMINAL CLI WIDGET ── */
+  .terminal-card {
+    background-color: rgba(5, 9, 20, 0.95);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--cyan);
+    border-radius: 0px;
+    padding: 1.5rem 1rem 1rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+  }
+  .terminal-card::before { content: 'SYS_TERM // SAIL_OS // ROOT ACCESS'; position: absolute; top: -10px; left: 10px; font-size: 0.75rem; color: var(--bg-main); background: var(--cyan); padding: 2px 8px; font-weight: 700; }
+  
+  .terminal-output { height:160px; overflow-y:auto; margin-top:0.5rem; margin-bottom:0.6rem; padding-right:6px; }
+  .terminal-output::-webkit-scrollbar { width: 4px; }
+  .terminal-output::-webkit-scrollbar-thumb { background: var(--cyan); }
+  
+  .terminal-line { margin-bottom:0.4rem; white-space:pre-wrap; color:var(--text-muted); }
+  .terminal-line.cmd { color: var(--text-main); font-weight:700; }
+  .terminal-line.system { color: var(--bio-green); }
+  .terminal-line.error { color:#ff003c; text-shadow: 0 0 5px rgba(255,0,60,0.5); }
+  .terminal-line.success { color:var(--cyan); }
+
+  .terminal-input-row { display:flex; gap:0.6rem; align-items:center; border-top:1px dashed var(--border); padding-top:0.75rem; }
+  .terminal-prompt { color: var(--cyan); min-width:180px; font-weight:700; }
+  .terminal-input { background:transparent; border:none; outline:none; color:var(--text-main); font-family:'Fira Code', monospace; flex:1; caret-color:var(--bio-green); }
+
+  /* ── INTRO OVERLAY / LANDING SCREEN ── */
+  .intro-overlay { position: fixed; inset: 0; background: rgba(5, 9, 20, 0.98); backdrop-filter: blur(5px); display:flex; align-items:center; justify-content:center; z-index:20000; transition: opacity 0.35s ease, visibility 0.35s; padding: 1.5rem; }
+  .intro-overlay.hidden { opacity:0; visibility:hidden; pointer-events:none; }
+  .intro-card { background: transparent; border: 1px solid var(--cyan); padding: 3rem 2.25rem; border-radius: 0px; text-align:center; max-width:680px; width: 100%; box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); display: flex; flex-direction: column; align-items: center; gap: 1rem; position: relative; }
+  .intro-card::before, .intro-card::after { content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid var(--cyan); }
+  .intro-card::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+  .intro-card::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+  
+  .intro-emblem { width:80px; height:80px; margin: 0 auto 0; display:flex; align-items:center; justify-content:center; border-radius:0%; background: rgba(0, 240, 255, 0.05); border:1px solid var(--cyan); opacity: 0; transform: translateY(10px); animation: fadeUp 0.8s ease forwards 0.1s; box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.2); }
+  .intro-card h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.8rem, 2.6vw, 2.5rem); margin: 0; color: var(--text-main); letter-spacing: 0.05em; opacity: 0; transform: translateY(12px); animation: fadeUp 0.8s ease forwards 0.2s; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
+  .intro-card p { font-family: 'Fira Code', monospace; color: var(--bio-green); margin: 0; font-size: 1rem; max-width: 580px; line-height: 1.7; opacity: 0; transform: translateY(12px); animation: fadeUp 0.8s ease forwards 0.35s; }
+  .intro-sub { color: var(--text-muted); font-size:0.9rem; margin: 0; display: inline-flex; align-items: center; justify-content: center; gap: 0.2rem; flex-wrap: wrap; opacity: 0; transform: translateY(12px); animation: fadeUp 0.8s ease forwards 0.5s; font-family: 'Fira Code', monospace; }
+  .intro-sub-text { opacity: 0; display: inline-block; }
+  .intro-card .btn-primary { margin-top: 1.5rem; opacity: 0; transform: translateY(16px); animation: fadeUp 0.8s ease forwards 0.65s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 </style>
 </head>
 <body>
 
+  <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true">
+    <div class="intro-card">
+      <div class="intro-emblem" aria-hidden="true">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="square"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h1>SYS_BOOT // SAILAKSHMI</h1>
+      <p data-typed="Initializing hardware protocols... Connecting to neural network... Portfolio ready.">Initializing hardware protocols... Connecting to neural network... Portfolio ready.</p>
+      <div class="intro-sub"><span class="intro-sub-text" data-text="Press Enter or click to execute primary interface."></span></div>
+      <button id="enterBtn" class="btn-primary">Execute [Enter]</button>
+    </div>
+  </div>
+
 <div class="layout-container">
   
-  <!-- ================= LEFT PANE ================= -->
   <header class="left-pane">
     <div>
-      <!-- Fixed the name heading to ensure it is always visible -->
       <h1 class="hero-name cipher-text" data-original="Sailakshmi B T">Sailakshmi B T</h1>
       <div class="hero-role">Robotics & Automation Engineer</div>
       <p class="hero-desc">Building intelligent systems by integrating autonomous AI agents with embedded hardware. I specialize in exploring new engineering frontiers—from rapid prototyping to localized AI deployments—to solve complex, real-world challenges.</p>
       
       <nav>
         <ul class="nav-links">
-          <li><a href="#about" class="nav-item active">01. About Me</a></li>
-          <li><a href="#experience" class="nav-item">02. Experience</a></li>
-          <li><a href="#projects" class="nav-item">03. Projects & Builds</a></li>
-          <li><a href="#hackathons" class="nav-item">04. Hackathons</a></li>
-          <li><a href="#skills" class="nav-item">05. Technical Skills</a></li>
-          <li><a href="#leadership" class="nav-item">06. Leadership & Certs</a></li>
+          <li><a href="#about" class="nav-item active">01_About_Me</a></li>
+          <li><a href="#experience" class="nav-item">02_Experience</a></li>
+          <li><a href="#projects" class="nav-item">03_Projects_&_Builds</a></li>
+          <li><a href="#hackathons" class="nav-item">04_Hackathons</a></li>
+          <li><a href="#skills" class="nav-item">05_Tech_Specs</a></li>
+          <li><a href="#leadership" class="nav-item">06_Logs_&_Certs</a></li>
         </ul>
       </nav>
     </div>
@@ -276,26 +360,33 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
         </a>
         <a href="mailto:sailakshmibt2006@gmail.com" class="social-icon" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
         </a>
       </div>
 
-      <button onclick="handleResumeClick()" class="btn-primary">
+      <button onclick="handleResumeClick()" class="btn-primary" style="margin-bottom: 2rem;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         View Full Resume
       </button>
+      
+      <div class="terminal-card" id="sailos-terminal">
+        <div class="terminal-output" id="terminal-out">
+          <div class="terminal-line system">SAIL_OS Terminal Initialized. Type 'help' to begin.</div>
+        </div>
+        <div class="terminal-input-row">
+          <div class="terminal-prompt">root@sail-core:~$</div>
+          <input id="terminal-in" class="terminal-input" type="text" autocomplete="off" placeholder="type command..." />
+        </div>
+      </div>
     </div>
   </header>
 
-  <!-- ================= RIGHT PANE ================= -->
   <main class="right-pane">
-    
-    <!-- 1. ABOUT -->
-    <section id="about" class="active-section">
+
+    <section id="about">
       <div class="section-eyebrow">01. About Me</div>
-      <h2 class="section-title cipher-text" data-original="01. About Me">01. About Me</h2>
+      <h2 class="section-title cipher-text" data-original="01. Profile_Data">01. Profile_Data</h2>
       
-      <!-- Reverted to the flowing paragraph style -->
       <div class="text-content">
         <p>I am an undergraduate student currently maintaining a <span class="highlight">CGPA of 8.99</span> in the <strong>Robotics and Automation</strong> program at the <span class="highlight">Madras Institute of Technology, Anna University</span> (Batch 2024–2028). My engineering foundation is built on exceptional academics, having secured 94.16% in my HSC, 95.2% in my SSLC, and 81.82 percentile in <strong>JEE (Main) 2024 Paper 1 (B.E./B.Tech.)</strong> (CRL: 269,607 | OBC-NCL: 94,238).</p>
         <p>My work bridges two main disciplines: <span class="highlight">Embedded Hardware Design</span>—where I utilize Arduino, 8051 arrays, and CAD pipelines to build physical prototypes—and <span class="highlight">Autonomous AI Systems</span>, where I implement modern LLMs, function-calling agents, and Computer Vision frameworks.</p>
@@ -315,10 +406,9 @@
       </div>
     </section>
 
-    <!-- 2. EXPERIENCE -->
     <section id="experience">
       <div class="section-eyebrow">02. Experience</div>
-      <h2 class="section-title cipher-text" data-original="02. Experience">02. Experience</h2>
+      <h2 class="section-title cipher-text" data-original="02. Active_Logs">02. Active_Logs</h2>
       
       <div class="tilt-card">
         <div class="tilt-card-content">
@@ -353,23 +443,32 @@
       </div>
     </section>
 
-    <!-- 3. PROJECTS -->
     <section id="projects">
       <div class="section-eyebrow">03. Projects & Builds</div>
-      <h2 class="section-title cipher-text" data-original="03. Projects & Builds">03. Projects & Builds</h2>
+      <h2 class="section-title cipher-text" data-original="03. Schematics_&_Code">03. Schematics_&_Code</h2>
 
-      <h3 class="subsection-title">Software & AI</h3>
+      <div class="project-filter-switcher">
+        <button type="button" class="branch-btn active" data-branch="software">Software & AI</button>
+        <button type="button" class="branch-btn" data-branch="hardware">Hardware & Embedded</button>
+      </div>
 
-      <div class="tilt-card">
+      <div class="project-branch-group active" data-branch-group="software">
+        <h3 class="subsection-title">Software & AI</h3>
+        
+        <div class="tilt-card">
         <div class="tilt-card-content">
           <div class="card-meta">Web App<br>React & AI</div>
           <div class="card-body">
-            <h3>Agentic Masters Application Journey Tracker & Resume Analyzer</h3>
+            <h3>Masters and Academic Tracker</h3>
             <span class="org">Privacy-First Architecture</span>
             <p>Developed a privacy-first, fully client-side platform for managing Master's application workflows. Built a PDF.js-based resume analysis engine for keyword extraction and profile evaluation. Designed local data management architecture and is further expanding the platform with a research planner for universities and academic programs.</p>
             <div class="tags-wrapper" style="margin-bottom: 1rem;">
-              <span class="tag">React</span><span class="tag">Vite</span><span class="tag">LocalStorage API</span><span class="tag">PDF.js</span><span class="tag">CSS3</span><span class="tag" style="color: #e3b965; border-color: #e3b965; background: rgba(227, 185, 101, 0.1);">In Progress</span>
+              <span class="tag">React</span><span class="tag">Vite</span><span class="tag">LocalStorage API</span><span class="tag">PDF.js</span><span class="tag">CSS3</span>
             </div>
+            <a href="https://github.com/Saibts/-Masters-Journey-Tracker-with-AI-Resume-Analyzer" target="_blank" class="btn-secondary" style="margin-top:0.25rem; display:inline-flex; align-items:center; gap:0.5rem;">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+              View Repository
+            </a>
           </div>
         </div>
       </div>
@@ -382,7 +481,7 @@
             <span class="org">Independent Architecture</span>
             <p>Developed an offline voice assistant powered by Llama 3.2 running locally through Ollama. Built an asynchronous FastAPI backend with WebSocket-based streaming. Currently expanding tool-calling capabilities for local system diagnostics.</p>
             <div class="tags-wrapper" style="margin-bottom: 1rem;">
-              <span class="tag">Llama 3.2</span><span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">Web Speech API</span><span class="tag" style="color: #e3b965; border-color: #e3b965; background: rgba(227, 185, 101, 0.1);">In Progress</span>
+              <span class="tag">Llama 3.2</span><span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">Web Speech API</span><span class="tag" style="color: #ff003c; border-color: #ff003c; background: rgba(255,0,60,0.1);">Executing...</span>
             </div>
             <a href="https://github.com/Saibts/orion-local-ai" target="_blank" class="btn-secondary">
               <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
@@ -427,14 +526,16 @@
           </div>
         </div>
       </div>
+      </div>
 
-      <h3 class="subsection-title">Hardware & Embedded Systems</h3>
+      <div class="project-branch-group" data-branch-group="hardware">
+        <h3 class="subsection-title">Hardware & Embedded Systems</h3>
 
-      <div class="tilt-card">
+        <div class="tilt-card">
         <div class="tilt-card-content">
           <div class="card-meta">Mech Design<br>Hardware</div>
           <div class="card-body">
-            <h3>Mechanical Rotary Device [Design Patent Pending]</h3>
+            <h3>Mechanical Rotary Device</h3>
             <span class="org">CAD & Prototyping</span>
             <p>Designed a novel dual-mode rotary mechanism integrating two distinct power-transmission principles—a Geneva wheel and a dog clutch system—into a single compact assembly. Built completely within SolidWorks parametric environment scripts.</p>
             <div class="tags-wrapper">
@@ -485,12 +586,12 @@
           </div>
         </div>
       </div>
+      </div>
     </section>
 
-    <!-- 4. HACKATHONS -->
     <section id="hackathons">
       <div class="section-eyebrow">04. Hackathons</div>
-      <h2 class="section-title cipher-text" data-original="04. Hackathons">04. Hackathons</h2>
+      <h2 class="section-title cipher-text" data-original="04. System_Overrides">04. System_Overrides</h2>
       
       <div class="tilt-card">
         <div class="tilt-card-content">
@@ -523,10 +624,9 @@
       </div>
     </section>
 
-    <!-- 5. SKILLS -->
     <section id="skills">
-      <div class="section-eyebrow">05. Technical Skills</div>
-      <h2 class="section-title cipher-text" data-original="05. Technical Skills">05. Technical Skills</h2>
+      <div class="section-eyebrow">05. Tech Specs</div>
+      <h2 class="section-title cipher-text" data-original="05. Tech_Specs">05. Tech_Specs</h2>
       <div class="skill-grid">
         
         <div class="skill-category">
@@ -572,7 +672,7 @@
         </div>
 
         <div class="skill-category" style="grid-column: 1 / -1;">
-          <h4>Languages</h4>
+          <h4>Language Capabilities</h4>
           <div class="tags-wrapper">
             <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">English (Proficient)</span>
             <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Tamil (Proficient)</span>
@@ -585,10 +685,9 @@
       </div>
     </section>
 
-    <!-- 6. LEADERSHIP & CERTIFICATIONS -->
     <section id="leadership">
-      <div class="section-eyebrow">06. Leadership & Certs</div>
-      <h2 class="section-title cipher-text" data-original="06. Leadership & Certs">06. Leadership & Certs</h2>
+      <div class="section-eyebrow">06. Logs & Certs</div>
+      <h2 class="section-title cipher-text" data-original="06. System_Logs">06. System_Logs</h2>
       
       <div class="skill-grid">
         <div>
@@ -601,15 +700,14 @@
             <li><strong>Joint Treasurer, MIT Quill (2025–26):</strong> Managed treasury operations for the college literary club.</li>
             <li><strong>Office Bearer, SAHA (2025–26):</strong> Organized and coordinated academic events for the Science and Humanities Association.</li>
             <li><strong>Member, ARME (2024–Present):</strong> Association of Robotics and Mechatronics Engineers.</li>
-            <li><strong>Assistant School Pupil Leader (2019–20):</strong> Exercised leadership and administrative support for student body operations and school-wide event coordination. </li>
-            <li><strong>Master of Ceremonies (MC) (2017–20):</strong> Served as a professional host for multiple school events, developing public speaking and audience engagement skills. </li>
-
+            <li><strong>Assistant School Pupil Leader (2019–20):</strong> Exercised leadership and administrative support for student body operations and school-wide event coordination.</li>
+            <li><strong>Master of Ceremonies (MC) (2017–20):</strong> Served as a professional host for multiple school events, developing public speaking and audience engagement skills.</li>
           </ul>
         </div>
         
         <div>
           <div class="skill-category">
-            <h4>Certifications</h4>
+            <h4>Security Clearances (Certs)</h4>
           </div>
           <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
             <a href="Anthropic.pdf" target="_blank" class="cert-link">
@@ -641,28 +739,26 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-      <p>Built with precision by <span>Sailakshmi</span></p>
+      <p>Engineered by <span>Sailakshmi</span> // System Online</p>
       <p style="margin-top: 0.5rem;">Robotics & Automation · MIT Anna University · Chennai</p>
     </footer>
 
   </main>
 </div>
 
-<!-- Full Screen Resume Viewer Modal -->
 <div class="resume-fullscreen" id="resume-viewer">
   <div class="resume-toolbar">
     <button class="back-text-btn" onclick="closeResume()">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Return to Portfolio
+      Return to Interface
     </button>
     <a href="Sailakshmi_Resume.pdf" target="_blank" download class="btn-primary" style="margin: 0; padding: 0.4rem 1rem;">
-      Download PDF
+      Download Resume
     </a>
   </div>
   <div class="resume-pdf-container">
-    <iframe src="Sailakshmi_BT_Resume.html"></iframe>
+    <iframe src="new_resume.html"></iframe>
   </div>
 </div>
 
@@ -673,15 +769,13 @@
     document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
   });
 
-  // ── 2. THE ENIGMA CIPHER REVEAL ──
-  const cipherChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*+<>{}[]';
+  // ── 2. THE ENIGMA CIPHER REVEAL (Tech Style) ──
+  const cipherChars = '01101001011011000101XYZ@#$%&*+<>{}[]';
   function scrambleText(element) {
     const originalText = element.getAttribute('data-original');
     if (!originalText) return;
     
-    // Explicitly make it visible right when it starts
     element.classList.remove('loading');
-    
     let iterations = 0;
     const maxIterations = 15; 
     const interval = setInterval(() => {
@@ -698,26 +792,26 @@
     }, 35); 
   }
   
-  // Initialize the first section title on load AND the left pane name
   document.addEventListener("DOMContentLoaded", () => {
     const heroName = document.querySelector('.hero-name');
-    if(heroName) {
-      setTimeout(() => {
-        scrambleText(heroName);
-      }, 100);
-    }
-
+    if(heroName) setTimeout(() => scrambleText(heroName), 100);
     const firstTitle = document.querySelector('#about .cipher-text');
-    if(firstTitle) {
-      setTimeout(() => {
-        scrambleText(firstTitle);
-      }, 200);
-    }
-
-    initTheme();
+    if(firstTitle) setTimeout(() => scrambleText(firstTitle), 200);
   });
 
-  // ── 3. 3D BRASS CARD TILT MECHANISM ──
+  // ── PROJECT BRANCH TOGGLE ──
+  const projectBranchButtons = document.querySelectorAll('.branch-btn');
+  const projectBranchGroups = document.querySelectorAll('.project-branch-group');
+
+  function setProjectBranch(branch) {
+    projectBranchButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.branch === branch));
+    projectBranchGroups.forEach(group => group.classList.toggle('active', group.dataset.branchGroup === branch));
+  }
+
+  projectBranchButtons.forEach(btn => btn.addEventListener('click', () => setProjectBranch(btn.dataset.branch)));
+  setProjectBranch('software');
+
+  // ── 3. 3D TILT MECHANISM ──
   document.querySelectorAll('.tilt-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
@@ -742,50 +836,31 @@
     });
   });
 
-  // ── 4. TAB NAVIGATION SYSTEM (Click to show specific block) ──
+  // ── 4. TAB NAVIGATION SYSTEM ──
   const navItems = document.querySelectorAll('.nav-item');
   const mainSections = document.querySelectorAll('.right-pane > section');
 
   navItems.forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      
-      // Update active nav styling
       navItems.forEach(item => item.classList.remove('active'));
       this.classList.add('active');
+      mainSections.forEach(sec => { sec.classList.remove('active-section'); sec.style.display = 'none'; });
 
-      // Hide all sections
-      mainSections.forEach(sec => {
-        sec.classList.remove('active-section');
-        sec.style.display = 'none';
-      });
-
-      // Show target section
       const targetId = this.getAttribute('href').substring(1);
       const targetSection = document.getElementById(targetId);
       
       if (targetSection) {
         targetSection.style.display = 'block';
-        // Allow display:block to render before triggering the animation
-        setTimeout(() => {
-          targetSection.classList.add('active-section');
-        }, 10);
-
-        // Trigger Cipher effect on the newly opened section
+        setTimeout(() => targetSection.classList.add('active-section'), 10);
         const cipherTitle = targetSection.querySelector('.cipher-text');
-        if (cipherTitle) {
-          scrambleText(cipherTitle);
-        }
+        if (cipherTitle) scrambleText(cipherTitle);
       }
-      
-      // On mobile view, scroll up to the top of the right pane automatically
-      if(window.innerWidth <= 1023) {
-        window.scrollTo({ top: document.querySelector('.right-pane').offsetTop - 20, behavior: 'smooth' });
-      }
+      if(window.innerWidth <= 1023) window.scrollTo({ top: document.querySelector('.right-pane').offsetTop - 20, behavior: 'smooth' });
     });
   });
 
-  // ── 5. RESUME MODAL HANDLER ──
+  // ── RESUME MODAL HANDLER ──
   function handleResumeClick() {
     document.getElementById('resume-viewer').classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -799,6 +874,118 @@
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') closeResume();
   });
+
+</script>
+
+<script>
+  (function(){
+    const overlay = document.getElementById('introOverlay');
+    const enterBtn = document.getElementById('enterBtn');
+    const aboutSection = document.getElementById('about');
+    const firstNav = document.querySelector('.nav-item');
+
+    function revealSite(){
+      if(!overlay) return;
+      overlay.classList.add('hidden');
+      setTimeout(()=>{
+        overlay.remove();
+        if(aboutSection){
+          aboutSection.style.display = 'block';
+          setTimeout(()=> aboutSection.classList.add('active-section'), 10);
+        }
+        document.querySelectorAll('.nav-item').forEach(n=> n.classList.remove('active'));
+        if(firstNav) firstNav.classList.add('active');
+      }, 360);
+    }
+
+    if(enterBtn) enterBtn.addEventListener('click', revealSite);
+
+    const typedLine = document.querySelector('#introOverlay p');
+    const typedPrompt = document.querySelector('.intro-sub-text');
+
+    function typeText(element, text, delay = 20, callback) {
+      element.textContent = '';
+      element.style.opacity = 1;
+      let index = 0;
+      const timer = setInterval(() => {
+        element.textContent += text[index] || '';
+        index += 1;
+        if (index > text.length) {
+          clearInterval(timer);
+          if (callback) callback();
+        }
+      }, delay);
+    }
+
+    function startIntroTyping() {
+      const text = typedLine.dataset.typed || typedLine.textContent;
+      typedLine.textContent = '';
+      typedLine.style.opacity = 1;
+      let i = 0;
+      const timer = setInterval(() => {
+        typedLine.textContent += text[i] || '';
+        i += 1;
+        if (i > text.length) {
+          clearInterval(timer);
+          if (typedPrompt) {
+            typeText(typedPrompt, typedPrompt.dataset.text || 'Press Enter to deploy interface.', 30);
+          }
+        }
+      }, 28);
+    }
+
+    document.addEventListener('DOMContentLoaded', startIntroTyping);
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') revealSite(); });
+  })();
+</script>
+ 
+<script>
+  // ── 5. TERMINAL CLI PARSER ──
+  (function(){
+    const terminalInput = document.getElementById('terminal-in');
+    const terminalOutput = document.getElementById('terminal-out');
+    const terminalCard = document.getElementById('sailos-terminal');
+
+    if(terminalCard) terminalCard.addEventListener('click', () => terminalInput && terminalInput.focus());
+
+    function printTerminalLine(text, type=''){
+      const line = document.createElement('div');
+      line.className = `terminal-line ${type}`.trim();
+      line.innerHTML = text;
+      terminalOutput.appendChild(line);
+      terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
+
+    const commands = {
+      help: 'Available protocols:<br> > <strong>about</strong>: Dump profile data<br> > <strong>skills</strong>: Scan tech stack<br> > <strong>projects</strong>: List repositories<br> > <strong>contact</strong>: Open comm channels<br> > <strong>diagnostic</strong>: System integrity check<br> > <strong>clear</strong>: Purge terminal',
+      about: '<strong>Sailakshmi B T</strong> — Robotics & Automation Undergrad (MIT, Anna University).<br>CGPA: 8.99 | HSC: 94.16% | SSLC: 95.2%<br>Primary Directives: Embedded Hardware, Control Systems & Autonomous AI.',
+      skills: 'TECH_STACK_SCAN:<br> [Design]: SolidWorks, KiCAD<br> [Logic]: Python, Embedded C, MATLAB<br> [Hardware]: 8051, Arduino Uno/Nano, Sensors<br> [Control]: PID loops, Motion Control<br> [Neural]: Google ADK, Local LLMs, FastAPI',
+      projects: 'ACTIVE_BUILDS:<br> > Masters and Academic Tracker (React)<br> > Orion Local AI Assistant (FastAPI, Llama 3.2)<br> > Student Life Concierge AI Agent (Google ADK)<br> > Hand Gesture Volume Controller (OpenCV)<br> > Mechanical Rotary Device (SolidWorks)',
+      contact: 'COMM_LINKS:<br> Email: <a href="mailto:sailakshmibt2006@gmail.com">sailakshmibt2006@gmail.com</a><br> GitHub: <a href="https://github.com/Saibts" target="_blank" style="color:var(--cyan)">github.com/Saibts</a>',
+      diagnostic: '<span class="success">[PASS]</span> EMBEDDED MEMORY TIMERS: ACTIVE<br><span class="success">[PASS]</span> KINEMATICS RESOLVER: STABLE<br><span class="success">[PASS]</span> LOCAL LLM: OLLAMA ONLINE<br><strong>[SYSTEM STATUS] SAIL_CORE ACTIVE & NOMINAL.</strong>'
+    };
+
+    if(terminalInput){
+      terminalInput.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter'){
+          const val = terminalInput.value.trim();
+          const cmd = val.toLowerCase();
+
+          printTerminalLine(`root@sail-core:~$ ${val}`, 'cmd');
+
+          if(cmd === 'clear'){
+            terminalOutput.innerHTML = '';
+          } else if(commands[cmd]){
+            printTerminalLine(commands[cmd]);
+          } else if(cmd){
+            printTerminalLine(`error: protocol '${val}' not recognized. Try 'help'.`, 'error');
+          }
+
+          terminalInput.value = '';
+        }
+      });
+    }
+  })();
 </script>
 </body>
 </html>
