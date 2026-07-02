@@ -3,22 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sailakshmi B T — Resume [SYS_ACTIVE]</title>
+<title>Sailakshmi B T — Resume</title>
 <link rel="icon" type="image/jpg" href="favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Cyber-Bio / Synth-Tech Palette */
-    --bg-main: #050914; 
-    --bg-surface: rgba(5, 9, 20, 0.95); 
-    --text-main: #e0fbfc; 
-    --text-muted: #8d99ae; 
-    --cyan: #00f0ff; /* Neon Cyan */
-    --bio-green: #39ff14; /* Bio-luminescent Green */
-    --border: #1b263b; 
-    --panel-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
+    /* Engineering-blueprint dark theme, matching the portfolio site */
+    --void:      #0A0C11;
+    --panel:     #12151D;
+    --panel-2:   #161A24;
+    --line:      rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.16);
+    --paper:     #E9EBF2;
+    --muted:     #8C93A6;
+    --muted-2:   #62687A;
+    --signal:    #6EE7D9;
+    --signal-dim: rgba(110, 231, 217, 0.12);
+    --volt:      #A78BFA;
+    --volt-dim:  rgba(167, 139, 250, 0.12);
+
+    --font-display: 'Space Grotesk', 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px -12px rgba(0,0,0,0.55);
   }
 
   * {
@@ -28,34 +40,24 @@
   }
 
   html, body {
-    background-color: var(--bg-main);
-    color: var(--text-main);
-    font-family: 'Rajdhani', sans-serif;
+    background-color: var(--void);
+    color: var(--paper);
+    font-family: var(--font-body);
     font-size: 16px;
     line-height: 1.6;
-    cursor: crosshair;
-  }
-
-  a, button, label, input, textarea {
-    cursor: pointer !important;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   body {
-    background-image: 
-      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(110,231,217,0.05), transparent 45%),
+      radial-gradient(circle at 88% 92%, rgba(167,139,250,0.05), transparent 45%),
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: auto, auto, 56px 56px, 56px 56px;
     background-attachment: fixed;
     padding: 56px 20px 80px;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(circle 600px at 50vw 50vh, rgba(0, 240, 255, 0.05), transparent 80%);
-    z-index: 0;
   }
 
   .page {
@@ -64,10 +66,10 @@
     width: 100%;
     max-width: 820px;
     margin: 0 auto;
-    background-color: var(--bg-surface);
-    border: 1px solid var(--cyan);
-    box-shadow: var(--panel-shadow);
-    border-radius: 0;
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
     padding: 34px 30px;
   }
 
@@ -76,40 +78,40 @@
     text-align: center;
     padding-bottom: 22px;
     margin-bottom: 30px;
-    border-bottom: 1px dashed var(--border);
+    border-bottom: 1px solid var(--line);
   }
 
   h1.name {
-    font-family: 'Orbitron', sans-serif;
-    font-weight: 900;
+    font-family: var(--font-display);
+    font-weight: 700;
     font-size: 2.6rem;
-    letter-spacing: 0.05em;
-    color: var(--text-main);
-    text-transform: uppercase;
-    text-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+    letter-spacing: -0.01em;
+    background: linear-gradient(135deg, var(--paper) 55%, var(--signal));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   .contact-line {
     margin-top: 12px;
-    font-family: 'Fira Code', monospace;
+    font-family: var(--font-mono);
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: var(--muted);
     letter-spacing: 0.02em;
   }
 
   .contact-line a {
-    color: var(--text-muted);
+    color: var(--muted);
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: color 0.25s ease;
   }
 
   .contact-line a:hover {
-    color: var(--cyan);
-    text-shadow: 0 0 8px var(--cyan);
+    color: var(--signal);
   }
 
   .contact-sep {
-    color: var(--bio-green);
+    color: var(--volt);
     margin: 0 10px;
   }
 
@@ -120,15 +122,14 @@
   }
 
   h2.section-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.25rem;
-    color: var(--text-main);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
+    color: var(--paper);
+    letter-spacing: -0.005em;
     margin-bottom: 16px;
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
     position: relative;
     display: block;
   }
@@ -136,18 +137,18 @@
   h2.section-title::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: -1px;
     left: 0;
-    width: 60px;
+    width: 46px;
     height: 2px;
-    background: var(--cyan);
-    box-shadow: 0 0 10px var(--cyan);
+    background: linear-gradient(90deg, var(--signal), var(--volt));
   }
 
   .summary-text {
     font-size: 1.05rem;
-    color: var(--text-muted);
-    text-align: justify;
+    color: var(--muted);
+    line-height: 1.85;
+    text-align: left;
   }
 
   /* ===== Education ===== */
@@ -164,32 +165,37 @@
   }
 
   .entry-title {
-    font-family: 'Orbitron', sans-serif;
+    font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.1rem;
-    color: var(--text-main);
+    color: var(--paper);
   }
 
   .entry-org {
-    font-family: 'Fira Code', monospace;
-    color: var(--text-muted);
+    font-family: var(--font-mono);
+    color: var(--muted);
     text-transform: uppercase;
-    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    font-size: 0.82rem;
   }
 
   .entry-date {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    color: var(--bio-green);
-    font-weight: bold;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--volt);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
     white-space: nowrap;
   }
 
   .entry-sub {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    color: var(--cyan);
-    margin-top: 2px;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-top: 4px;
   }
 
   ul.bullets {
@@ -200,23 +206,30 @@
 
   ul.bullets li {
     margin-bottom: 6px;
-    font-size: 1.05rem;
-    color: var(--text-muted);
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
     padding-left: 18px;
     position: relative;
   }
 
   ul.bullets li::before {
-    content: ">";
-    font-family: 'Fira Code', monospace;
+    content: "\203A";
+    font-family: var(--font-mono);
     position: absolute;
     left: 0;
-    color: var(--cyan);
-    font-weight: 900;
+    top: -1px;
+    color: var(--signal);
+    font-weight: 700;
+    font-size: 1.05rem;
   }
 
   .item-block {
     margin-bottom: 20px;
+    padding: 14px 16px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
     page-break-inside: avoid;
   }
 
@@ -226,9 +239,11 @@
 
   /* ===== Projects ===== */
   .project-meta {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.8rem;
-    color: var(--bio-green);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--volt);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     margin-top: 3px;
     margin-bottom: 8px;
   }
@@ -248,17 +263,17 @@
   }
 
   .skill-label {
-    font-family: 'Fira Code', monospace;
+    font-family: var(--font-display);
     font-weight: 700;
-    color: var(--cyan);
+    color: var(--paper);
     font-size: 0.92rem;
     min-width: 190px;
   }
 
   .skill-value {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 1.05rem;
-    color: var(--text-muted);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--muted);
     flex: 1;
     min-width: 240px;
   }
@@ -271,19 +286,22 @@
 
   .simple-list li {
     margin-bottom: 6px;
-    font-size: 1.05rem;
-    color: var(--text-muted);
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
     padding-left: 18px;
     position: relative;
   }
 
   .simple-list li::before {
-    content: ">";
-    font-family: 'Fira Code', monospace;
+    content: "\203A";
+    font-family: var(--font-mono);
     position: absolute;
     left: 0;
-    color: var(--cyan);
-    font-weight: 900;
+    top: -1px;
+    color: var(--signal);
+    font-weight: 700;
+    font-size: 1.05rem;
   }
 
   .leader-block {
@@ -298,15 +316,16 @@
   .leader-bullet {
     margin-top: 3px;
     margin-left: 18px;
-    font-size: 1.05rem;
-    color: var(--text-muted);
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.65;
   }
 
   /* ===== Languages ===== */
   .lang-row {
-    font-family: 'Fira Code', monospace;
-    font-size: 0.9rem;
-    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
     display: flex;
     flex-wrap: wrap;
     gap: 0;
@@ -317,19 +336,19 @@
   }
 
   .lang-sep {
-    color: var(--cyan);
+    color: var(--volt);
     margin: 0 10px;
   }
 
   /* ===== Footer rule ===== */
   .ornament {
     text-align: center;
-    color: var(--cyan);
-    font-family: 'Fira Code', monospace;
+    color: var(--muted-2);
+    font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.78rem;
     margin: 36px 0 0;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
   }
 
   /* ===== Print ===== */
@@ -338,18 +357,17 @@
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
       color-adjust: exact !important;
-      cursor: auto !important; 
     }
 
     body {
-      background-color: var(--bg-main) !important;
+      background-color: var(--void) !important;
       padding: 0;
     }
 
     .page {
       max-width: 100%;
       padding: 30px 36px;
-      border: 1px solid var(--cyan);
+      border: 1px solid var(--line);
     }
 
     section {
@@ -366,7 +384,7 @@
 
     @page {
       margin: 0.4in;
-      background: var(--bg-main);
+      background: var(--void);
     }
   }
 
