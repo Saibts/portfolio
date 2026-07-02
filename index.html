@@ -4,563 +4,254 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Sailakshmi's Portfolio - Cyber-Bio Tech</title>
+<meta name="description" content="Sailakshmi B T — Robotics & Automation Engineer. Embedded systems, autonomous AI agents and control systems." />
 <link rel="icon" type="image/jpg" href="favicon.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    /* Cyber-Bio / Synth-Tech Palette */
-    --bg-main: #050914; 
-    --bg-surface: #0a1128; 
-    --bg-card: rgba(10, 17, 40, 0.7);
-    --bg-hover: rgba(0, 240, 255, 0.1); 
-    --text-main: #e0fbfc; 
-    --text-muted: #8d99ae; 
-    --cyan: #00f0ff; /* Neon Cyan */
-    --cyan-dim: rgba(0, 240, 255, 0.15);
-    --bio-green: #39ff14; /* Bio-luminescent Green */
-    --border: #1b263b; 
-    --shadow-sm: 0 4px 6px rgba(0,0,0,0.6);
-    --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.2);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; font-size: 16px; }
-
-  /* ── SEAMLESS CSS CURSOR ── */
-  body, html {
-    cursor: crosshair;
-  }
-  a, button, .nav-item, .tilt-card, .cert-link {
-    cursor: pointer !important;
-  }
-
-  body {
-    background: var(--bg-main);
-    color: var(--text-main);
-    font-family: 'Rajdhani', sans-serif;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    background-image: 
-      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-
-  /* ── MIDNIGHT SPOTLIGHT ── */
-  body::before {
-    content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(circle 600px at var(--mouse-x, 50vw) var(--mouse-y, 50vh), rgba(0, 240, 255, 0.05), transparent 80%);
-    pointer-events: none; z-index: 9000; transition: background 0.1s ease;
-  }
-
-  /* ── LAYOUT FRAMEWORK ── */
-  .layout-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 10;
-  }
-
-  @media (min-width: 1024px) {
-    .layout-container { display: flex; justify-content: space-between; gap: 4rem; }
-    .left-pane {
-      width: 40%; position: sticky; top: 0; height: 100vh;
-      padding: 6rem 0; display: flex; flex-direction: column; justify-content: space-between;
-      overflow-y: auto;
-    }
-    .left-pane::-webkit-scrollbar { width: 0; }
-    .right-pane { width: 55%; padding: 6rem 0; }
-  }
-
-  @media (max-width: 1023px) {
-    .left-pane { padding: 4rem 0 2rem; }
-    .right-pane { padding: 2rem 0 4rem; }
-    .nav-links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; margin-bottom: 2rem; }
-  }
-
-  /* ── ENIGMA CIPHER ── */
-  .cipher-text { opacity: 1; transition: opacity 0.4s ease; }
-  .cipher-text.loading { opacity: 0; }
-
-  /* ── LEFT PANE STYLES ── */
-  .hero-name {
-    font-family: 'Orbitron', sans-serif; font-size: clamp(2.8rem, 4vw, 3.5rem);
-    font-weight: 900; line-height: 1.1; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: 0.02em;
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
-    display: block; 
-  }
-  .hero-role {
-    font-family: 'Fira Code', monospace; font-size: 1rem; color: var(--bio-green);
-    margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 0.1em;
-  }
-  .hero-desc { color: var(--text-muted); font-size: 1.15rem; line-height: 1.7; max-width: 380px; margin-bottom: 2rem; }
-
-  .nav-links { display: flex; flex-direction: column; gap: 1.25rem; list-style: none; margin-top: 2rem; }
-  .nav-item {
-    display: flex; align-items: center; gap: 1rem; color: var(--text-muted);
-    font-family: 'Fira Code', monospace; font-size: 0.9rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.15em; text-decoration: none; transition: all 0.3s ease;
-  }
-  .nav-item::before { content: ''; width: 30px; height: 2px; background: var(--border); transition: all 0.3s ease; }
-  .nav-item:hover, .nav-item.active { color: var(--cyan); transform: translateX(10px); text-shadow: 0 0 8px rgba(0, 240, 255, 0.5); }
-  .nav-item:hover::before, .nav-item.active::before { width: 60px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
-
-  .social-links { display: flex; align-items: center; gap: 1.25rem; margin-top: 3rem; margin-bottom: 1.5rem;}
-  .social-icon { color: var(--text-muted); transition: all 0.3s ease; display: inline-flex; }
-  .social-icon:hover { color: var(--bio-green); transform: translateY(-3px); filter: drop-shadow(0 0 5px var(--bio-green)); }
-  .social-icon svg { width: 22px; height: 22px; }
-
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Fira Code', monospace;
-    font-size: 0.9rem; font-weight: 700; color: var(--bg-main); background: var(--cyan);
-    padding: 0.6rem 1.2rem; border-radius: 0px; border: 1px solid var(--cyan); text-transform: uppercase; text-decoration: none;
-    letter-spacing: 0.1em; transition: all 0.3s ease; outline: none; cursor: pointer;
-    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-  }
-  .btn-primary:hover { background: transparent; color: var(--cyan); transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 240, 255, 0.6); }
-
-  .btn-secondary {
-    display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Fira Code', monospace;
-    font-size: 0.8rem; font-weight: 700; color: var(--text-main); background: rgba(0, 240, 255, 0.05);
-    border: 1px solid var(--border); padding: 0.4rem 0.8rem; border-radius: 0px; text-transform: uppercase;
-    text-decoration: none; letter-spacing: 0.05em; transition: all 0.3s ease;
-  }
-  .btn-secondary:hover { border-color: var(--cyan); color: var(--bg-main); background: var(--cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
-
-  .project-filter-switcher {
-    display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.5rem;
-  }
-  .branch-btn {
-    display: inline-flex; align-items: center; justify-content: center;
-    font-family: 'Fira Code', monospace; font-size: 0.8rem; font-weight: 700;
-    color: var(--text-main); background: transparent; border: 1px solid var(--border);
-    padding: 0.55rem 1rem; border-radius: 0px; text-transform: uppercase;
-    letter-spacing: 0.1em; cursor: pointer; transition: all 0.25s ease;
-  }
-  .branch-btn:hover { color: var(--cyan); border-color: var(--cyan); background: var(--cyan-dim); }
-  .branch-btn.active { background: var(--cyan); border-color: var(--cyan); color: var(--bg-main); box-shadow: 0 0 10px rgba(0, 240, 255, 0.4); }
-
-  .project-branch-group { display: none; }
-  .project-branch-group.active { display: block; }
-
-  .cert-link {
-    display: inline-flex; align-items: center; gap: 0.4rem; font-family: 'Fira Code', monospace;
-    font-size: 0.8rem; font-weight: 700; color: var(--bio-green); background: rgba(57, 255, 20, 0.05);
-    border: 1px solid rgba(57, 255, 20, 0.3); padding: 0.4rem 0.8rem; border-radius: 0px;
-    text-decoration: none; transition: all 0.3s ease; margin-right: 0.5rem; margin-bottom: 0.5rem;
-  }
-  .cert-link:hover { background: rgba(57, 255, 20, 0.15); border-color: var(--bio-green); transform: translateY(-1px); box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
-
-  /* ── RIGHT PANE STYLES ── */
-  section { margin-bottom: 6rem; scroll-margin-top: 6rem; }
-  .section-eyebrow {
-    display: none; font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--cyan);
-    text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.5rem; position: sticky;
-    top: 0; background: rgba(5, 9, 20, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 20;
-    border-bottom: 1px solid var(--border);
-  }
-  @media (max-width: 1023px) { .section-eyebrow { display: block; } }
-
-  .right-pane section { display: none; opacity: 0; }
-  .right-pane section.active-section { display: block; animation: fadeSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
-
-  @keyframes fadeSlideUp {
-    from { opacity: 0; transform: translateY(20px); filter: blur(5px); }
-    to { opacity: 1; transform: translateY(0); filter: blur(0); }
-  }
-
-  .section-title {
-    font-family: 'Orbitron', sans-serif; font-size: clamp(2rem, 3vw, 2.5rem);
-    font-weight: 900; color: var(--text-main); margin-bottom: 2rem; line-height: 1.2;
-    border-bottom: 2px solid var(--border); padding-bottom: 1rem;
-    position: relative;
-  }
-  .section-title::after {
-    content: ''; position: absolute; bottom: -2px; left: 0; width: 60px; height: 2px; background: var(--cyan);
-    box-shadow: 0 0 10px var(--cyan);
-  }
-  
-  .subsection-title {
-    font-family: 'Fira Code', monospace; font-size: 1rem; color: var(--cyan);
-    letter-spacing: 0.1em; text-transform: uppercase; margin: 3rem 0 1.5rem;
-    display: flex; align-items: center; gap: 0.75rem;
-  }
-  .subsection-title::after {
-    content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent);
-  }
-
-  .text-content p { color: var(--text-muted); font-size: 1.15rem; line-height: 1.8; margin-bottom: 1.5rem; text-align: justify;}
-  .highlight { color: var(--text-main); font-weight: 700; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
-
-  /* ── 3D CYBER TILT CARDS ── */
-  .tilt-card {
-    display: grid; grid-template-columns: 1fr; gap: 1rem;
-    padding: 1.5rem; margin-bottom: 1.5rem; border-radius: 0px;
-    background: rgba(10, 17, 40, 0.4); border: 1px solid var(--border);
-    transition: transform 0.1s ease, background 0.3s ease, border-color 0.3s ease;
-    text-decoration: none; position: relative; overflow: hidden; transform-style: preserve-3d;
-  }
-  @media (min-width: 640px) { .tilt-card { grid-template-columns: 130px 1fr; gap: 1.5rem; } }
-  
-  .tilt-card:hover { background: var(--bg-card); border-color: var(--cyan); box-shadow: var(--shadow-md); }
-  .tilt-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(105deg, transparent 20%, rgba(0, 240, 255, 0.1) 25%, rgba(0, 240, 255, 0.02) 30%, transparent 40%);
-    background-size: 200% 200%; background-position: var(--glare-x, 100%) var(--glare-y, 100%);
-    pointer-events: none; transition: background-position 0.1s ease; z-index: 2;
-  }
-  .tilt-card-content { transform: translateZ(30px); display: contents; } 
-
-  .card-meta {
-    font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--bio-green);
-    text-transform: uppercase; margin-top: 0.25rem; line-height: 1.5; font-weight: 700;
-  }
-  .card-body h3 {
-    font-family: 'Orbitron', sans-serif; font-size: 1.3rem; font-weight: 700;
-    color: var(--text-main); margin-bottom: 0.4rem; transition: color 0.2s; letter-spacing: 0.05em;
-  }
-  .tilt-card:hover .card-body h3 { color: var(--cyan); }
-  .card-body .org { font-family: 'Fira Code', monospace; color: var(--text-muted); margin-bottom: 0.75rem; display: block; font-size: 0.9rem; text-transform: uppercase; }
-  .card-body p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
-
-  /* ── TAGS & LISTS ── */
-  .tags-wrapper { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .tag {
-    font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--cyan);
-    background: var(--cyan-dim); padding: 0.3rem 0.6rem; border-radius: 0px; border: 1px solid rgba(0, 240, 255, 0.3);
-  }
-
-  .skill-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-  @media (min-width: 640px) { .skill-grid { grid-template-columns: 1fr 1fr; } }
-  .skill-category { margin-bottom: 1.5rem; }
-  .skill-category h4 { font-family: 'Orbitron', sans-serif; font-size: 1.1rem; color: var(--text-main); margin-bottom: 0.5rem; letter-spacing: 0.05em;}
-  .skill-category::before { content: ''; display: block; width: 30px; height: 2px; background: var(--bio-green); margin-bottom: 0.75rem; box-shadow: 0 0 5px var(--bio-green); }
-
-  .simple-list { list-style: none; padding: 0; }
-  .simple-list li {
-    font-size: 1.05rem; color: var(--text-muted); margin-bottom: 0.75rem;
-    padding-left: 1.5rem; position: relative;
-  }
-  .simple-list li::before {
-    content: ">"; font-family: 'Fira Code', monospace; position: absolute; left: 0; color: var(--cyan); font-weight: 900;
-  }
-
-  /* ── RESUME VIEWER MODAL ── */
-  .resume-fullscreen {
-    display: none; position: fixed; inset: 0; z-index: 15000; background: var(--bg-main); flex-direction: column; animation: fadeInSub 0.4s ease;
-  }
-  .resume-fullscreen.active { display: flex; }
-  @keyframes fadeInSub { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: blur(0); } }
-  .resume-toolbar { height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 1.5rem; background: var(--bg-surface); border-bottom: 1px solid var(--cyan); box-shadow: 0 0 15px rgba(0,240,255,0.2); }
-  .resume-pdf-container { flex: 1; position: relative; width: 100%; height: 100%; overflow: hidden; }
-  .resume-pdf-container iframe { width: 100%; height: 100%; border: none; position: absolute; inset: 0; background: var(--bg-main); }
-  .back-text-btn { background: none; border: none; color: var(--text-main); font-family: 'Fira Code', monospace; font-weight: 700; text-transform: uppercase; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; }
-  .back-text-btn:hover { color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 4rem;
-    font-family: 'Fira Code', monospace; font-size: 0.85rem; color: var(--text-muted); text-align: center;
-  }
-  footer span { color: var(--cyan); font-weight: 700; text-shadow: 0 0 5px rgba(0, 240, 255, 0.4); }
-
-  /* ── SYSTEM COMMAND LINE TERMINAL CLI WIDGET ── */
-  .terminal-card {
-    background-color: rgba(5, 9, 20, 0.95);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--cyan);
-    border-radius: 0px;
-    padding: 1.5rem 1rem 1rem;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.85rem;
-    margin-top: 2rem;
-    position: relative;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-  }
-  .terminal-card::before { content: 'SYS_TERM // SAIL_OS // ROOT ACCESS'; position: absolute; top: -10px; left: 10px; font-size: 0.75rem; color: var(--bg-main); background: var(--cyan); padding: 2px 8px; font-weight: 700; }
-  
-  .terminal-output { height:160px; overflow-y:auto; margin-top:0.5rem; margin-bottom:0.6rem; padding-right:6px; }
-  .terminal-output::-webkit-scrollbar { width: 4px; }
-  .terminal-output::-webkit-scrollbar-thumb { background: var(--cyan); }
-  
-  .terminal-line { margin-bottom:0.4rem; white-space:pre-wrap; color:var(--text-muted); }
-  .terminal-line.cmd { color: var(--text-main); font-weight:700; }
-  .terminal-line.system { color: var(--bio-green); }
-  .terminal-line.error { color:#ff003c; text-shadow: 0 0 5px rgba(255,0,60,0.5); }
-  .terminal-line.success { color:var(--cyan); }
-
-  .terminal-input-row { display:flex; gap:0.6rem; align-items:center; border-top:1px dashed var(--border); padding-top:0.75rem; }
-  .terminal-prompt { color: var(--cyan); min-width:180px; font-weight:700; }
-  .terminal-input { background:transparent; border:none; outline:none; color:var(--text-main); font-family:'Fira Code', monospace; flex:1; caret-color:var(--bio-green); }
-
-  /* ── INTRO OVERLAY / LANDING SCREEN ── */
-  .intro-overlay { position: fixed; inset: 0; background: rgba(5, 9, 20, 0.98); backdrop-filter: blur(5px); display:flex; align-items:center; justify-content:center; z-index:20000; transition: opacity 0.35s ease, visibility 0.35s; padding: 1.5rem; }
-  .intro-overlay.hidden { opacity:0; visibility:hidden; pointer-events:none; }
-  .intro-card { background: transparent; border: 1px solid var(--cyan); padding: 3rem 2.25rem; border-radius: 0px; text-align:center; max-width:680px; width: 100%; box-shadow: 0 0 30px rgba(0, 240, 255, 0.15); display: flex; flex-direction: column; align-items: center; gap: 1rem; position: relative; }
-  .intro-card::before, .intro-card::after { content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid var(--cyan); }
-  .intro-card::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
-  .intro-card::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
-  
-  .intro-emblem { width:80px; height:80px; margin: 0 auto 0; display:flex; align-items:center; justify-content:center; border-radius:0%; background: rgba(0, 240, 255, 0.05); border:1px solid var(--cyan); opacity: 0; transform: translateY(10px); animation: fadeUp 0.8s ease forwards 0.1s; box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.2); }
-  .intro-card h1 { font-family: 'Orbitron', sans-serif; font-size: clamp(1.8rem, 2.6vw, 2.5rem); margin: 0; color: var(--text-main); letter-spacing: 0.05em; opacity: 0; transform: translateY(12px); animation: fadeUp 0.8s ease forwards 0.2s; text-shadow: 0 0 10px rgba(0, 240, 255, 0.3); }
-  .intro-card p { font-family: 'Fira Code', monospace; color: var(--bio-green); margin: 0; font-size: 1rem; max-width: 580px; line-height: 1.7; opacity: 0; transform: translateY(12px); animation: fadeUp 0.8s ease forwards 0.35s; }
-  .intro-sub { color: var(--text-muted); font-size:0.9rem; margin: 0; display: inline-flex; align-items: center; justify-content: center; gap: 0.2rem; flex-wrap: wrap; opacity: 0; transform: translateY(12px); animation: fadeUp 0.8s ease forwards 0.5s; font-family: 'Fira Code', monospace; }
-  .intro-sub-text { opacity: 0; display: inline-block; }
-  .intro-card .btn-primary { margin-top: 1.5rem; opacity: 0; transform: translateY(16px); animation: fadeUp 0.8s ease forwards 0.65s; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div id="introOverlay" class="intro-overlay" role="dialog" aria-modal="true">
-    <div class="intro-card">
-      <div class="intro-emblem" aria-hidden="true">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="square"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <h1>SYS_BOOT // SAILAKSHMI</h1>
-      <p data-typed="Initializing hardware protocols... Connecting to neural network... Portfolio ready.">Initializing hardware protocols... Connecting to neural network... Portfolio ready.</p>
-      <div class="intro-sub"><span class="intro-sub-text" data-text="Press Enter or click to execute primary interface."></span></div>
-      <button id="enterBtn" class="btn-primary">Execute [Enter]</button>
-    </div>
-  </div>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
-<div class="layout-container">
-  
-  <header class="left-pane">
-    <div>
-      <h1 class="hero-name cipher-text" data-original="Sailakshmi B T">Sailakshmi B T</h1>
-      <div class="hero-role">Robotics & Automation Engineer</div>
+<!-- Page loader -->
+<div id="loader" class="loader" aria-hidden="true">
+  <div class="loader-mark">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+  </div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<!-- Scroll progress indicator -->
+<div class="progress-rail" aria-hidden="true"><div id="progressBar" class="progress-bar"></div></div>
+
+<div class="shell">
+
+  <header class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <h1 class="hero-name" id="heroName">Sailakshmi B T</h1>
+      <p class="hero-role">Robotics &amp; Automation Engineer</p>
       <p class="hero-desc">Building intelligent systems by integrating autonomous AI agents with embedded hardware. I specialize in exploring new engineering frontiers—from rapid prototyping to localized AI deployments—to solve complex, real-world challenges.</p>
-      
-      <nav>
+
+      <nav class="side-nav" aria-label="Section navigation">
         <ul class="nav-links">
-          <li><a href="#about" class="nav-item active">01_About_Me</a></li>
+          <li><a href="#about" class="nav-item">01_About_Me</a></li>
           <li><a href="#experience" class="nav-item">02_Experience</a></li>
-          <li><a href="#projects" class="nav-item">03_Projects_&_Builds</a></li>
+          <li><a href="#projects" class="nav-item">03_Projects_&amp;_Builds</a></li>
           <li><a href="#hackathons" class="nav-item">04_Hackathons</a></li>
           <li><a href="#skills" class="nav-item">05_Tech_Specs</a></li>
-          <li><a href="#leadership" class="nav-item">06_Logs_&_Certs</a></li>
+          <li><a href="#leadership" class="nav-item">06_Logs_&amp;_Certs</a></li>
         </ul>
       </nav>
     </div>
 
-    <div>
+    <div class="sidebar-bottom">
       <div class="social-links">
-        <a href="https://github.com/Saibts" target="_blank" class="social-icon" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        <a href="https://github.com/Saibts" target="_blank" rel="noopener" class="social-icon" aria-label="GitHub profile (opens in new tab)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
         </a>
-        <a href="https://linkedin.com/in/sailakshmi-65a696327" target="_blank" class="social-icon" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        <a href="https://linkedin.com/in/sailakshmi-65a696327" target="_blank" rel="noopener" class="social-icon" aria-label="LinkedIn profile (opens in new tab)">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
         </a>
-        <a href="mailto:sailakshmibt2006@gmail.com" class="social-icon" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <a href="mailto:sailakshmibt2006@gmail.com" class="social-icon" aria-label="Send an email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
         </a>
       </div>
 
-      <button onclick="handleResumeClick()" class="btn-primary" style="margin-bottom: 2rem;">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <button type="button" onclick="handleResumeClick()" class="btn btn-primary btn-block">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         View Full Resume
       </button>
-      
-      <div class="terminal-card" id="sailos-terminal">
-        <div class="terminal-output" id="terminal-out">
-          <div class="terminal-line system">SAIL_OS Terminal Initialized. Type 'help' to begin.</div>
+
+      <details class="terminal-card" id="sailos-terminal" open>
+        <summary class="terminal-label">
+          <span class="terminal-dot" aria-hidden="true"></span>
+          SAIL_OS Terminal
+        </summary>
+        <div class="terminal-body">
+          <div class="terminal-output" id="terminal-out" role="log" aria-live="polite">
+            <div class="terminal-line system">SAIL_OS Terminal Initialized. Type 'help' to begin.</div>
+          </div>
+          <div class="terminal-input-row">
+            <label class="terminal-prompt" for="terminal-in">root@sail-core:~$</label>
+            <input id="terminal-in" class="terminal-input" type="text" autocomplete="off" placeholder="type command..." />
+          </div>
         </div>
-        <div class="terminal-input-row">
-          <div class="terminal-prompt">root@sail-core:~$</div>
-          <input id="terminal-in" class="terminal-input" type="text" autocomplete="off" placeholder="type command..." />
-        </div>
-      </div>
+      </details>
     </div>
   </header>
 
-  <main class="right-pane">
+  <main class="content" id="main-content">
 
-    <section id="about">
-      <div class="section-eyebrow">01. About Me</div>
-      <h2 class="section-title cipher-text" data-original="01. Profile_Data">01. Profile_Data</h2>
-      
-      <div class="text-content">
+    <div class="trace-rail" aria-hidden="true"><div class="trace-fill" id="traceFill"></div></div>
+
+    <section id="about" class="reveal">
+      <p class="eyebrow">01. About Me</p>
+      <h2 class="section-title">01. Profile_Data</h2>
+
+      <div class="prose">
         <p>I am an undergraduate student currently maintaining a <span class="highlight">CGPA of 8.99</span> in the <strong>Robotics and Automation</strong> program at the <span class="highlight">Madras Institute of Technology, Anna University</span> (Batch 2024–2028). My engineering foundation is built on exceptional academics, having secured 94.16% in my HSC, 95.2% in my SSLC, and 81.82 percentile in <strong>JEE (Main) 2024 Paper 1 (B.E./B.Tech.)</strong> (CRL: 269,607 | OBC-NCL: 94,238).</p>
         <p>My work bridges two main disciplines: <span class="highlight">Embedded Hardware Design</span>—where I utilize Arduino, 8051 arrays, and CAD pipelines to build physical prototypes—and <span class="highlight">Autonomous AI Systems</span>, where I implement modern LLMs, function-calling agents, and Computer Vision frameworks.</p>
         <p>Whether I am analyzing firmware binaries, designing complex Geneva drives in SolidWorks, or architecting secure agentic networks, my ultimate goal remains consistent: to engineer robust, automated systems that solve complex, real-world problems intelligently.</p>
       </div>
 
-      <div class="tags-wrapper" style="margin-top: 2rem;">
+      <div class="tags-wrapper">
         <span class="tag">SolidWorks</span>
         <span class="tag">Embedded systems</span>
         <span class="tag">Python</span>
         <span class="tag">FastAPI</span>
         <span class="tag">Google ADK</span>
         <span class="tag">Ollama / Local LLMs</span>
-        <span class="tag">Arduino & 8051</span>
+        <span class="tag">Arduino &amp; 8051</span>
         <span class="tag">PID Control Logic</span>
         <span class="tag">Computer Vision</span>
       </div>
     </section>
 
-    <section id="experience">
-      <div class="section-eyebrow">02. Experience</div>
-      <h2 class="section-title cipher-text" data-original="02. Active_Logs">02. Active_Logs</h2>
-      
-      <div class="tilt-card">
-        <div class="tilt-card-content">
-          <div class="card-meta">June 2026<br>Chennai, India</div>
-          <div class="card-body">
-            <h3>Computer Vision & AI Summer Intern</h3>
-            <span class="org">PixelBotix</span>
-            <p>Engaged in an intensive, industry-aligned internship focusing on practical implementations of CV technologies and AI architectures. Executed edge-detection operations, spatial image manipulation scripts, and morphological filter processing within native Python environments using OpenCV. Constructed automated bounding box configurations for tracking targets.</p>
-            <div class="tags-wrapper">
-              <span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">AI Visual Recognition</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <section id="experience" class="reveal">
+      <p class="eyebrow">02. Experience</p>
+      <h2 class="section-title">02. Active_Logs</h2>
 
-      <div class="tilt-card">
-        <div class="tilt-card-content">
-          <div class="card-meta">Feb 2026<br>KUKA Centre</div>
-          <div class="card-body">
-            <h3>Industrial Robotics & Automation Certified Training</h3>
-            <span class="org">Aditya Birla Group & KUKA Robotics</span>
-            <p>Gained core certified industry exposure to industrial robotic arms, automation workflows, and plant process operations. Programmed multi-axis robotic controller trajectories using manual teach pendants and analyzed electrical failure sequences and fail-safe safety interlocks on manufacturing grids.</p>
-            <div class="tags-wrapper" style="margin-bottom: 1rem;">
-              <span class="tag">Kinematics</span><span class="tag">Industrial Safety</span><span class="tag">Industry 4.0</span>
-            </div>
-            <a href="kuka.pdf" target="_blank" class="btn-secondary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              View Certificate
-            </a>
+      <article class="card">
+        <div class="card-meta">June 2026<br>Chennai, India</div>
+        <div class="card-body">
+          <h3>Computer Vision &amp; AI Summer Intern</h3>
+          <span class="org">PixelBotix</span>
+          <p>Engaged in an intensive, industry-aligned internship focusing on practical implementations of CV technologies and AI architectures. Executed edge-detection operations, spatial image manipulation scripts, and morphological filter processing within native Python environments using OpenCV. Constructed automated bounding box configurations for tracking targets.</p>
+          <div class="tags-wrapper">
+            <span class="tag">OpenCV</span><span class="tag">Python</span><span class="tag">AI Visual Recognition</span>
           </div>
+          <a href="PixlBotix_internship.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            View Certificate
+          </a>
         </div>
-      </div>
+      </article>
+
+      <article class="card">
+        <div class="card-meta">Feb 2026<br>KUKA Centre</div>
+        <div class="card-body">
+          <h3>Industrial Robotics &amp; Automation Certified Training</h3>
+          <span class="org">Aditya Birla Group &amp; KUKA Robotics</span>
+          <p>Gained core certified industry exposure to industrial robotic arms, automation workflows, and plant process operations. Programmed multi-axis robotic controller trajectories using manual teach pendants and analyzed electrical failure sequences and fail-safe safety interlocks on manufacturing grids.</p>
+          <div class="tags-wrapper">
+            <span class="tag">Kinematics</span><span class="tag">Industrial Safety</span><span class="tag">Industry 4.0</span>
+          </div>
+          <a href="kuka.pdf" target="_blank" rel="noopener" class="btn btn-ghost">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            View Certificate
+          </a>
+        </div>
+      </article>
     </section>
 
-    <section id="projects">
-      <div class="section-eyebrow">03. Projects & Builds</div>
-      <h2 class="section-title cipher-text" data-original="03. Schematics_&_Code">03. Schematics_&_Code</h2>
+    <section id="projects" class="reveal">
+      <p class="eyebrow">03. Projects &amp; Builds</p>
+      <h2 class="section-title">03. Schematics_&amp;_Code</h2>
 
-      <div class="project-filter-switcher">
-        <button type="button" class="branch-btn active" data-branch="software">Software & AI</button>
-        <button type="button" class="branch-btn" data-branch="hardware">Hardware & Embedded</button>
+      <div class="filter-switcher" role="tablist" aria-label="Filter projects by category">
+        <button type="button" class="filter-btn active" data-branch="software" role="tab" aria-selected="true" aria-controls="panel-software" id="tab-software">Software &amp; AI</button>
+        <button type="button" class="filter-btn" data-branch="hardware" role="tab" aria-selected="false" aria-controls="panel-hardware" id="tab-hardware">Hardware &amp; Embedded</button>
+        <span class="filter-indicator" aria-hidden="true"></span>
       </div>
 
-      <div class="project-branch-group active" data-branch-group="software">
-        <h3 class="subsection-title">Software & AI</h3>
-        
-        <div class="tilt-card">
-        <div class="tilt-card-content">
-          <div class="card-meta">Web App<br>React & AI</div>
+      <div class="branch-group active" data-branch-group="software" role="tabpanel" id="panel-software" aria-labelledby="tab-software">
+        <h3 class="subsection-title">Software &amp; AI</h3>
+
+        <article class="card">
+          <div class="card-meta">Web App<br>React &amp; AI</div>
           <div class="card-body">
             <h3>Masters and Academic Tracker</h3>
             <span class="org">Privacy-First Architecture</span>
             <p>Developed a privacy-first, fully client-side platform for managing Master's application workflows. Built a PDF.js-based resume analysis engine for keyword extraction and profile evaluation. Designed local data management architecture and is further expanding the platform with a research planner for universities and academic programs.</p>
-            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+            <div class="tags-wrapper">
               <span class="tag">React</span><span class="tag">Vite</span><span class="tag">LocalStorage API</span><span class="tag">PDF.js</span><span class="tag">CSS3</span>
             </div>
-            <a href="https://github.com/Saibts/-Masters-Journey-Tracker-with-AI-Resume-Analyzer" target="_blank" class="btn-secondary" style="margin-top:0.25rem; display:inline-flex; align-items:center; gap:0.5rem;">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <a href="https://github.com/Saibts/-Masters-Journey-Tracker-with-AI-Resume-Analyzer" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
               View Repository
             </a>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="tilt-card">
-        <div class="tilt-card-content">
+        <article class="card">
           <div class="card-meta">Local AI<br>Software</div>
           <div class="card-body">
             <h3>Orion Local AI Assistant</h3>
             <span class="org">Independent Architecture</span>
             <p>Developed an offline voice assistant powered by Llama 3.2 running locally through Ollama. Built an asynchronous FastAPI backend with WebSocket-based streaming. Currently expanding tool-calling capabilities for local system diagnostics.</p>
-            <div class="tags-wrapper" style="margin-bottom: 1rem;">
-              <span class="tag">Llama 3.2</span><span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">Web Speech API</span><span class="tag" style="color: #ff003c; border-color: #ff003c; background: rgba(255,0,60,0.1);">Executing...</span>
+            <div class="tags-wrapper">
+              <span class="tag">Llama 3.2</span><span class="tag">Python</span><span class="tag">WebSockets</span><span class="tag">Web Speech API</span><span class="tag tag-live">Executing...</span>
             </div>
-            <a href="https://github.com/Saibts/orion-local-ai" target="_blank" class="btn-secondary">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <a href="https://github.com/Saibts/orion-local-ai" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
               View Repository
             </a>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="tilt-card">
-        <div class="tilt-card-content">
+        <article class="card">
           <div class="card-meta">Agentic AI<br>Software</div>
           <div class="card-body">
             <h3>Student Life Concierge AI Agent</h3>
             <span class="org">Google 5-Day AI Agents Intensive (Capstone)</span>
             <p>Developed a production-grade, hierarchical multi-agent framework to automate academic workload management by parsing student email databases for deadlines and reserving calendar focus blocks. Implemented an input validation layer to protect the agent against adversarial instruction prompts (jailbreaks), achieving a 100% security routing score.</p>
-            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+            <div class="tags-wrapper">
               <span class="tag">Google ADK</span><span class="tag">Gemini API</span><span class="tag">FastAPI</span><span class="tag">Pytest</span>
             </div>
-            <a href="https://github.com/Saibts/student-life-concierge-app" target="_blank" class="btn-secondary">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <a href="https://github.com/Saibts/student-life-concierge-app" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
               View Repository
             </a>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="tilt-card">
-        <div class="tilt-card-content">
+        <article class="card">
           <div class="card-meta">Computer Vision<br>HCI</div>
           <div class="card-body">
-            <h3>Hand Gesture Volume & Brightness Controller</h3>
+            <h3>Hand Gesture Volume &amp; Brightness Controller</h3>
             <span class="org">Human-Machine Interface</span>
             <p>Built an AI-powered system translating real-time hand gesture tracking into Windows OS execution commands. Implemented dual hand independence: the right hand controls master volume, while the left hand controls display brightness.</p>
-            <div class="tags-wrapper" style="margin-bottom: 1rem;">
+            <div class="tags-wrapper">
               <span class="tag">OpenCV</span><span class="tag">MediaPipe</span><span class="tag">Python</span>
             </div>
-            <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" class="btn-secondary">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="width:14px;height:14px;"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            <a href="https://github.com/Saibts/hand-gesture-controller-vol-bright" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.09.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.907-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.114 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.741 0 .267.18.577.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
               View Repository
             </a>
           </div>
-        </div>
-      </div>
+        </article>
       </div>
 
-      <div class="project-branch-group" data-branch-group="hardware">
-        <h3 class="subsection-title">Hardware & Embedded Systems</h3>
+      <div class="branch-group" data-branch-group="hardware" role="tabpanel" id="panel-hardware" aria-labelledby="tab-hardware">
+        <h3 class="subsection-title">Hardware &amp; Embedded Systems</h3>
 
-        <div class="tilt-card">
-        <div class="tilt-card-content">
+        <article class="card">
           <div class="card-meta">Mech Design<br>Hardware</div>
           <div class="card-body">
             <h3>Mechanical Rotary Device</h3>
-            <span class="org">CAD & Prototyping</span>
+            <span class="org">CAD &amp; Prototyping</span>
             <p>Designed a novel dual-mode rotary mechanism integrating two distinct power-transmission principles—a Geneva wheel and a dog clutch system—into a single compact assembly. Built completely within SolidWorks parametric environment scripts.</p>
             <div class="tags-wrapper">
               <span class="tag">SolidWorks</span><span class="tag">Mechanical Design</span>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="tilt-card">
-        <div class="tilt-card-content">
+        <article class="card">
           <div class="card-meta">Biomedical<br>Hardware</div>
           <div class="card-body">
-            <h3>Grip Stability & Stress Analyzer</h3>
+            <h3>Grip Stability &amp; Stress Analyzer</h3>
             <span class="org">Sensor Integration</span>
             <p>Developed a non-invasive load cell-based system using HX711 and Arduino Uno to evaluate grip stability and tremor patterns for stress-level estimation.</p>
             <div class="tags-wrapper">
               <span class="tag">Arduino Uno R3</span><span class="tag">HX711</span><span class="tag">Load Cell</span>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="tilt-card">
-        <div class="tilt-card-content">
+        <article class="card">
           <div class="card-meta">Cyber-Physical<br>Embedded</div>
           <div class="card-body">
             <h3>Adaptive Self-Mutating Authentication System</h3>
@@ -570,11 +261,9 @@
               <span class="tag">8051 (AT89S52)</span><span class="tag">Embedded C</span><span class="tag">Hardware Timers</span>
             </div>
           </div>
-        </div>
-      </div>
+        </article>
 
-      <div class="tilt-card">
-        <div class="tilt-card-content">
+        <article class="card">
           <div class="card-meta">Controls<br>Embedded</div>
           <div class="card-body">
             <h3>Single-Axis Gimbal System</h3>
@@ -584,60 +273,53 @@
               <span class="tag">Arduino Nano</span><span class="tag">MPU-6050</span><span class="tag">PID Control</span>
             </div>
           </div>
-        </div>
-      </div>
-      </div>
-    </section>
-
-    <section id="hackathons">
-      <div class="section-eyebrow">04. Hackathons</div>
-      <h2 class="section-title cipher-text" data-original="04. System_Overrides">04. System_Overrides</h2>
-      
-      <div class="tilt-card">
-        <div class="tilt-card-content">
-          <div class="card-meta">Finalist<br>2025</div>
-          <div class="card-body">
-            <h3>Smart India Hackathon (SIH 2025)</h3>
-            <p>Contributed to the reverse-engineering workflow for AI/ML-based identification of cryptographic primitives and protocols within multi-architecture firmware binaries.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tilt-card">
-        <div class="tilt-card-content">
-          <div class="card-meta">2nd Place<br>2025</div>
-          <div class="card-body">
-            <h3>H2TS Hackathon</h3>
-            <p>Collaborated closely with a team to design, build, and deploy an AI-driven SOS platform tailored for rapid emergency situational response.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="tilt-card">
-        <div class="tilt-card-content">
-          <div class="card-meta">Participant<br>2026</div>
-          <div class="card-body">
-            <h3>VISA 24-Hour Hackathon</h3>
-            <p>Competed in an intense 24-hour innovation sprint, testing rapid prototyping limits, system deployment, and teamwork under extreme pressure constraints.</p>
-          </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <section id="skills">
-      <div class="section-eyebrow">05. Tech Specs</div>
-      <h2 class="section-title cipher-text" data-original="05. Tech_Specs">05. Tech_Specs</h2>
+    <section id="hackathons" class="reveal">
+      <p class="eyebrow">04. Hackathons</p>
+      <h2 class="section-title">04. System_Overrides</h2>
+
+      <article class="card">
+        <div class="card-meta">Finalist<br>2025</div>
+        <div class="card-body">
+          <h3>Smart India Hackathon (SIH 2025)</h3>
+          <p>Contributed to the reverse-engineering workflow for AI/ML-based identification of cryptographic primitives and protocols within multi-architecture firmware binaries.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-meta">2nd Place<br>2025</div>
+        <div class="card-body">
+          <h3>H2TS Hackathon</h3>
+          <p>Collaborated closely with a team to design, build, and deploy an AI-driven SOS platform tailored for rapid emergency situational response.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-meta">Participant<br>2026</div>
+        <div class="card-body">
+          <h3>VISA 24-Hour Hackathon</h3>
+          <p>Competed in an intense 24-hour innovation sprint, testing rapid prototyping limits, system deployment, and teamwork under extreme pressure constraints.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="skills" class="reveal">
+      <p class="eyebrow">05. Tech Specs</p>
+      <h2 class="section-title">05. Tech_Specs</h2>
+
       <div class="skill-grid">
-        
         <div class="skill-category">
-          <h4>Design & Electronic Tools</h4>
+          <h4>Design &amp; Electronic Tools</h4>
           <div class="tags-wrapper">
             <span class="tag">SolidWorks</span><span class="tag">KiCAD</span><span class="tag">Canva</span>
           </div>
         </div>
 
         <div class="skill-category">
-          <h4>Programming & Analysis</h4>
+          <h4>Programming &amp; Analysis</h4>
           <div class="tags-wrapper">
             <span class="tag">Python</span><span class="tag">Embedded C</span><span class="tag">MATLAB</span><span class="tag">Simulink</span>
           </div>
@@ -646,7 +328,7 @@
         <div class="skill-category">
           <h4>Embedded Systems</h4>
           <div class="tags-wrapper">
-            <span class="tag">8051 (AT89S52)</span><span class="tag">Arduino Uno & Nano</span><span class="tag">Sensor Interfacing</span><span class="tag">Hardware Timers</span>
+            <span class="tag">8051 (AT89S52)</span><span class="tag">Arduino Uno &amp; Nano</span><span class="tag">Sensor Interfacing</span><span class="tag">Hardware Timers</span>
           </div>
         </div>
 
@@ -658,42 +340,39 @@
         </div>
 
         <div class="skill-category">
-          <h4>AI, Agentic & Web Systems</h4>
+          <h4>AI, Agentic &amp; Web Systems</h4>
           <div class="tags-wrapper">
             <span class="tag">Google ADK</span><span class="tag">Gemini API</span><span class="tag">Ollama / Llama 3.2</span><span class="tag">FastAPI</span><span class="tag">WebSockets</span>
           </div>
         </div>
 
         <div class="skill-category">
-          <h4>Cybersecurity & RE Workflow</h4>
+          <h4>Cybersecurity &amp; RE Workflow</h4>
           <div class="tags-wrapper">
             <span class="tag">Firmware Binary Analysis</span><span class="tag">Binwalk</span><span class="tag">Ghidra</span><span class="tag">Ubuntu Linux</span>
           </div>
         </div>
 
-        <div class="skill-category" style="grid-column: 1 / -1;">
+        <div class="skill-category skill-category-wide">
           <h4>Language Capabilities</h4>
           <div class="tags-wrapper">
-            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">English (Proficient)</span>
-            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Tamil (Proficient)</span>
-            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Telugu (Conversational)</span>
-            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Japanese (Elementary)</span>
-            <span class="tag" style="color:var(--text-main); border-color:var(--border); background:transparent;">Hindi (Elementary)</span>
+            <span class="tag tag-neutral">English (Proficient)</span>
+            <span class="tag tag-neutral">Tamil (Proficient)</span>
+            <span class="tag tag-neutral">Telugu (Conversational)</span>
+            <span class="tag tag-neutral">Japanese (Elementary)</span>
+            <span class="tag tag-neutral">Hindi (Elementary)</span>
           </div>
         </div>
-
       </div>
     </section>
 
-    <section id="leadership">
-      <div class="section-eyebrow">06. Logs & Certs</div>
-      <h2 class="section-title cipher-text" data-original="06. System_Logs">06. System_Logs</h2>
-      
-      <div class="skill-grid">
+    <section id="leadership" class="reveal">
+      <p class="eyebrow">06. Logs &amp; Certs</p>
+      <h2 class="section-title">06. System_Logs</h2>
+
+      <div class="skill-grid skill-grid-two">
         <div>
-          <div class="skill-category">
-            <h4>Leadership & Involvement</h4>
-          </div>
+          <h4 class="list-heading">Leadership &amp; Involvement</h4>
           <ul class="simple-list">
             <li><strong>Placement Representative (2026–Present):</strong> Serving as a direct liaison between engineering students and placement coordinators.</li>
             <li><strong>YRC Volunteer (2024–Present):</strong> Helped organize Youth Fest events specifically aimed at assisting visually challenged individuals.</li>
@@ -704,34 +383,32 @@
             <li><strong>Master of Ceremonies (MC) (2017–20):</strong> Served as a professional host for multiple school events, developing public speaking and audience engagement skills.</li>
           </ul>
         </div>
-        
+
         <div>
-          <div class="skill-category">
-            <h4>Security Clearances (Certs)</h4>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem;">
-            <a href="Anthropic.pdf" target="_blank" class="cert-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-              AI Capabilities & Limitations (Anthropic)
+          <h4 class="list-heading">Security Clearances (Certs)</h4>
+          <div class="cert-list">
+            <a href="Anthropic.pdf" target="_blank" rel="noopener" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+              AI Capabilities &amp; Limitations (Anthropic)
             </a>
-            <a href="prompt engineering.pdf" target="_blank" class="cert-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <a href="prompt engineering.pdf" target="_blank" rel="noopener" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
               Foundations of Prompt Engineering (AWS)
             </a>
-            <a href="kuka.pdf" target="_blank" class="cert-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <a href="kuka.pdf" target="_blank" rel="noopener" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
               Industrial Robotics (KUKA Centre)
             </a>
-            <a href="nptel.pdf" target="_blank" class="cert-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <a href="nptel.pdf" target="_blank" rel="noopener" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
               Automation in Manufacturing (NPTEL Elite)
             </a>
-            <a href="Udemy-python.pdf" target="_blank" class="cert-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <a href="Udemy-python.pdf" target="_blank" rel="noopener" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
               Python Basics (Udemy)
             </a>
-            <a href="Udemy-html.pdf" target="_blank" class="cert-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+            <a href="Udemy-html.pdf" target="_blank" rel="noopener" class="cert-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
               HTML Basics (Udemy)
             </a>
           </div>
@@ -739,253 +416,44 @@
       </div>
     </section>
 
-    <footer>
+    <footer class="site-footer">
       <p>Engineered by <span>Sailakshmi</span> // System Online</p>
-      <p style="margin-top: 0.5rem;">Robotics & Automation · MIT Anna University · Chennai</p>
+      <p class="footer-sub">Robotics &amp; Automation · MIT Anna University · Chennai</p>
     </footer>
 
   </main>
+
+  <nav class="mobile-nav" aria-label="Mobile section navigation">
+    <ul class="mobile-nav-links">
+      <li><a href="#about" class="nav-item mobile-nav-item">About</a></li>
+      <li><a href="#experience" class="nav-item mobile-nav-item">Experience</a></li>
+      <li><a href="#projects" class="nav-item mobile-nav-item">Projects</a></li>
+      <li><a href="#hackathons" class="nav-item mobile-nav-item">Hackathons</a></li>
+      <li><a href="#skills" class="nav-item mobile-nav-item">Tech</a></li>
+      <li><a href="#leadership" class="nav-item mobile-nav-item">Certs</a></li>
+    </ul>
+  </nav>
 </div>
 
-<div class="resume-fullscreen" id="resume-viewer">
+<button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<div class="resume-fullscreen" id="resume-viewer" role="dialog" aria-modal="true" aria-label="Resume viewer">
   <div class="resume-toolbar">
-    <button class="back-text-btn" onclick="closeResume()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    <button type="button" class="back-text-btn" onclick="closeResume()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
       Return to Interface
     </button>
-    <a href="Sailakshmi_Resume.pdf" target="_blank" download class="btn-primary" style="margin: 0; padding: 0.4rem 1rem;">
+    <a href="Sailakshmi_Resume.pdf" target="_blank" rel="noopener" download class="btn btn-primary btn-compact">
       Download Resume
     </a>
   </div>
   <div class="resume-pdf-container">
-    <iframe src="new_resume.html"></iframe>
+    <iframe src="new_resume.html" title="Sailakshmi B T Resume" loading="lazy"></iframe>
   </div>
 </div>
 
-<script>
-  // ── 1. SPOTLIGHT EFFECT ──
-  document.addEventListener('mousemove', (e) => {
-    document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
-    document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
-  });
-
-  // ── 2. THE ENIGMA CIPHER REVEAL (Tech Style) ──
-  const cipherChars = '01101001011011000101XYZ@#$%&*+<>{}[]';
-  function scrambleText(element) {
-    const originalText = element.getAttribute('data-original');
-    if (!originalText) return;
-    
-    element.classList.remove('loading');
-    let iterations = 0;
-    const maxIterations = 15; 
-    const interval = setInterval(() => {
-      element.innerText = originalText.split('').map((char, index) => {
-        if(char === ' ') return ' ';
-        if(index < iterations / (maxIterations / originalText.length)) return originalText[index];
-        return cipherChars[Math.floor(Math.random() * cipherChars.length)];
-      }).join('');
-      iterations++;
-      if (iterations >= maxIterations) {
-        clearInterval(interval);
-        element.innerText = originalText;
-      }
-    }, 35); 
-  }
-  
-  document.addEventListener("DOMContentLoaded", () => {
-    const heroName = document.querySelector('.hero-name');
-    if(heroName) setTimeout(() => scrambleText(heroName), 100);
-    const firstTitle = document.querySelector('#about .cipher-text');
-    if(firstTitle) setTimeout(() => scrambleText(firstTitle), 200);
-  });
-
-  // ── PROJECT BRANCH TOGGLE ──
-  const projectBranchButtons = document.querySelectorAll('.branch-btn');
-  const projectBranchGroups = document.querySelectorAll('.project-branch-group');
-
-  function setProjectBranch(branch) {
-    projectBranchButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.branch === branch));
-    projectBranchGroups.forEach(group => group.classList.toggle('active', group.dataset.branchGroup === branch));
-  }
-
-  projectBranchButtons.forEach(btn => btn.addEventListener('click', () => setProjectBranch(btn.dataset.branch)));
-  setProjectBranch('software');
-
-  // ── 3. 3D TILT MECHANISM ──
-  document.querySelectorAll('.tilt-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left; 
-      const y = e.clientY - rect.top;  
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -3; 
-      const rotateY = ((x - centerX) / centerX) * 3;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
-      const glareX = (x / rect.width) * 100;
-      const glareY = (y / rect.height) * 100;
-      card.style.setProperty('--glare-x', `${glareX}%`);
-      card.style.setProperty('--glare-y', `${glareY}%`);
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = `perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
-      card.style.setProperty('--glare-x', `200%`);
-      card.style.setProperty('--glare-y', `200%`);
-    });
-  });
-
-  // ── 4. TAB NAVIGATION SYSTEM ──
-  const navItems = document.querySelectorAll('.nav-item');
-  const mainSections = document.querySelectorAll('.right-pane > section');
-
-  navItems.forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      navItems.forEach(item => item.classList.remove('active'));
-      this.classList.add('active');
-      mainSections.forEach(sec => { sec.classList.remove('active-section'); sec.style.display = 'none'; });
-
-      const targetId = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
-      
-      if (targetSection) {
-        targetSection.style.display = 'block';
-        setTimeout(() => targetSection.classList.add('active-section'), 10);
-        const cipherTitle = targetSection.querySelector('.cipher-text');
-        if (cipherTitle) scrambleText(cipherTitle);
-      }
-      if(window.innerWidth <= 1023) window.scrollTo({ top: document.querySelector('.right-pane').offsetTop - 20, behavior: 'smooth' });
-    });
-  });
-
-  // ── RESUME MODAL HANDLER ──
-  function handleResumeClick() {
-    document.getElementById('resume-viewer').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeResume() {
-    document.getElementById('resume-viewer').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') closeResume();
-  });
-
-</script>
-
-<script>
-  (function(){
-    const overlay = document.getElementById('introOverlay');
-    const enterBtn = document.getElementById('enterBtn');
-    const aboutSection = document.getElementById('about');
-    const firstNav = document.querySelector('.nav-item');
-
-    function revealSite(){
-      if(!overlay) return;
-      overlay.classList.add('hidden');
-      setTimeout(()=>{
-        overlay.remove();
-        if(aboutSection){
-          aboutSection.style.display = 'block';
-          setTimeout(()=> aboutSection.classList.add('active-section'), 10);
-        }
-        document.querySelectorAll('.nav-item').forEach(n=> n.classList.remove('active'));
-        if(firstNav) firstNav.classList.add('active');
-      }, 360);
-    }
-
-    if(enterBtn) enterBtn.addEventListener('click', revealSite);
-
-    const typedLine = document.querySelector('#introOverlay p');
-    const typedPrompt = document.querySelector('.intro-sub-text');
-
-    function typeText(element, text, delay = 20, callback) {
-      element.textContent = '';
-      element.style.opacity = 1;
-      let index = 0;
-      const timer = setInterval(() => {
-        element.textContent += text[index] || '';
-        index += 1;
-        if (index > text.length) {
-          clearInterval(timer);
-          if (callback) callback();
-        }
-      }, delay);
-    }
-
-    function startIntroTyping() {
-      const text = typedLine.dataset.typed || typedLine.textContent;
-      typedLine.textContent = '';
-      typedLine.style.opacity = 1;
-      let i = 0;
-      const timer = setInterval(() => {
-        typedLine.textContent += text[i] || '';
-        i += 1;
-        if (i > text.length) {
-          clearInterval(timer);
-          if (typedPrompt) {
-            typeText(typedPrompt, typedPrompt.dataset.text || 'Press Enter to deploy interface.', 30);
-          }
-        }
-      }, 28);
-    }
-
-    document.addEventListener('DOMContentLoaded', startIntroTyping);
-    document.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') revealSite(); });
-  })();
-</script>
- 
-<script>
-  // ── 5. TERMINAL CLI PARSER ──
-  (function(){
-    const terminalInput = document.getElementById('terminal-in');
-    const terminalOutput = document.getElementById('terminal-out');
-    const terminalCard = document.getElementById('sailos-terminal');
-
-    if(terminalCard) terminalCard.addEventListener('click', () => terminalInput && terminalInput.focus());
-
-    function printTerminalLine(text, type=''){
-      const line = document.createElement('div');
-      line.className = `terminal-line ${type}`.trim();
-      line.innerHTML = text;
-      terminalOutput.appendChild(line);
-      terminalOutput.scrollTop = terminalOutput.scrollHeight;
-    }
-
-    const commands = {
-      help: 'Available protocols:<br> > <strong>about</strong>: Dump profile data<br> > <strong>skills</strong>: Scan tech stack<br> > <strong>projects</strong>: List repositories<br> > <strong>contact</strong>: Open comm channels<br> > <strong>diagnostic</strong>: System integrity check<br> > <strong>clear</strong>: Purge terminal',
-      about: '<strong>Sailakshmi B T</strong> — Robotics & Automation Undergrad (MIT, Anna University).<br>CGPA: 8.99 | HSC: 94.16% | SSLC: 95.2%<br>Primary Directives: Embedded Hardware, Control Systems & Autonomous AI.',
-      skills: 'TECH_STACK_SCAN:<br> [Design]: SolidWorks, KiCAD<br> [Logic]: Python, Embedded C, MATLAB<br> [Hardware]: 8051, Arduino Uno/Nano, Sensors<br> [Control]: PID loops, Motion Control<br> [Neural]: Google ADK, Local LLMs, FastAPI',
-      projects: 'ACTIVE_BUILDS:<br> > Masters and Academic Tracker (React)<br> > Orion Local AI Assistant (FastAPI, Llama 3.2)<br> > Student Life Concierge AI Agent (Google ADK)<br> > Hand Gesture Volume Controller (OpenCV)<br> > Mechanical Rotary Device (SolidWorks)',
-      contact: 'COMM_LINKS:<br> Email: <a href="mailto:sailakshmibt2006@gmail.com">sailakshmibt2006@gmail.com</a><br> GitHub: <a href="https://github.com/Saibts" target="_blank" style="color:var(--cyan)">github.com/Saibts</a>',
-      diagnostic: '<span class="success">[PASS]</span> EMBEDDED MEMORY TIMERS: ACTIVE<br><span class="success">[PASS]</span> KINEMATICS RESOLVER: STABLE<br><span class="success">[PASS]</span> LOCAL LLM: OLLAMA ONLINE<br><strong>[SYSTEM STATUS] SAIL_CORE ACTIVE & NOMINAL.</strong>'
-    };
-
-    if(terminalInput){
-      terminalInput.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter'){
-          const val = terminalInput.value.trim();
-          const cmd = val.toLowerCase();
-
-          printTerminalLine(`root@sail-core:~$ ${val}`, 'cmd');
-
-          if(cmd === 'clear'){
-            terminalOutput.innerHTML = '';
-          } else if(commands[cmd]){
-            printTerminalLine(commands[cmd]);
-          } else if(cmd){
-            printTerminalLine(`error: protocol '${val}' not recognized. Try 'help'.`, 'error');
-          }
-
-          terminalInput.value = '';
-        }
-      });
-    }
-  })();
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
