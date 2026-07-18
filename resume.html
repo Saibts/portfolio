@@ -3,34 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sailakshmi B T — Resume</title>
-<link rel="icon" type="image/jpg" href="favicon.jpg">
+<title>Sailakshmi B T — Resume (Neo-Academia Edition)</title>
+<link rel="icon" type="image/jpg" href="../favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    /* Engineering-blueprint dark theme, matching the portfolio site */
-    --void:      #0A0C11;
-    --panel:     #12151D;
-    --panel-2:   #161A24;
-    --line:      rgba(255, 255, 255, 0.08);
-    --line-strong: rgba(255, 255, 255, 0.16);
-    --paper:     #E9EBF2;
-    --muted:     #8C93A6;
-    --muted-2:   #62687A;
-    --signal:    #6EE7D9;
-    --signal-dim: rgba(110, 231, 217, 0.12);
-    --volt:      #A78BFA;
-    --volt-dim:  rgba(167, 139, 250, 0.12);
+    /* Neo-academia color tokens */
+    --void:      #06080B; /* Slate crypt black */
+    --panel:     #10131A; /* Charcoal stone card shelf */
+    --panel-2:   #171B26; /* Dark leather desktop */
+    --line:      rgba(0, 229, 255, 0.08); /* Cyber circuits */
+    --line-strong: rgba(181, 148, 91, 0.22); /* Matte brass gold */
+    --paper:     #EBE5DC; /* Warm book paper */
+    --muted:     #8C97A8; /* Sleek steel gray */
+    --muted-2:   #4A5361; /* Shadows */
+    --signal:    #00E5FF; /* Glowing cyan */
+    --volt:      #B5945B; /* Antique brass gold */
 
-    --font-display: 'Space Grotesk', 'Inter', sans-serif;
+    --font-display: 'Cinzel', serif;
     --font-body: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
+    --font-mono: 'Fira Code', monospace;
 
-    --radius-sm: 8px;
-    --radius-md: 14px;
-    --shadow-card: 0 1px 2px rgba(0,0,0,0.4), 0 12px 32px -12px rgba(0,0,0,0.55);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --shadow-card: 0 4px 20px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.02);
   }
 
   * {
@@ -44,20 +42,22 @@
     color: var(--paper);
     font-family: var(--font-body);
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
   }
 
   body {
     background-image:
-      radial-gradient(circle at 12% 8%, rgba(110,231,217,0.05), transparent 45%),
-      radial-gradient(circle at 88% 92%, rgba(167,139,250,0.05), transparent 45%),
+      radial-gradient(circle at 12% 8%, rgba(0, 229, 255, 0.04), transparent 45%),
+      radial-gradient(circle at 88% 92%, rgba(181, 148, 91, 0.04), transparent 45%),
       linear-gradient(var(--line) 1px, transparent 1px),
       linear-gradient(90deg, var(--line) 1px, transparent 1px);
     background-size: auto, auto, 56px 56px, 56px 56px;
     background-attachment: fixed;
     padding: 56px 20px 80px;
+    position: relative;
   }
 
   .page {
@@ -71,6 +71,20 @@
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-card);
     padding: 34px 30px;
+    overflow: hidden;
+  }
+
+  /* Academic framed outline */
+  .page::before {
+    content: '';
+    position: absolute; inset: 0;
+    border: 1.5px solid var(--line-strong);
+    pointer-events: none;
+    border-radius: var(--radius-md);
+    clip-path: polygon(0 0, 20px 0, 20px 1.5px, 1.5px 1.5px, 1.5px 20px, 0 20px,
+                       0 100%, 20px 100%, 20px calc(100% - 1.5px), 1.5px calc(100% - 1.5px), 1.5px calc(100% - 20px), 0 calc(100% - 20px),
+                       100% 100%, 100% calc(100% - 20px), calc(100% - 1.5px) calc(100% - 20px), calc(100% - 1.5px) calc(100% - 1.5px), calc(100% - 20px) calc(100% - 1.5px), calc(100% - 20px) 100%,
+                       100% 0, 100% 20px, calc(100% - 1.5px) 20px, calc(100% - 1.5px) 1.5px, calc(100% - 20px) 1.5px, calc(100% - 20px) 0);
   }
 
   /* ===== Header ===== */
@@ -79,25 +93,24 @@
     padding-bottom: 22px;
     margin-bottom: 30px;
     border-bottom: 1px solid var(--line);
+    position: relative;
   }
 
   h1.name {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 2.6rem;
-    letter-spacing: -0.01em;
-    background: linear-gradient(135deg, var(--paper) 55%, var(--signal));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 2.3rem;
+    color: var(--paper);
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.1);
   }
 
   .contact-line {
     margin-top: 12px;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: var(--muted);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.05em;
   }
 
   .contact-line a {
@@ -124,9 +137,10 @@
   h2.section-title {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 0.95rem;
     color: var(--paper);
-    letter-spacing: -0.005em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     margin-bottom: 16px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--line);
@@ -139,16 +153,17 @@
     position: absolute;
     bottom: -1px;
     left: 0;
-    width: 46px;
-    height: 2px;
+    width: 60px;
+    height: 1.5px;
     background: linear-gradient(90deg, var(--signal), var(--volt));
   }
 
   .summary-text {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: var(--muted);
-    line-height: 1.85;
+    line-height: 1.75;
     text-align: left;
+    font-weight: 300;
   }
 
   /* ===== Education ===== */
@@ -167,34 +182,37 @@
   .entry-title {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 0.98rem;
     color: var(--paper);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
   }
 
   .entry-org {
     font-family: var(--font-mono);
     color: var(--muted);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
-    font-size: 0.82rem;
+    letter-spacing: 0.05em;
+    font-size: 0.78rem;
   }
 
   .entry-date {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--volt);
+    font-size: 0.75rem;
+    color: var(--signal);
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
+    letter-spacing: 0.05em;
     white-space: nowrap;
+    text-shadow: 0 0 3px rgba(0, 229, 255, 0.3);
   }
 
   .entry-sub {
     font-family: var(--font-mono);
-    font-size: 0.82rem;
-    color: var(--muted);
+    font-size: 0.78rem;
+    color: var(--muted-2);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     margin-top: 4px;
   }
 
@@ -206,31 +224,37 @@
 
   ul.bullets li {
     margin-bottom: 6px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--muted);
     line-height: 1.7;
     padding-left: 18px;
     position: relative;
+    font-weight: 300;
   }
 
   ul.bullets li::before {
-    content: "\203A";
+    content: ">";
     font-family: var(--font-mono);
     position: absolute;
     left: 0;
-    top: -1px;
+    top: 0px;
     color: var(--signal);
-    font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 0.8rem;
   }
 
   .item-block {
     margin-bottom: 20px;
-    padding: 14px 16px;
+    padding: 16px;
     background: var(--panel-2);
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     page-break-inside: avoid;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .item-block:hover {
+    border-color: rgba(0, 229, 255, 0.35);
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.05);
   }
 
   .item-block:last-child {
@@ -240,11 +264,11 @@
   /* ===== Projects ===== */
   .project-meta {
     font-family: var(--font-mono);
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     color: var(--volt);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
-    margin-top: 3px;
+    letter-spacing: 0.05em;
+    margin-top: 4px;
     margin-bottom: 8px;
   }
 
@@ -252,7 +276,7 @@
   .skills-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   .skill-row {
@@ -266,16 +290,72 @@
     font-family: var(--font-display);
     font-weight: 700;
     color: var(--paper);
-    font-size: 0.92rem;
+    font-size: 0.85rem;
     min-width: 190px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .skill-label::before {
+    content: '>';
+    color: var(--signal);
+    font-size: 0.8rem;
   }
 
   .skill-value {
     font-family: var(--font-body);
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--muted);
     flex: 1;
     min-width: 240px;
+    font-weight: 300;
+  }
+
+  /* Academic telemetry table */
+  .academic-table-wrapper {
+    margin: 1.2rem 0;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: rgba(16, 19, 26, 0.4);
+  }
+  .academic-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    text-align: left;
+  }
+  .academic-table th {
+    background: rgba(0, 229, 255, 0.05);
+    color: var(--signal);
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.6rem 0.8rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .academic-table td {
+    padding: 0.6rem 0.8rem;
+    color: var(--muted);
+    border-bottom: 1px solid rgba(0, 229, 255, 0.05);
+    font-weight: 300;
+  }
+  .academic-table tr:last-child td {
+    border-bottom: none;
+  }
+  .academic-table tr:hover td {
+    color: var(--paper);
+    background: rgba(0, 229, 255, 0.02);
+  }
+  .academic-table .score-highlight {
+    color: var(--volt);
+    font-weight: 700;
   }
 
   /* ===== Certifications & Leadership ===== */
@@ -286,22 +366,22 @@
 
   .simple-list li {
     margin-bottom: 6px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--muted);
     line-height: 1.7;
     padding-left: 18px;
     position: relative;
+    font-weight: 300;
   }
 
   .simple-list li::before {
-    content: "\203A";
+    content: "»";
     font-family: var(--font-mono);
     position: absolute;
     left: 0;
-    top: -1px;
+    top: 0px;
     color: var(--signal);
-    font-weight: 700;
-    font-size: 1.05rem;
+    font-size: 0.95rem;
   }
 
   .leader-block {
@@ -316,19 +396,21 @@
   .leader-bullet {
     margin-top: 3px;
     margin-left: 18px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--muted);
     line-height: 1.65;
+    font-weight: 300;
   }
 
   /* ===== Languages ===== */
   .lang-row {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: var(--muted);
     display: flex;
     flex-wrap: wrap;
     gap: 0;
+    letter-spacing: 0.05em;
   }
 
   .lang-row span {
@@ -346,9 +428,9 @@
     color: var(--muted-2);
     font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     margin: 36px 0 0;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
   }
 
   /* ===== Print ===== */
@@ -402,11 +484,11 @@
     }
 
     h1.name {
-      font-size: 2rem;
+      font-size: 2.1rem;
     }
 
     h2.section-title {
-      font-size: 1.1rem;
+      font-size: 0.88rem;
     }
 
     .contact-line {
@@ -415,7 +497,7 @@
     }
 
     .entry-title {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     .entry-sub,
@@ -427,7 +509,7 @@
     .leader-bullet,
     .summary-text,
     ul.bullets li {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
     }
 
     .entry-row {
@@ -438,7 +520,7 @@
 
     .skill-label {
       min-width: 100%;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
 
     .skill-value {
@@ -468,28 +550,56 @@
   </header>
 
   <section>
-    <h2 class="section-title">Professional Summary</h2>
+    <h2 class="section-title">01. About_Me</h2>
     <p class="summary-text">Robotics and Automation undergraduate (CGPA 8.99) at Madras Institute of Technology with hands-on experience in embedded systems, robotics, and AI-driven applications. Skilled in Arduino-based system design, sensor interfacing, and rapid prototyping. Interests span Computer Vision, industrial automation, embedded intelligence, and intelligent systems.</p>
-  </section>
 
-  <section>
-    <h2 class="section-title">Education</h2>
+    <h3 class="entry-title" style="margin-top: 20px; font-size: 0.9rem; color: var(--volt); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px;">Academic Telemetry</h3>
     <div class="edu-block">
       <div class="entry-row">
         <span class="entry-title">B.E. – Robotics and Automation</span>
         <span class="entry-date">2024 – 2028</span>
       </div>
       <div class="entry-sub">Madras Institute of Technology</div>
-      <ul class="bullets">
-        <li>CGPA: 8.99 / 10.0 (current)</li>
-        <li>Higher Secondary Certificate (2024): 94.16% | Secondary School Certificate (2022): 95.2%</li>
-        <li>JEE (Main) 2024: 81.82 percentile (CRL: 269,607 | OBC-NCL: 94,238)</li>
-      </ul>
+      <div class="academic-table-wrapper">
+        <table class="academic-table">
+          <thead>
+            <tr>
+              <th>Credential / Stage</th>
+              <th>Institution / System</th>
+              <th>Score / Result</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>B.E. Robotics &amp; Automation (Current)</td>
+              <td>Madras Institute of Technology</td>
+              <td class="score-highlight">8.99 / 10.0 CGPA</td>
+            </tr>
+            <tr>
+              <td>Higher Secondary Certificate (HSC)</td>
+              <td>State Board (Class XII)</td>
+              <td class="score-highlight">94.16%</td>
+            </tr>
+            <tr>
+              <td>Secondary School Certificate (SSLC)</td>
+              <td>State Board (Class X)</td>
+              <td class="score-highlight">95.20%</td>
+            </tr>
+            <tr>
+              <td>JEE (Main) 2024 Paper 1</td>
+              <td>National Testing Agency (NTA)</td>
+              <td class="score-highlight">81.82 Percentile</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
+
+
   <section>
-    <h2 class="section-title">Internships &amp; Training</h2>
+    <h2 class="section-title">02. Experience</h2>
 
     <div class="item-block">
       <div class="entry-row">
@@ -513,11 +623,11 @@
   </section>
 
   <section>
-    <h2 class="section-title">Projects</h2>
+    <h2 class="section-title">03. Projects_&amp;_Builds</h2>
 
     <div class="item-block">
       <div class="entry-title">Student Life Concierge AI Agent</div>
-      <div class="project-meta">Google ADK, Gemini API, FastAPI, Python, Pytest, Uvicorn | Kaggle &amp; Google 5-Day AI Agents Intensive</div>
+      <div class="project-meta">Google ADK, Gemini API, FastAPI, Python, Pytest, Uvicorn | Capstone</div>
       <ul class="bullets">
         <li>Built a multi-agent FastAPI backend that parsed academic emails and automated student scheduling tasks using Google's Agent Development Kit and Gemini API.</li>
         <li>Added a prompt injection / anti-jailbreak layer to prevent the agent from acting outside its defined scope.</li>
@@ -580,7 +690,7 @@
   </section>
 
   <section>
-    <h2 class="section-title">Hackathons &amp; Competitions</h2>
+    <h2 class="section-title">04. Hackathons</h2>
 
     <div class="item-block">
       <div class="entry-title">Smart India Hackathon 2025 – Delhi, Finalist</div>
@@ -605,7 +715,7 @@
   </section>
 
   <section>
-    <h2 class="section-title">Technical Skills</h2>
+    <h2 class="section-title">05. Tech_Specs</h2>
     <div class="skills-grid">
       <div class="skill-row">
         <span class="skill-label">Embedded Systems:</span>
@@ -628,6 +738,10 @@
         <span class="skill-value">Image Processing, Object Detection, AI-based Visual Recognition (OpenCV-level coursework)</span>
       </div>
       <div class="skill-row">
+        <span class="skill-label">Web &amp; Real-Time:</span>
+        <span class="skill-value">WebSockets, Asynchronous Programming, Speech Recognition &amp; Synthesis (Web Speech API)</span>
+      </div>
+      <div class="skill-row">
         <span class="skill-label">Design &amp; EDA:</span>
         <span class="skill-value">SolidWorks, KiCAD, Canva</span>
       </div>
@@ -639,17 +753,16 @@
   </section>
 
   <section>
-    <h2 class="section-title">Certifications</h2>
-    <ul class="simple-list">
+    <h2 class="section-title">06. Logs_&amp;_Certs</h2>
+    <h3 class="entry-title" style="margin-top: 10px; font-size: 0.9rem; color: var(--volt); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em;">Certifications</h3>
+    <ul class="simple-list" style="margin-top: 8px; margin-bottom: 20px;">
       <li>AI Capabilities and Limitations – Anthropic</li>
       <li>Foundations of Prompt Engineering – AWS Training &amp; Certifications</li>
       <li>Automation in Manufacturing – NPTEL (Elite, 67%)</li>
       <li>Python for Absolute Beginners – Udemy | Basics of HTML – Udemy</li>
     </ul>
-  </section>
 
-  <section>
-    <h2 class="section-title">Leadership &amp; Activities</h2>
+    <h3 class="entry-title" style="margin-top: 15px; font-size: 0.9rem; color: var(--volt); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">Collegiate Records</h3>
     <div class="leader-block">
       <div class="entry-row">
         <span class="entry-title">Placement Representative</span>
@@ -685,6 +798,8 @@
       </div>
       <div class="leader-bullet">Organized Youth Fest events for visually challenged individuals.</div>
     </div>
+
+    <h3 class="entry-title" style="margin-top: 25px; font-size: 0.9rem; color: var(--volt); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;">School Records</h3>
     <div class="leader-block">
       <div class="entry-row">
         <span class="entry-title">Assistant School Pupil Leader</span>
@@ -701,6 +816,8 @@
     </div>
   </section>
 
+
+
   <section>
     <h2 class="section-title">Languages</h2>
     <div class="lang-row">
@@ -712,7 +829,7 @@
     </div>
   </section>
 
-  <div class="ornament">/// SYS_END ///</div>
+  <div class="ornament">» NEO_ACADEMIA_END «</div>
 
 </div>
 
