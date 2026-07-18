@@ -2,24 +2,24 @@
    TOKENS
    ============================================================ */
 :root {
-  /* Palette — "engineering blueprint" dark theme */
-  --void:      #0A0C11;
-  --panel:     #12151D;
-  --panel-2:   #161A24;
-  --line:      rgba(255, 255, 255, 0.08);
-  --line-strong: rgba(255, 255, 255, 0.16);
-  --paper:     #E9EBF2;
-  --muted:     #8C93A6;
-  --muted-2:   #62687A;
-  --signal:    #6EE7D9;   /* trace / primary accent */
-  --signal-dim: rgba(110, 231, 217, 0.12);
-  --volt:      #A78BFA;   /* secondary accent */
-  --volt-dim:  rgba(167, 139, 250, 0.12);
-  --danger:    #FB7185;
+  /* Palette — Neo-Academia theme colors */
+  --void:      #06080B;
+  --panel:     #10131A;
+  --panel-2:   #171B26;
+  --line:      rgba(0, 229, 255, 0.08);
+  --line-strong: rgba(181, 148, 91, 0.22);
+  --paper:     #EBE5DC;
+  --muted:     #8C97A8;
+  --muted-2:   #4A5361;
+  --signal:    #00E5FF;   /* trace / primary accent */
+  --signal-dim: rgba(0, 229, 255, 0.12);
+  --volt:      #B5945B;   /* secondary accent */
+  --volt-dim:  rgba(181, 148, 91, 0.12);
+  --danger:    #FF5252;
 
-  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-display: 'Cinzel', serif;
   --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'Fira Code', monospace;
 
   --radius-sm: 8px;
   --radius-md: 14px;
@@ -539,4 +539,79 @@ strong { font-weight: 700; color: var(--paper); }
   .hero-name { font-size: 2rem; }
   .terminal-output { height: 120px; }
   .back-to-top { right: 1rem; width: 42px; height: 42px; }
+}
+
+/* ============================================================
+   CYBERPUNK ANIMATION EXPANSION
+   ============================================================ */
+#canvas-constellation {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.overlay-ambiance {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: 
+    linear-gradient(rgba(10, 12, 17, 0) 50%, rgba(0, 0, 0, 0.12) 50%),
+    radial-gradient(circle at 50% 12%, rgba(110, 231, 217, 0.03), transparent 60%);
+  background-size: 100% 6px, auto;
+  opacity: 0.85;
+  animation: cyberPulse 10s ease-in-out infinite;
+}
+
+@keyframes cyberPulse {
+  0%, 100% { opacity: 0.85; filter: contrast(1); }
+  48% { opacity: 0.9; }
+  50% { opacity: 0.25; filter: contrast(0.8) skewX(1deg); } /* cyber glitch */
+  51% { opacity: 0.92; filter: contrast(1.05); }
+  53% { opacity: 0.85; }
+  90% { opacity: 0.88; }
+  92% { opacity: 0.4; filter: contrast(0.9) skewX(-1deg); }
+  93% { opacity: 0.85; }
+}
+
+/* Cyber core pulse behind hero name */
+.hero-name {
+  position: relative;
+}
+.hero-name::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 0;
+  width: 120px; height: 120px;
+  background: radial-gradient(circle, rgba(110, 231, 217, 0.08), transparent 70%);
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: -1;
+  animation: cyberCorePulse 4s ease-in-out infinite;
+}
+@keyframes cyberCorePulse {
+  0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(0.9); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.15); }
+}
+
+/* Cyber card corner schematic hover grid */
+.card {
+  position: relative;
+}
+.card::before {
+  content: '';
+  position: absolute; inset: 0;
+  border: 1px solid var(--signal);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s var(--ease);
+  z-index: 2;
+  border-radius: var(--radius-md);
+  /* Cyber circuit board corner frames clip path */
+  clip-path: polygon(0 0, 12px 0, 12px 2px, 2px 2px, 2px 12px, 0 12px,
+                     0 100%, 12px 100%, 12px calc(100% - 2px), 2px calc(100% - 2px), 2px calc(100% - 12px), 0 calc(100% - 12px),
+                     100% 100%, 100% calc(100% - 12px), calc(100% - 2px) calc(100% - 12px), calc(100% - 2px) calc(100% - 2px), calc(100% - 12px) calc(100% - 2px), calc(100% - 12px) 100%,
+                     100% 0, 100% 12px, calc(100% - 2px) 12px, calc(100% - 2px) 2px, calc(100% - 12px) 2px, calc(100% - 12px) 0);
+}
+.card:hover::before {
+  opacity: 1;
 }

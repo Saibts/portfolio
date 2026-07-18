@@ -238,8 +238,8 @@
     const commands = {
       help: "Available protocols:<br> &gt; <strong>about</strong>: Dump profile data<br> &gt; <strong>skills</strong>: Scan tech stack<br> &gt; <strong>projects</strong>: List repositories<br> &gt; <strong>contact</strong>: Open comm channels<br> &gt; <strong>theme green/cyan</strong>: Configure UI accent color<br> &gt; <strong>diagnostic</strong>: System integrity check<br> &gt; <strong>clear</strong>: Purge terminal",
       about: "<strong>Sailakshmi B T</strong> — Robotics &amp; Automation Undergrad (MIT, Anna University).<br>CGPA: 8.99 | HSC: 94.16% | SSLC: 95.2%<br>Primary Directives: Embedded Hardware, Control Systems &amp; Autonomous AI.",
-      skills: "TECH_STACK_SCAN:<br> [Design]: SolidWorks, KiCAD<br> [Logic]: Python, Embedded C, MATLAB<br> [Hardware]: 8051, Arduino Uno/Nano, Sensors<br> [Control]: PID loops, Motion Control<br> [Neural]: Google ADK, Local LLMs, FastAPI",
-      projects: "ACTIVE_BUILDS:<br> &gt; Masters and Academic Tracker (React)<br> &gt; Orion Local AI Assistant (FastAPI, Llama 3.2)<br> &gt; Student Life Concierge AI Agent (Google ADK)<br> &gt; Hand Gesture Volume Controller (OpenCV)<br> &gt; Mechanical Rotary Device (SolidWorks)",
+      skills: "TECH_STACK_SCAN:<br> [Design]: SolidWorks, KiCAD<br> [Logic]: Python, Embedded C, MATLAB<br> [Hardware]: 8051, Arduino Uno/Nano, Sensors<br> [Control]: PID loops, Motion Control<br> [Neural]: Google ADK, Local LLMs, FastAPI<br> [Vision]: Computer Vision, OpenCV, MediaPipe",
+      projects: "ACTIVE_BUILDS:<br> &gt; Masters and Academic Tracker (React)<br> &gt; Orion Local AI Assistant (FastAPI, Llama 3.2)<br> &gt; Student Life Concierge AI Agent (Google ADK)<br> &gt; Hand Gesture Volume Controller (OpenCV)<br> &gt; Sign Language Translator (OpenCV, MediaPipe)<br> &gt; Honors Capstone Project (MIT Robotics Honors Sem 5-7)<br> &gt; Mechanical Rotary Device (SolidWorks)<br> &gt; KiCAD Electronic Designs (PCB Design)",
       contact: "COMM_LINKS:<br> Email: <a href=\"mailto:sailakshmibt2006@gmail.com\">sailakshmibt2006@gmail.com</a><br> GitHub: <a href=\"https://github.com/Saibts\" target=\"_blank\" rel=\"noopener\">github.com/Saibts</a><br> LinkedIn: <a href=\"https://linkedin.com/in/sailakshmi-65a696327\" target=\"_blank\" rel=\"noopener\">linkedin.com/in/sailakshmi-65a696327</a>",
       diagnostic: "<span class=\"success\">[PASS]</span> EMBEDDED MEMORY TIMERS: ACTIVE<br><span class=\"success\">[PASS]</span> KINEMATICS RESOLVER: STABLE<br><span class=\"success\">[PASS]</span> LOCAL LLM: OLLAMA ONLINE<br><strong>[SYSTEM STATUS] SAIL_CORE ACTIVE &amp; NOMINAL.</strong>"
     };
@@ -298,6 +298,131 @@
   }
 
   /* ============================================================
+     CYBER CONSTELLATION NODE NETWORK (CANVAS BACKGROUND)
+     ============================================================ */
+  function initCanvasBackground() {
+    const canvas = document.getElementById('canvas-constellation');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    if (reducedMotion) {
+      canvas.style.display = 'none';
+      return;
+    }
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const particleCount = Math.min(35, Math.floor((width * height) / 30000));
+    const symbols = ['+', 'x', '0', '1', '▪', '▪'];
+    const colors = ['#00E5FF', '#B5945B'];
+
+    class Particle {
+      constructor() {
+        this.reset();
+        this.y = Math.random() * height;
+      }
+      reset() {
+        this.x = Math.random() * width;
+        this.y = -20;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = Math.random() * 0.4 + 0.3;
+        this.size = Math.random() * 8 + 10;
+        this.alpha = Math.random() * 0.2 + 0.08;
+        this.symbol = symbols[Math.floor(Math.random() * symbols.length)];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.spin = Math.random() * 0.02 - 0.01;
+        this.angle = Math.random() * Math.PI * 2;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.angle += this.spin;
+        if (this.y > height + 20 || this.x < -20 || this.x > width + 20) {
+          this.reset();
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.font = `${this.size}px monospace`;
+        ctx.fillText(this.symbol, 0, 0);
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    let mouse = { x: null, y: null, radius: 150 };
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Tracing connections
+      ctx.lineWidth = 1;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.strokeStyle = `rgba(0, 229, 255, ${0.05 * (1 - dist / 120)})`;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+
+        // Connection to mouse
+        if (mouse.x !== null) {
+          const mdx = particles[i].x - mouse.x;
+          const mdy = particles[i].y - mouse.y;
+          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mdist < mouse.radius) {
+            ctx.strokeStyle = `rgba(181, 148, 91, ${0.15 * (1 - mdist / mouse.radius)})`; // Neon brass path to cursor
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.stroke();
+          }
+        }
+      }
+
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  }
+
+
+
+  /* ============================================================
      INIT
      ============================================================ */
   document.addEventListener('DOMContentLoaded', () => {
@@ -312,5 +437,6 @@
     initResumeModalKeys();
     initTerminal();
     initCardTilt();
+    initCanvasBackground();
   });
 })();
