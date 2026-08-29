@@ -31,6 +31,20 @@
     --shadow-card: 0 4px 20px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.02);
   }
 
+  [data-theme="slate"] {
+    --void:      #DCD7CD;
+    --panel:     #E8E3D9;
+    --panel-2:   #D5CFB8;
+    --line:      rgba(100, 85, 70, 0.18);
+    --line-strong: rgba(163, 120, 53, 0.35);
+    --paper:     #1F1C19;
+    --muted:     #4E473F;
+    --muted-2:   #6E655B;
+    --signal:    #215947;
+    --volt:      #A37835;
+    --shadow-card: 0 4px 18px rgba(45, 38, 30, 0.07);
+  }
+
   * {
     margin: 0;
     padding: 0;
@@ -841,5 +855,10 @@
 
 </div>
 
+<script>
+  if (localStorage.getItem('portfolio_theme') === 'slate') {
+    document.documentElement.setAttribute('data-theme', 'slate');
+  }
+</script>
 </body>
 </html>

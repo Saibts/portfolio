@@ -43,6 +43,114 @@
   --sidebar-w: 380px;
 }
 
+[data-theme="slate"] {
+  --void:        #DCD7CD; /* Soft Warm Muted Sand Base (Zero Glare, Matte) */
+  --panel:       #E8E3D9; /* Soft Warm Card Shelf */
+  --panel-2:     #D5CFC4; /* Soft Warm Secondary Container */
+  --line:        rgba(100, 85, 70, 0.18); /* Earthy Muted Line */
+  --line-strong: rgba(163, 120, 53, 0.35); /* Warm Bronze Accent Line */
+  --paper:       #1F1C19; /* Soft Deep Espresso Ink Typography */
+  --muted:       #4E473F; /* Soft Charcoal Text */
+  --muted-2:     #6E655B; /* Muted Secondary Labels */
+  --signal:      #215947; /* Calm Deep Forest Green */
+  --signal-dim:  rgba(33, 89, 71, 0.08);
+  --volt:        #A37835; /* Warm Antique Bronze */
+  --volt-dim:    rgba(163, 120, 53, 0.08);
+  --shadow-card: 0 4px 18px rgba(45, 38, 30, 0.07);
+  --shadow-lift: 0 12px 28px -6px rgba(45, 38, 30, 0.12), 0 0 0 1px rgba(163, 120, 53, 0.2);
+}
+
+[data-theme="slate"] body {
+  background-color: var(--void);
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(163, 120, 53, 0.06), transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(33, 89, 71, 0.05), transparent 45%),
+    linear-gradient(rgba(100, 85, 70, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100, 85, 70, 0.05) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+}
+
+[data-theme="slate"] .overlay-cyber { display: none !important; }
+[data-theme="slate"] #canvas-neo-library { opacity: 0.12 !important; filter: sepia(0.5); }
+
+/* TERMINAL SOFT WARM LIGHT MODE STYLING */
+[data-theme="slate"] .terminal-card { 
+  background: #E2DDD3 !important; 
+  color: #1F1C19 !important; 
+  border: 1px solid #C5BDAF !important;
+  box-shadow: 0 4px 16px rgba(45, 38, 30, 0.06) !important;
+}
+[data-theme="slate"] .terminal-label { 
+  background: #D5CFC4 !important; 
+  color: #1F1C19 !important; 
+  border-bottom: 1px solid #C5BDAF !important;
+}
+[data-theme="slate"] .terminal-output { 
+  color: #2D2823 !important; 
+}
+[data-theme="slate"] .terminal-prompt {
+  color: #215947 !important;
+}
+[data-theme="slate"] .terminal-input {
+  color: #1F1C19 !important;
+  caret-color: #215947 !important;
+}
+[data-theme="slate"] .terminal-line.system {
+  color: #215947 !important;
+}
+[data-theme="slate"] .terminal-line.cmd {
+  color: #1F1C19 !important;
+}
+
+/* CARDS & ELEMENTS */
+[data-theme="slate"] .card, 
+[data-theme="slate"] .skill-category, 
+[data-theme="slate"] .academic-table-wrapper { 
+  background: #E8E3D9 !important; 
+  border: 1px solid rgba(195, 185, 170, 0.8) !important; 
+  box-shadow: 0 4px 16px rgba(45, 38, 30, 0.05) !important; 
+}
+[data-theme="slate"] .card:hover {
+  border-color: rgba(163, 120, 53, 0.5) !important;
+  box-shadow: 0 10px 24px rgba(45, 38, 30, 0.1) !important;
+}
+[data-theme="slate"] .tag {
+  background: #DCD6CC !important;
+  border-color: #C8C0B2 !important;
+  color: #38322B !important;
+}
+[data-theme="slate"] .btn-primary {
+  background: #215947 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(33, 89, 71, 0.25) !important;
+}
+[data-theme="slate"] .btn-primary:hover {
+  background: #184436 !important;
+}
+[data-theme="slate"] .btn-ghost {
+  border-color: #C8C0B2 !important;
+  color: #4E473F !important;
+}
+[data-theme="slate"] .btn-ghost:hover {
+  background: rgba(33, 89, 71, 0.1) !important;
+  color: #215947 !important;
+  border-color: #215947 !important;
+}
+[data-theme="slate"] .academic-table th {
+  background: #D8D2C7 !important;
+  color: #1F1C19 !important;
+}
+[data-theme="slate"] .academic-table tr:hover td {
+  background: #DCD7CD !important;
+}
+[data-theme="slate"] .resume-fullscreen {
+  background: #DCD7CD !important;
+}
+[data-theme="slate"] .resume-toolbar {
+  background: #E8E3D9 !important;
+  border-bottom-color: #C8C0B2 !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -525,18 +633,44 @@ strong { font-weight: 600; color: var(--paper); }
 }
 
 /* ============================================================
-   TELEMETRY SPECS (SKILLS GRID)
+   TELEMETRY SPECS (SKILLS GRID ALIGNMENT FIX)
    ============================================================ */
-.skill-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
-@media (min-width: 640px) { .skill-grid { grid-template-columns: 1fr 1fr; } }
-.skill-grid-two { grid-template-columns: 1fr; gap: 3rem; }
-@media (min-width: 800px) { .skill-grid-two { grid-template-columns: 1.15fr 0.85fr; } }
+.skill-grid { 
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 1.25rem; 
+  align-items: stretch;
+}
+@media (min-width: 640px) { 
+  .skill-grid { grid-template-columns: repeat(2, 1fr); } 
+}
+
+.skill-category {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 1.35rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s var(--ease);
+}
+
+.skill-category:hover {
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-lift);
+  transform: translateY(-2px);
+  background: var(--panel-2);
+}
 
 .skill-category-wide { grid-column: 1 / -1; }
+
 .skill-category h4, .list-heading {
-  font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
-  color: var(--paper); margin-bottom: 1rem; letter-spacing: 0.1em;
-  display: flex; align-items: center; gap: 0.8rem;
+  font-family: var(--font-display); font-size: 0.92rem; font-weight: 700;
+  color: var(--paper); margin-bottom: 1rem; letter-spacing: 0.08em;
+  display: flex; align-items: center; gap: 0.6rem;
   text-transform: uppercase;
 }
 .skill-category h4::before, .list-heading::before {
@@ -794,6 +928,15 @@ strong { font-weight: 600; color: var(--paper); }
         <a href="mailto:sailakshmibt2006@gmail.com" class="social-icon" aria-label="Send an email">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
         </a>
+      </div>
+
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 0.8rem;">
+        <button type="button" id="theme-toggle-btn" onclick="toggleTheme()" class="btn btn-ghost" style="flex: 1; font-size: 0.75rem; padding: 0.4rem 0.6rem;">
+          ☀️ Modern Slate
+        </button>
+        <button type="button" onclick="openTerminal()" class="btn btn-ghost" style="flex: 1; font-size: 0.75rem; padding: 0.4rem 0.6rem;">
+          ⌨️ Terminal
+        </button>
       </div>
 
       <button type="button" onclick="handleResumeClick()" class="btn btn-primary btn-block">
@@ -1709,9 +1852,41 @@ strong { font-weight: 600; color: var(--paper); }
   }
 
   /* ============================================================
+     GLOBAL ACTIONS (THEME & TERMINAL)
+     ============================================================ */
+  window.toggleTheme = function () {
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    const next = current === 'dark' ? 'slate' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('portfolio_theme', next);
+    const btn = document.getElementById('theme-toggle-btn');
+    if (btn) btn.innerText = next === 'slate' ? '🌙 Cyber Dark' : '☀️ Modern Slate';
+  };
+
+  window.openTerminal = function () {
+    const details = document.getElementById('sailos-terminal');
+    const input = document.getElementById('terminal-in');
+    if (details) {
+      details.open = true;
+      details.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    if (input) setTimeout(() => input.focus(), 300);
+  };
+
+  function initThemeState() {
+    const savedTheme = localStorage.getItem('portfolio_theme');
+    if (savedTheme === 'slate') {
+      document.documentElement.setAttribute('data-theme', 'slate');
+      const btn = document.getElementById('theme-toggle-btn');
+      if (btn) btn.innerText = '🌙 Cyber Dark';
+    }
+  }
+
+  /* ============================================================
      INIT
      ============================================================ */
   document.addEventListener('DOMContentLoaded', () => {
+    initThemeState();
     initLoader();
     initScrollProgress();
     initTraceRail();

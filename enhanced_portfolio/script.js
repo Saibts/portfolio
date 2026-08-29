@@ -423,6 +423,27 @@
 
 
   /* ============================================================
+     THEME SWITCHER
+     ============================================================ */
+  function initThemeSwitcher() {
+    window.toggleTheme = function () {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'slate' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('portfolio_theme', next);
+      const btn = document.getElementById('theme-toggle-btn');
+      if (btn) btn.innerText = next === 'slate' ? '🌙 Cyber Dark' : '☀️ Modern Slate';
+    };
+
+    const savedTheme = localStorage.getItem('portfolio_theme');
+    if (savedTheme === 'slate') {
+      document.documentElement.setAttribute('data-theme', 'slate');
+      const btn = document.getElementById('theme-toggle-btn');
+      if (btn) btn.innerText = '🌙 Cyber Dark';
+    }
+  }
+
+  /* ============================================================
      INIT
      ============================================================ */
   document.addEventListener('DOMContentLoaded', () => {
@@ -438,5 +459,6 @@
     initTerminal();
     initCardTilt();
     initCanvasBackground();
+    initThemeSwitcher();
   });
 })();
